@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,14 +25,10 @@ import (
 	original "github.com/Azure/azure-sdk-for-go/services/preview/sqlvirtualmachine/mgmt/2017-03-01-preview/sqlvirtualmachine"
 )
 
-type AvailabilityGroupListenersClient = original.AvailabilityGroupListenersClient
-
 const (
 	DefaultBaseURI = original.DefaultBaseURI
 )
 
-type BaseClient = original.BaseClient
-type GroupsClient = original.GroupsClient
 type BackupScheduleType = original.BackupScheduleType
 
 const (
@@ -100,12 +96,6 @@ const (
 	User   OperationOrigin = original.User
 )
 
-type ScaleType = original.ScaleType
-
-const (
-	HA ScaleType = original.HA
-)
-
 type SQLImageSku = original.SQLImageSku
 
 const (
@@ -116,11 +106,26 @@ const (
 	Web        SQLImageSku = original.Web
 )
 
+type SQLManagementMode = original.SQLManagementMode
+
+const (
+	Full        SQLManagementMode = original.Full
+	LightWeight SQLManagementMode = original.LightWeight
+	NoAgent     SQLManagementMode = original.NoAgent
+)
+
 type SQLServerLicenseType = original.SQLServerLicenseType
 
 const (
 	AHUB SQLServerLicenseType = original.AHUB
 	PAYG SQLServerLicenseType = original.PAYG
+)
+
+type SQLVMGroupImageSku = original.SQLVMGroupImageSku
+
+const (
+	SQLVMGroupImageSkuDeveloper  SQLVMGroupImageSku = original.SQLVMGroupImageSkuDeveloper
+	SQLVMGroupImageSkuEnterprise SQLVMGroupImageSku = original.SQLVMGroupImageSkuEnterprise
 )
 
 type SQLWorkloadType = original.SQLWorkloadType
@@ -131,6 +136,12 @@ const (
 	OLTP    SQLWorkloadType = original.OLTP
 )
 
+type ScaleType = original.ScaleType
+
+const (
+	HA ScaleType = original.HA
+)
+
 type AdditionalFeaturesServerConfigurations = original.AdditionalFeaturesServerConfigurations
 type AutoBackupSettings = original.AutoBackupSettings
 type AutoPatchingSettings = original.AutoPatchingSettings
@@ -139,17 +150,20 @@ type AvailabilityGroupListenerListResult = original.AvailabilityGroupListenerLis
 type AvailabilityGroupListenerListResultIterator = original.AvailabilityGroupListenerListResultIterator
 type AvailabilityGroupListenerListResultPage = original.AvailabilityGroupListenerListResultPage
 type AvailabilityGroupListenerProperties = original.AvailabilityGroupListenerProperties
+type AvailabilityGroupListenersClient = original.AvailabilityGroupListenersClient
 type AvailabilityGroupListenersCreateOrUpdateFuture = original.AvailabilityGroupListenersCreateOrUpdateFuture
 type AvailabilityGroupListenersDeleteFuture = original.AvailabilityGroupListenersDeleteFuture
+type BaseClient = original.BaseClient
 type Group = original.Group
 type GroupListResult = original.GroupListResult
 type GroupListResultIterator = original.GroupListResultIterator
 type GroupListResultPage = original.GroupListResultPage
 type GroupProperties = original.GroupProperties
+type GroupUpdate = original.GroupUpdate
+type GroupsClient = original.GroupsClient
 type GroupsCreateOrUpdateFuture = original.GroupsCreateOrUpdateFuture
 type GroupsDeleteFuture = original.GroupsDeleteFuture
 type GroupsUpdateFuture = original.GroupsUpdateFuture
-type GroupUpdate = original.GroupUpdate
 type KeyVaultCredentialSettings = original.KeyVaultCredentialSettings
 type ListResult = original.ListResult
 type ListResultIterator = original.ListResultIterator
@@ -160,43 +174,79 @@ type OperationDisplay = original.OperationDisplay
 type OperationListResult = original.OperationListResult
 type OperationListResultIterator = original.OperationListResultIterator
 type OperationListResultPage = original.OperationListResultPage
+type OperationsClient = original.OperationsClient
 type PrivateIPAddress = original.PrivateIPAddress
 type Properties = original.Properties
 type ProxyResource = original.ProxyResource
 type Resource = original.Resource
 type ResourceIdentity = original.ResourceIdentity
-type ServerConfigurationsManagementSettings = original.ServerConfigurationsManagementSettings
 type SQLConnectivityUpdateSettings = original.SQLConnectivityUpdateSettings
 type SQLStorageUpdateSettings = original.SQLStorageUpdateSettings
 type SQLVirtualMachine = original.SQLVirtualMachine
+type SQLVirtualMachinesClient = original.SQLVirtualMachinesClient
 type SQLVirtualMachinesCreateOrUpdateFutureType = original.SQLVirtualMachinesCreateOrUpdateFutureType
 type SQLVirtualMachinesDeleteFutureType = original.SQLVirtualMachinesDeleteFutureType
 type SQLVirtualMachinesUpdateFutureType = original.SQLVirtualMachinesUpdateFutureType
 type SQLWorkloadTypeUpdateSettings = original.SQLWorkloadTypeUpdateSettings
+type ServerConfigurationsManagementSettings = original.ServerConfigurationsManagementSettings
 type TrackedResource = original.TrackedResource
 type Update = original.Update
 type WsfcDomainCredentials = original.WsfcDomainCredentials
 type WsfcDomainProfile = original.WsfcDomainProfile
-type OperationsClient = original.OperationsClient
-type SQLVirtualMachinesClient = original.SQLVirtualMachinesClient
 
+func New(subscriptionID string) BaseClient {
+	return original.New(subscriptionID)
+}
+func NewAvailabilityGroupListenerListResultIterator(page AvailabilityGroupListenerListResultPage) AvailabilityGroupListenerListResultIterator {
+	return original.NewAvailabilityGroupListenerListResultIterator(page)
+}
+func NewAvailabilityGroupListenerListResultPage(getNextPage func(context.Context, AvailabilityGroupListenerListResult) (AvailabilityGroupListenerListResult, error)) AvailabilityGroupListenerListResultPage {
+	return original.NewAvailabilityGroupListenerListResultPage(getNextPage)
+}
 func NewAvailabilityGroupListenersClient(subscriptionID string) AvailabilityGroupListenersClient {
 	return original.NewAvailabilityGroupListenersClient(subscriptionID)
 }
 func NewAvailabilityGroupListenersClientWithBaseURI(baseURI string, subscriptionID string) AvailabilityGroupListenersClient {
 	return original.NewAvailabilityGroupListenersClientWithBaseURI(baseURI, subscriptionID)
 }
-func New(subscriptionID string) BaseClient {
-	return original.New(subscriptionID)
+func NewGroupListResultIterator(page GroupListResultPage) GroupListResultIterator {
+	return original.NewGroupListResultIterator(page)
 }
-func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
-	return original.NewWithBaseURI(baseURI, subscriptionID)
+func NewGroupListResultPage(getNextPage func(context.Context, GroupListResult) (GroupListResult, error)) GroupListResultPage {
+	return original.NewGroupListResultPage(getNextPage)
 }
 func NewGroupsClient(subscriptionID string) GroupsClient {
 	return original.NewGroupsClient(subscriptionID)
 }
 func NewGroupsClientWithBaseURI(baseURI string, subscriptionID string) GroupsClient {
 	return original.NewGroupsClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewListResultIterator(page ListResultPage) ListResultIterator {
+	return original.NewListResultIterator(page)
+}
+func NewListResultPage(getNextPage func(context.Context, ListResult) (ListResult, error)) ListResultPage {
+	return original.NewListResultPage(getNextPage)
+}
+func NewOperationListResultIterator(page OperationListResultPage) OperationListResultIterator {
+	return original.NewOperationListResultIterator(page)
+}
+func NewOperationListResultPage(getNextPage func(context.Context, OperationListResult) (OperationListResult, error)) OperationListResultPage {
+	return original.NewOperationListResultPage(getNextPage)
+}
+func NewOperationsClient(subscriptionID string) OperationsClient {
+	return original.NewOperationsClient(subscriptionID)
+}
+func NewOperationsClientWithBaseURI(baseURI string, subscriptionID string) OperationsClient {
+	return original.NewOperationsClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewSQLVirtualMachinesClient(subscriptionID string) SQLVirtualMachinesClient {
+	return original.NewSQLVirtualMachinesClient(subscriptionID)
+}
+func NewSQLVirtualMachinesClientWithBaseURI(baseURI string, subscriptionID string) SQLVirtualMachinesClient {
+	return original.NewSQLVirtualMachinesClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
+	return original.NewWithBaseURI(baseURI, subscriptionID)
 }
 func PossibleBackupScheduleTypeValues() []BackupScheduleType {
 	return original.PossibleBackupScheduleTypeValues()
@@ -225,53 +275,23 @@ func PossibleIdentityTypeValues() []IdentityType {
 func PossibleOperationOriginValues() []OperationOrigin {
 	return original.PossibleOperationOriginValues()
 }
-func PossibleScaleTypeValues() []ScaleType {
-	return original.PossibleScaleTypeValues()
-}
 func PossibleSQLImageSkuValues() []SQLImageSku {
 	return original.PossibleSQLImageSkuValues()
+}
+func PossibleSQLManagementModeValues() []SQLManagementMode {
+	return original.PossibleSQLManagementModeValues()
 }
 func PossibleSQLServerLicenseTypeValues() []SQLServerLicenseType {
 	return original.PossibleSQLServerLicenseTypeValues()
 }
+func PossibleSQLVMGroupImageSkuValues() []SQLVMGroupImageSku {
+	return original.PossibleSQLVMGroupImageSkuValues()
+}
 func PossibleSQLWorkloadTypeValues() []SQLWorkloadType {
 	return original.PossibleSQLWorkloadTypeValues()
 }
-func NewAvailabilityGroupListenerListResultIterator(page AvailabilityGroupListenerListResultPage) AvailabilityGroupListenerListResultIterator {
-	return original.NewAvailabilityGroupListenerListResultIterator(page)
-}
-func NewAvailabilityGroupListenerListResultPage(getNextPage func(context.Context, AvailabilityGroupListenerListResult) (AvailabilityGroupListenerListResult, error)) AvailabilityGroupListenerListResultPage {
-	return original.NewAvailabilityGroupListenerListResultPage(getNextPage)
-}
-func NewGroupListResultIterator(page GroupListResultPage) GroupListResultIterator {
-	return original.NewGroupListResultIterator(page)
-}
-func NewGroupListResultPage(getNextPage func(context.Context, GroupListResult) (GroupListResult, error)) GroupListResultPage {
-	return original.NewGroupListResultPage(getNextPage)
-}
-func NewListResultIterator(page ListResultPage) ListResultIterator {
-	return original.NewListResultIterator(page)
-}
-func NewListResultPage(getNextPage func(context.Context, ListResult) (ListResult, error)) ListResultPage {
-	return original.NewListResultPage(getNextPage)
-}
-func NewOperationListResultIterator(page OperationListResultPage) OperationListResultIterator {
-	return original.NewOperationListResultIterator(page)
-}
-func NewOperationListResultPage(getNextPage func(context.Context, OperationListResult) (OperationListResult, error)) OperationListResultPage {
-	return original.NewOperationListResultPage(getNextPage)
-}
-func NewOperationsClient(subscriptionID string) OperationsClient {
-	return original.NewOperationsClient(subscriptionID)
-}
-func NewOperationsClientWithBaseURI(baseURI string, subscriptionID string) OperationsClient {
-	return original.NewOperationsClientWithBaseURI(baseURI, subscriptionID)
-}
-func NewSQLVirtualMachinesClient(subscriptionID string) SQLVirtualMachinesClient {
-	return original.NewSQLVirtualMachinesClient(subscriptionID)
-}
-func NewSQLVirtualMachinesClientWithBaseURI(baseURI string, subscriptionID string) SQLVirtualMachinesClient {
-	return original.NewSQLVirtualMachinesClientWithBaseURI(baseURI, subscriptionID)
+func PossibleScaleTypeValues() []ScaleType {
+	return original.PossibleScaleTypeValues()
 }
 func UserAgent() string {
 	return original.UserAgent() + " profiles/preview"

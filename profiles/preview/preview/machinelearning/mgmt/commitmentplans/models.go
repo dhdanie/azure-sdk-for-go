@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -29,9 +29,6 @@ const (
 	DefaultBaseURI = original.DefaultBaseURI
 )
 
-type BaseClient = original.BaseClient
-type CommitmentAssociationsClient = original.CommitmentAssociationsClient
-type Client = original.Client
 type ResourceSkuRestrictionsReasonCode = original.ResourceSkuRestrictionsReasonCode
 
 const (
@@ -54,17 +51,24 @@ const (
 	None      SkuCapacityScaleType = original.None
 )
 
+type BaseClient = original.BaseClient
 type CatalogSku = original.CatalogSku
+type Client = original.Client
 type CommitmentAssociation = original.CommitmentAssociation
 type CommitmentAssociationListResult = original.CommitmentAssociationListResult
 type CommitmentAssociationListResultIterator = original.CommitmentAssociationListResultIterator
 type CommitmentAssociationListResultPage = original.CommitmentAssociationListResultPage
 type CommitmentAssociationProperties = original.CommitmentAssociationProperties
+type CommitmentAssociationsClient = original.CommitmentAssociationsClient
 type CommitmentPlan = original.CommitmentPlan
 type ListResult = original.ListResult
 type ListResultIterator = original.ListResultIterator
 type ListResultPage = original.ListResultPage
 type MoveCommitmentAssociationRequest = original.MoveCommitmentAssociationRequest
+type OperationDisplayInfo = original.OperationDisplayInfo
+type OperationEntity = original.OperationEntity
+type OperationEntityListResult = original.OperationEntityListResult
+type OperationsClient = original.OperationsClient
 type PatchPayload = original.PatchPayload
 type PlanQuantity = original.PlanQuantity
 type PlanUsageHistory = original.PlanUsageHistory
@@ -85,29 +89,11 @@ type UsageHistoryClient = original.UsageHistoryClient
 func New(subscriptionID string) BaseClient {
 	return original.New(subscriptionID)
 }
-func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
-	return original.NewWithBaseURI(baseURI, subscriptionID)
-}
-func NewCommitmentAssociationsClient(subscriptionID string) CommitmentAssociationsClient {
-	return original.NewCommitmentAssociationsClient(subscriptionID)
-}
-func NewCommitmentAssociationsClientWithBaseURI(baseURI string, subscriptionID string) CommitmentAssociationsClient {
-	return original.NewCommitmentAssociationsClientWithBaseURI(baseURI, subscriptionID)
-}
 func NewClient(subscriptionID string) Client {
 	return original.NewClient(subscriptionID)
 }
 func NewClientWithBaseURI(baseURI string, subscriptionID string) Client {
 	return original.NewClientWithBaseURI(baseURI, subscriptionID)
-}
-func PossibleResourceSkuRestrictionsReasonCodeValues() []ResourceSkuRestrictionsReasonCode {
-	return original.PossibleResourceSkuRestrictionsReasonCodeValues()
-}
-func PossibleResourceSkuRestrictionsTypeValues() []ResourceSkuRestrictionsType {
-	return original.PossibleResourceSkuRestrictionsTypeValues()
-}
-func PossibleSkuCapacityScaleTypeValues() []SkuCapacityScaleType {
-	return original.PossibleSkuCapacityScaleTypeValues()
 }
 func NewCommitmentAssociationListResultIterator(page CommitmentAssociationListResultPage) CommitmentAssociationListResultIterator {
 	return original.NewCommitmentAssociationListResultIterator(page)
@@ -115,11 +101,23 @@ func NewCommitmentAssociationListResultIterator(page CommitmentAssociationListRe
 func NewCommitmentAssociationListResultPage(getNextPage func(context.Context, CommitmentAssociationListResult) (CommitmentAssociationListResult, error)) CommitmentAssociationListResultPage {
 	return original.NewCommitmentAssociationListResultPage(getNextPage)
 }
+func NewCommitmentAssociationsClient(subscriptionID string) CommitmentAssociationsClient {
+	return original.NewCommitmentAssociationsClient(subscriptionID)
+}
+func NewCommitmentAssociationsClientWithBaseURI(baseURI string, subscriptionID string) CommitmentAssociationsClient {
+	return original.NewCommitmentAssociationsClientWithBaseURI(baseURI, subscriptionID)
+}
 func NewListResultIterator(page ListResultPage) ListResultIterator {
 	return original.NewListResultIterator(page)
 }
 func NewListResultPage(getNextPage func(context.Context, ListResult) (ListResult, error)) ListResultPage {
 	return original.NewListResultPage(getNextPage)
+}
+func NewOperationsClient(subscriptionID string) OperationsClient {
+	return original.NewOperationsClient(subscriptionID)
+}
+func NewOperationsClientWithBaseURI(baseURI string, subscriptionID string) OperationsClient {
+	return original.NewOperationsClientWithBaseURI(baseURI, subscriptionID)
 }
 func NewPlanUsageHistoryListResultIterator(page PlanUsageHistoryListResultPage) PlanUsageHistoryListResultIterator {
 	return original.NewPlanUsageHistoryListResultIterator(page)
@@ -138,6 +136,18 @@ func NewUsageHistoryClient(subscriptionID string) UsageHistoryClient {
 }
 func NewUsageHistoryClientWithBaseURI(baseURI string, subscriptionID string) UsageHistoryClient {
 	return original.NewUsageHistoryClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
+	return original.NewWithBaseURI(baseURI, subscriptionID)
+}
+func PossibleResourceSkuRestrictionsReasonCodeValues() []ResourceSkuRestrictionsReasonCode {
+	return original.PossibleResourceSkuRestrictionsReasonCodeValues()
+}
+func PossibleResourceSkuRestrictionsTypeValues() []ResourceSkuRestrictionsType {
+	return original.PossibleResourceSkuRestrictionsTypeValues()
+}
+func PossibleSkuCapacityScaleTypeValues() []SkuCapacityScaleType {
+	return original.PossibleSkuCapacityScaleTypeValues()
 }
 func UserAgent() string {
 	return original.UserAgent() + " profiles/preview"

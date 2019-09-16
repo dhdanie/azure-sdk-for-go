@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ package operationalinsightsapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/operationalinsights/mgmt/2015-11-01-preview/operationalinsights/operationalinsightsapi"
 
-type LinkedServicesClientAPI = original.LinkedServicesClientAPI
 type DataSourcesClientAPI = original.DataSourcesClientAPI
-type WorkspacesClientAPI = original.WorkspacesClientAPI
+type LinkedServicesClientAPI = original.LinkedServicesClientAPI
 type OperationsClientAPI = original.OperationsClientAPI
+type WorkspacesClientAPI = original.WorkspacesClientAPI

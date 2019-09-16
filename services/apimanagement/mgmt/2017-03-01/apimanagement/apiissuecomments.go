@@ -41,7 +41,7 @@ func NewAPIIssueCommentsClientWithBaseURI(baseURI string, subscriptionID string)
 	return APIIssueCommentsClient{NewWithBaseURI(baseURI, subscriptionID)}
 }
 
-// ListByService lists all comments for the Issue assosiated with the specified API.
+// ListByService lists all comments for the Issue associated with the specified API.
 // Parameters:
 // resourceGroupName - the name of the resource group.
 // serviceName - the name of the API Management service.
@@ -143,8 +143,8 @@ func (client APIIssueCommentsClient) ListByServicePreparer(ctx context.Context, 
 // ListByServiceSender sends the ListByService request. The method will close the
 // http.Response Body if it receives an error.
 func (client APIIssueCommentsClient) ListByServiceSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListByServiceResponder handles the response to the ListByService request. The method always

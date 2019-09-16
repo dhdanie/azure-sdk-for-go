@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ package experimentationapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/machinelearning/mgmt/2017-05-01-preview/experimentation/experimentationapi"
 
-type OperationsClientAPI = original.OperationsClientAPI
 type AccountsClientAPI = original.AccountsClientAPI
-type WorkspacesClientAPI = original.WorkspacesClientAPI
+type OperationsClientAPI = original.OperationsClientAPI
 type ProjectsClientAPI = original.ProjectsClientAPI
+type WorkspacesClientAPI = original.WorkspacesClientAPI

@@ -50,7 +50,7 @@ func NewTransformationsClientWithBaseURI(baseURI string, subscriptionID string) 
 // jobName - the name of the streaming job.
 // transformationName - the name of the transformation.
 // ifMatch - the ETag of the transformation. Omit this value to always overwrite the current transformation.
-// Specify the last-seen ETag value to prevent accidentally overwritting concurrent changes.
+// Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
 // ifNoneMatch - set to '*' to allow a new transformation to be created, but to prevent updating an existing
 // transformation. Other values will result in a 412 Pre-condition Failed response.
 func (client TransformationsClient) CreateOrReplace(ctx context.Context, transformation Transformation, resourceGroupName string, jobName string, transformationName string, ifMatch string, ifNoneMatch string) (result Transformation, err error) {
@@ -120,8 +120,8 @@ func (client TransformationsClient) CreateOrReplacePreparer(ctx context.Context,
 // CreateOrReplaceSender sends the CreateOrReplace request. The method will close the
 // http.Response Body if it receives an error.
 func (client TransformationsClient) CreateOrReplaceSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // CreateOrReplaceResponder handles the response to the CreateOrReplace request. The method always
@@ -200,8 +200,8 @@ func (client TransformationsClient) GetPreparer(ctx context.Context, resourceGro
 // GetSender sends the Get request. The method will close the
 // http.Response Body if it receives an error.
 func (client TransformationsClient) GetSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // GetResponder handles the response to the Get request. The method always
@@ -229,7 +229,7 @@ func (client TransformationsClient) GetResponder(resp *http.Response) (result Tr
 // jobName - the name of the streaming job.
 // transformationName - the name of the transformation.
 // ifMatch - the ETag of the transformation. Omit this value to always overwrite the current transformation.
-// Specify the last-seen ETag value to prevent accidentally overwritting concurrent changes.
+// Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
 func (client TransformationsClient) Update(ctx context.Context, transformation Transformation, resourceGroupName string, jobName string, transformationName string, ifMatch string) (result Transformation, err error) {
 	if tracing.IsEnabled() {
 		ctx = tracing.StartSpan(ctx, fqdn+"/TransformationsClient.Update")
@@ -293,8 +293,8 @@ func (client TransformationsClient) UpdatePreparer(ctx context.Context, transfor
 // UpdateSender sends the Update request. The method will close the
 // http.Response Body if it receives an error.
 func (client TransformationsClient) UpdateSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // UpdateResponder handles the response to the Update request. The method always

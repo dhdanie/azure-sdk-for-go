@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ package trafficmanagerapi
 import original "github.com/Azure/azure-sdk-for-go/services/preview/trafficmanager/mgmt/2017-09-01-preview/trafficmanager/trafficmanagerapi"
 
 type EndpointsClientAPI = original.EndpointsClientAPI
-type ProfilesClientAPI = original.ProfilesClientAPI
 type GeographicHierarchiesClientAPI = original.GeographicHierarchiesClientAPI
 type HeatMapClientAPI = original.HeatMapClientAPI
+type ProfilesClientAPI = original.ProfilesClientAPI
 type UserMetricsKeysClientAPI = original.UserMetricsKeysClientAPI

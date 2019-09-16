@@ -34,6 +34,8 @@ const (
 	FAILED ApplicationState = "FAILED"
 	// FINISHED ...
 	FINISHED ApplicationState = "FINISHED"
+	// FINISHING ...
+	FINISHING ApplicationState = "FINISHING"
 	// KILLED ...
 	KILLED ApplicationState = "KILLED"
 	// NEW ...
@@ -48,13 +50,13 @@ const (
 
 // PossibleApplicationStateValues returns an array of possible values for the ApplicationState const type.
 func PossibleApplicationStateValues() []ApplicationState {
-	return []ApplicationState{ACCEPTED, FAILED, FINISHED, KILLED, NEW, NEWSAVING, RUNNING, SUBMITTED}
+	return []ApplicationState{ACCEPTED, FAILED, FINISHED, FINISHING, KILLED, NEW, NEWSAVING, RUNNING, SUBMITTED}
 }
 
 // AppState the State of the application.
 type AppState struct {
 	autorest.Response `json:"-"`
-	// State - The State of the application. Possible values include: 'NEW', 'NEWSAVING', 'SUBMITTED', 'ACCEPTED', 'RUNNING', 'FINISHED', 'FAILED', 'KILLED'
+	// State - The State of the application. Possible values include: 'NEW', 'NEWSAVING', 'SUBMITTED', 'ACCEPTED', 'RUNNING', 'FINISHED', 'FINISHING', 'FAILED', 'KILLED'
 	State ApplicationState `json:"state,omitempty"`
 }
 
@@ -198,11 +200,11 @@ type Status struct {
 
 // Userargs gets or sets the object containing the user arguments.
 type Userargs struct {
-	// Arg - The list of args defined by the user.
+	// Arg - READ-ONLY; The list of args defined by the user.
 	Arg *[]string `json:"arg,omitempty"`
 	// Callback - The callback URL, if any.
 	Callback interface{} `json:"callback,omitempty"`
-	// Define - The define properties defined by the user.
+	// Define - READ-ONLY; The define properties defined by the user.
 	Define *[]string `json:"define,omitempty"`
 	// Enablelog - Whether or not the user enabled logs.
 	Enablelog *string `json:"enablelog,omitempty"`

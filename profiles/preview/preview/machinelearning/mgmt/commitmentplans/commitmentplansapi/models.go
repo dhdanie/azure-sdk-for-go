@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,8 @@ package commitmentplansapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/machinelearning/mgmt/2016-05-01-preview/commitmentplans/commitmentplansapi"
 
-type SkusClientAPI = original.SkusClientAPI
-type CommitmentAssociationsClientAPI = original.CommitmentAssociationsClientAPI
 type ClientAPI = original.ClientAPI
+type CommitmentAssociationsClientAPI = original.CommitmentAssociationsClientAPI
+type OperationsClientAPI = original.OperationsClientAPI
+type SkusClientAPI = original.SkusClientAPI
 type UsageHistoryClientAPI = original.UsageHistoryClientAPI

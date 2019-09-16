@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ package timeseriesinsightsapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/timeseriesinsights/mgmt/2018-08-15-preview/timeseriesinsights/timeseriesinsightsapi"
 
-type OperationsClientAPI = original.OperationsClientAPI
+type AccessPoliciesClientAPI = original.AccessPoliciesClientAPI
 type EnvironmentsClientAPI = original.EnvironmentsClientAPI
 type EventSourcesClientAPI = original.EventSourcesClientAPI
+type OperationsClientAPI = original.OperationsClientAPI
 type ReferenceDataSetsClientAPI = original.ReferenceDataSetsClientAPI
-type AccessPoliciesClientAPI = original.AccessPoliciesClientAPI

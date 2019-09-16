@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,12 +24,14 @@ import original "github.com/Azure/azure-sdk-for-go/services/preview/web/mgmt/201
 type CertificateOrdersClientAPI = original.CertificateOrdersClientAPI
 type CertificatesClientAPI = original.CertificatesClientAPI
 type ClassicMobileServicesClientAPI = original.ClassicMobileServicesClientAPI
+type ConnectionsClientAPI = original.ConnectionsClientAPI
 type DomainsClientAPI = original.DomainsClientAPI
-type GlobalClientAPI = original.GlobalClientAPI
 type GlobalCertificateOrderClientAPI = original.GlobalCertificateOrderClientAPI
+type GlobalClientAPI = original.GlobalClientAPI
 type GlobalDomainRegistrationClientAPI = original.GlobalDomainRegistrationClientAPI
 type GlobalResourceGroupsClientAPI = original.GlobalResourceGroupsClientAPI
 type HostingEnvironmentsClientAPI = original.HostingEnvironmentsClientAPI
+type ManagedApisClientAPI = original.ManagedApisClientAPI
 type ManagedHostingEnvironmentsClientAPI = original.ManagedHostingEnvironmentsClientAPI
 type ProviderClientAPI = original.ProviderClientAPI
 type RecommendationsClientAPI = original.RecommendationsClientAPI
@@ -37,5 +39,3 @@ type ServerFarmsClientAPI = original.ServerFarmsClientAPI
 type SitesClientAPI = original.SitesClientAPI
 type TopLevelDomainsClientAPI = original.TopLevelDomainsClientAPI
 type UsageClientAPI = original.UsageClientAPI
-type ManagedApisClientAPI = original.ManagedApisClientAPI
-type ConnectionsClientAPI = original.ConnectionsClientAPI

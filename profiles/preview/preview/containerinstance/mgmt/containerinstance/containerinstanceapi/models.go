@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ package containerinstanceapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/containerinstance/mgmt/2018-02-01-preview/containerinstance/containerinstanceapi"
 
-type ContainerGroupsClientAPI = original.ContainerGroupsClientAPI
-type OperationsClientAPI = original.OperationsClientAPI
 type ContainerGroupUsageClientAPI = original.ContainerGroupUsageClientAPI
+type ContainerGroupsClientAPI = original.ContainerGroupsClientAPI
 type ContainerLogsClientAPI = original.ContainerLogsClientAPI
+type OperationsClientAPI = original.OperationsClientAPI
 type StartContainerClientAPI = original.StartContainerClientAPI

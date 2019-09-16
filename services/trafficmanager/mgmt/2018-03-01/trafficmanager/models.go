@@ -181,7 +181,7 @@ type CloudErrorBody struct {
 // DeleteOperationResult the result of the request or operation.
 type DeleteOperationResult struct {
 	autorest.Response `json:"-"`
-	// OperationResult - The result of the operation or request.
+	// OperationResult - READ-ONLY; The result of the operation or request.
 	OperationResult *bool `json:"boolean,omitempty"`
 }
 
@@ -189,7 +189,7 @@ type DeleteOperationResult struct {
 type DNSConfig struct {
 	// RelativeName - The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile.
 	RelativeName *string `json:"relativeName,omitempty"`
-	// Fqdn - The fully-qualified domain name (FQDN) of the Traffic Manager profile. This is formed from the concatenation of the RelativeName with the DNS domain used by Azure Traffic Manager.
+	// Fqdn - READ-ONLY; The fully-qualified domain name (FQDN) of the Traffic Manager profile. This is formed from the concatenation of the RelativeName with the DNS domain used by Azure Traffic Manager.
 	Fqdn *string `json:"fqdn,omitempty"`
 	// TTL - The DNS Time-To-Live (TTL), in seconds. This informs the local DNS resolvers and DNS clients how long to cache DNS responses provided by this Traffic Manager profile.
 	TTL *int64 `json:"ttl,omitempty"`
@@ -204,7 +204,7 @@ type Endpoint struct {
 	ID *string `json:"id,omitempty"`
 	// Name - The name of the resource
 	Name *string `json:"name,omitempty"`
-	// Type - The type of the resource. Ex- Microsoft.Network/trafficmanagerProfiles.
+	// Type - The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
 	Type *string `json:"type,omitempty"`
 }
 
@@ -319,7 +319,7 @@ type GeographicHierarchy struct {
 	ID *string `json:"id,omitempty"`
 	// Name - The name of the resource
 	Name *string `json:"name,omitempty"`
-	// Type - The type of the resource. Ex- Microsoft.Network/trafficmanagerProfiles.
+	// Type - The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
 	Type *string `json:"type,omitempty"`
 }
 
@@ -416,7 +416,7 @@ type HeatMapModel struct {
 	ID *string `json:"id,omitempty"`
 	// Name - The name of the resource
 	Name *string `json:"name,omitempty"`
-	// Type - The type of the resource. Ex- Microsoft.Network/trafficmanagerProfiles.
+	// Type - The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
 	Type *string `json:"type,omitempty"`
 }
 
@@ -567,7 +567,7 @@ type Profile struct {
 	ID *string `json:"id,omitempty"`
 	// Name - The name of the resource
 	Name *string `json:"name,omitempty"`
-	// Type - The type of the resource. Ex- Microsoft.Network/trafficmanagerProfiles.
+	// Type - The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
 	Type *string `json:"type,omitempty"`
 }
 
@@ -694,7 +694,7 @@ type ProxyResource struct {
 	ID *string `json:"id,omitempty"`
 	// Name - The name of the resource
 	Name *string `json:"name,omitempty"`
-	// Type - The type of the resource. Ex- Microsoft.Network/trafficmanagerProfiles.
+	// Type - The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
 	Type *string `json:"type,omitempty"`
 }
 
@@ -725,7 +725,7 @@ type Resource struct {
 	ID *string `json:"id,omitempty"`
 	// Name - The name of the resource
 	Name *string `json:"name,omitempty"`
-	// Type - The type of the resource. Ex- Microsoft.Network/trafficmanagerProfiles.
+	// Type - The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
 	Type *string `json:"type,omitempty"`
 }
 
@@ -739,7 +739,7 @@ type TrackedResource struct {
 	ID *string `json:"id,omitempty"`
 	// Name - The name of the resource
 	Name *string `json:"name,omitempty"`
-	// Type - The type of the resource. Ex- Microsoft.Network/trafficmanagerProfiles.
+	// Type - The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
 	Type *string `json:"type,omitempty"`
 }
 

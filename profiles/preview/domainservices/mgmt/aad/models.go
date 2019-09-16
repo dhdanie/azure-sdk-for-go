@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -29,9 +29,6 @@ const (
 	DefaultBaseURI = original.DefaultBaseURI
 )
 
-type BaseClient = original.BaseClient
-type DomainServiceOperationsClient = original.DomainServiceOperationsClient
-type DomainServicesClient = original.DomainServicesClient
 type ExternalAccess = original.ExternalAccess
 
 const (
@@ -88,12 +85,15 @@ const (
 	TLSV1Enabled  TLSV1 = original.TLSV1Enabled
 )
 
+type BaseClient = original.BaseClient
 type DomainSecuritySettings = original.DomainSecuritySettings
 type DomainService = original.DomainService
 type DomainServiceListResult = original.DomainServiceListResult
 type DomainServiceListResultIterator = original.DomainServiceListResultIterator
 type DomainServiceListResultPage = original.DomainServiceListResultPage
+type DomainServiceOperationsClient = original.DomainServiceOperationsClient
 type DomainServiceProperties = original.DomainServiceProperties
+type DomainServicesClient = original.DomainServicesClient
 type DomainServicesCreateOrUpdateFuture = original.DomainServicesCreateOrUpdateFuture
 type DomainServicesDeleteFuture = original.DomainServicesDeleteFuture
 type DomainServicesUpdateFuture = original.DomainServicesUpdateFuture
@@ -106,13 +106,25 @@ type OperationEntity = original.OperationEntity
 type OperationEntityListResult = original.OperationEntityListResult
 type OperationEntityListResultIterator = original.OperationEntityListResultIterator
 type OperationEntityListResultPage = original.OperationEntityListResultPage
+type ReplicaSet = original.ReplicaSet
+type ReplicaSetListResult = original.ReplicaSetListResult
+type ReplicaSetListResultIterator = original.ReplicaSetListResultIterator
+type ReplicaSetListResultPage = original.ReplicaSetListResultPage
+type ReplicaSetProperties = original.ReplicaSetProperties
+type ReplicaSetsClient = original.ReplicaSetsClient
+type ReplicaSetsCreateOrUpdateFuture = original.ReplicaSetsCreateOrUpdateFuture
+type ReplicaSetsDeleteFuture = original.ReplicaSetsDeleteFuture
+type ReplicaSetsUpdateFuture = original.ReplicaSetsUpdateFuture
 type Resource = original.Resource
 
 func New(subscriptionID string) BaseClient {
 	return original.New(subscriptionID)
 }
-func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
-	return original.NewWithBaseURI(baseURI, subscriptionID)
+func NewDomainServiceListResultIterator(page DomainServiceListResultPage) DomainServiceListResultIterator {
+	return original.NewDomainServiceListResultIterator(page)
+}
+func NewDomainServiceListResultPage(getNextPage func(context.Context, DomainServiceListResult) (DomainServiceListResult, error)) DomainServiceListResultPage {
+	return original.NewDomainServiceListResultPage(getNextPage)
 }
 func NewDomainServiceOperationsClient(subscriptionID string) DomainServiceOperationsClient {
 	return original.NewDomainServiceOperationsClient(subscriptionID)
@@ -125,6 +137,27 @@ func NewDomainServicesClient(subscriptionID string) DomainServicesClient {
 }
 func NewDomainServicesClientWithBaseURI(baseURI string, subscriptionID string) DomainServicesClient {
 	return original.NewDomainServicesClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewOperationEntityListResultIterator(page OperationEntityListResultPage) OperationEntityListResultIterator {
+	return original.NewOperationEntityListResultIterator(page)
+}
+func NewOperationEntityListResultPage(getNextPage func(context.Context, OperationEntityListResult) (OperationEntityListResult, error)) OperationEntityListResultPage {
+	return original.NewOperationEntityListResultPage(getNextPage)
+}
+func NewReplicaSetListResultIterator(page ReplicaSetListResultPage) ReplicaSetListResultIterator {
+	return original.NewReplicaSetListResultIterator(page)
+}
+func NewReplicaSetListResultPage(getNextPage func(context.Context, ReplicaSetListResult) (ReplicaSetListResult, error)) ReplicaSetListResultPage {
+	return original.NewReplicaSetListResultPage(getNextPage)
+}
+func NewReplicaSetsClient(subscriptionID string) ReplicaSetsClient {
+	return original.NewReplicaSetsClient(subscriptionID)
+}
+func NewReplicaSetsClientWithBaseURI(baseURI string, subscriptionID string) ReplicaSetsClient {
+	return original.NewReplicaSetsClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
+	return original.NewWithBaseURI(baseURI, subscriptionID)
 }
 func PossibleExternalAccessValues() []ExternalAccess {
 	return original.PossibleExternalAccessValues()
@@ -149,18 +182,6 @@ func PossibleSyncNtlmPasswordsValues() []SyncNtlmPasswords {
 }
 func PossibleTLSV1Values() []TLSV1 {
 	return original.PossibleTLSV1Values()
-}
-func NewDomainServiceListResultIterator(page DomainServiceListResultPage) DomainServiceListResultIterator {
-	return original.NewDomainServiceListResultIterator(page)
-}
-func NewDomainServiceListResultPage(getNextPage func(context.Context, DomainServiceListResult) (DomainServiceListResult, error)) DomainServiceListResultPage {
-	return original.NewDomainServiceListResultPage(getNextPage)
-}
-func NewOperationEntityListResultIterator(page OperationEntityListResultPage) OperationEntityListResultIterator {
-	return original.NewOperationEntityListResultIterator(page)
-}
-func NewOperationEntityListResultPage(getNextPage func(context.Context, OperationEntityListResult) (OperationEntityListResult, error)) OperationEntityListResultPage {
-	return original.NewOperationEntityListResultPage(getNextPage)
 }
 func UserAgent() string {
 	return original.UserAgent() + " profiles/preview"

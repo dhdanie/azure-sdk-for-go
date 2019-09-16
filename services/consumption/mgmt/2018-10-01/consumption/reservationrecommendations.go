@@ -41,7 +41,7 @@ func NewReservationRecommendationsClientWithBaseURI(baseURI string, subscription
 	return ReservationRecommendationsClient{NewWithBaseURI(baseURI, subscriptionID)}
 }
 
-// List list of recomendations for purchasing reserved instances.
+// List list of recommendations for purchasing reserved instances.
 // Parameters:
 // filter - may be used to filter reservationRecommendations by properties/scope and properties/lookBackPeriod.
 func (client ReservationRecommendationsClient) List(ctx context.Context, filter string) (result ReservationRecommendationsListResultPage, err error) {
@@ -102,8 +102,8 @@ func (client ReservationRecommendationsClient) ListPreparer(ctx context.Context,
 // ListSender sends the List request. The method will close the
 // http.Response Body if it receives an error.
 func (client ReservationRecommendationsClient) ListSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListResponder handles the response to the List request. The method always

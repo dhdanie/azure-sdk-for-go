@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,14 +22,13 @@ package reservations
 import (
 	"context"
 
-	original "github.com/Azure/azure-sdk-for-go/services/preview/reservations/mgmt/2018-06-01/reservations"
+	original "github.com/Azure/azure-sdk-for-go/services/preview/reservations/mgmt/2019-04-01/reservations"
 )
 
 const (
 	DefaultBaseURI = original.DefaultBaseURI
 )
 
-type BaseClient = original.BaseClient
 type AppliedScopeType = original.AppliedScopeType
 
 const (
@@ -100,9 +99,8 @@ const (
 type InstanceFlexibility = original.InstanceFlexibility
 
 const (
-	NotSupported InstanceFlexibility = original.NotSupported
-	Off          InstanceFlexibility = original.Off
-	On           InstanceFlexibility = original.On
+	Off InstanceFlexibility = original.Off
+	On  InstanceFlexibility = original.On
 )
 
 type ReservationTerm = original.ReservationTerm
@@ -115,11 +113,14 @@ const (
 type ReservedResourceType = original.ReservedResourceType
 
 const (
-	CosmosDb        ReservedResourceType = original.CosmosDb
-	RedHat          ReservedResourceType = original.RedHat
-	SQLDatabases    ReservedResourceType = original.SQLDatabases
-	SuseLinux       ReservedResourceType = original.SuseLinux
-	VirtualMachines ReservedResourceType = original.VirtualMachines
+	CosmosDb          ReservedResourceType = original.CosmosDb
+	RedHat            ReservedResourceType = original.RedHat
+	RedHatOsa         ReservedResourceType = original.RedHatOsa
+	SQLDatabases      ReservedResourceType = original.SQLDatabases
+	SQLDataWarehouse  ReservedResourceType = original.SQLDataWarehouse
+	SuseLinux         ReservedResourceType = original.SuseLinux
+	VirtualMachines   ReservedResourceType = original.VirtualMachines
+	VMwareCloudSimple ReservedResourceType = original.VMwareCloudSimple
 )
 
 type StatusCode = original.StatusCode
@@ -139,7 +140,13 @@ const (
 type AppliedReservationList = original.AppliedReservationList
 type AppliedReservations = original.AppliedReservations
 type AppliedReservationsProperties = original.AppliedReservationsProperties
+type BaseClient = original.BaseClient
+type CalculatePriceResponse = original.CalculatePriceResponse
+type CalculatePriceResponseProperties = original.CalculatePriceResponseProperties
+type CalculatePriceResponsePropertiesBillingCurrencyTotal = original.CalculatePriceResponsePropertiesBillingCurrencyTotal
+type CalculatePriceResponsePropertiesPricingCurrencyTotal = original.CalculatePriceResponsePropertiesPricingCurrencyTotal
 type Catalog = original.Catalog
+type Client = original.Client
 type Error = original.Error
 type ExtendedErrorInfo = original.ExtendedErrorInfo
 type ExtendedStatusInfo = original.ExtendedStatusInfo
@@ -151,22 +158,35 @@ type ListResponse = original.ListResponse
 type MergeProperties = original.MergeProperties
 type MergePropertiesType = original.MergePropertiesType
 type MergeRequest = original.MergeRequest
+type OperationClient = original.OperationClient
 type OperationDisplay = original.OperationDisplay
 type OperationList = original.OperationList
 type OperationListIterator = original.OperationListIterator
 type OperationListPage = original.OperationListPage
 type OperationResponse = original.OperationResponse
+type OrderClient = original.OrderClient
 type OrderList = original.OrderList
 type OrderListIterator = original.OrderListIterator
 type OrderListPage = original.OrderListPage
 type OrderProperties = original.OrderProperties
+type OrderPurchaseFuture = original.OrderPurchaseFuture
 type OrderResponse = original.OrderResponse
 type Patch = original.Patch
 type PatchProperties = original.PatchProperties
+type PatchPropertiesRenewProperties = original.PatchPropertiesRenewProperties
 type Properties = original.Properties
+type PropertiesType = original.PropertiesType
+type PurchaseRequest = original.PurchaseRequest
+type PurchaseRequestProperties = original.PurchaseRequestProperties
+type PurchaseRequestPropertiesReservedResourceProperties = original.PurchaseRequestPropertiesReservedResourceProperties
+type RenewPropertiesResponse = original.RenewPropertiesResponse
+type RenewPropertiesResponseBillingCurrencyTotal = original.RenewPropertiesResponseBillingCurrencyTotal
+type RenewPropertiesResponsePricingCurrencyTotal = original.RenewPropertiesResponsePricingCurrencyTotal
+type ReservationAvailableScopesFuture = original.ReservationAvailableScopesFuture
 type ReservationMergeFuture = original.ReservationMergeFuture
 type ReservationUpdateFuture = original.ReservationUpdateFuture
 type Response = original.Response
+type ScopeProperties = original.ScopeProperties
 type SkuName = original.SkuName
 type SkuProperty = original.SkuProperty
 type SkuRestriction = original.SkuRestriction
@@ -174,12 +194,46 @@ type SplitFuture = original.SplitFuture
 type SplitProperties = original.SplitProperties
 type SplitPropertiesType = original.SplitPropertiesType
 type SplitRequest = original.SplitRequest
-type OperationClient = original.OperationClient
-type OrderClient = original.OrderClient
-type Client = original.Client
+type SubscriptionScopeProperties = original.SubscriptionScopeProperties
 
 func New() BaseClient {
 	return original.New()
+}
+func NewClient() Client {
+	return original.NewClient()
+}
+func NewClientWithBaseURI(baseURI string) Client {
+	return original.NewClientWithBaseURI(baseURI)
+}
+func NewListIterator(page ListPage) ListIterator {
+	return original.NewListIterator(page)
+}
+func NewListPage(getNextPage func(context.Context, List) (List, error)) ListPage {
+	return original.NewListPage(getNextPage)
+}
+func NewOperationClient() OperationClient {
+	return original.NewOperationClient()
+}
+func NewOperationClientWithBaseURI(baseURI string) OperationClient {
+	return original.NewOperationClientWithBaseURI(baseURI)
+}
+func NewOperationListIterator(page OperationListPage) OperationListIterator {
+	return original.NewOperationListIterator(page)
+}
+func NewOperationListPage(getNextPage func(context.Context, OperationList) (OperationList, error)) OperationListPage {
+	return original.NewOperationListPage(getNextPage)
+}
+func NewOrderClient() OrderClient {
+	return original.NewOrderClient()
+}
+func NewOrderClientWithBaseURI(baseURI string) OrderClient {
+	return original.NewOrderClientWithBaseURI(baseURI)
+}
+func NewOrderListIterator(page OrderListPage) OrderListIterator {
+	return original.NewOrderListIterator(page)
+}
+func NewOrderListPage(getNextPage func(context.Context, OrderList) (OrderList, error)) OrderListPage {
+	return original.NewOrderListPage(getNextPage)
 }
 func NewWithBaseURI(baseURI string) BaseClient {
 	return original.NewWithBaseURI(baseURI)
@@ -201,42 +255,6 @@ func PossibleReservedResourceTypeValues() []ReservedResourceType {
 }
 func PossibleStatusCodeValues() []StatusCode {
 	return original.PossibleStatusCodeValues()
-}
-func NewListIterator(page ListPage) ListIterator {
-	return original.NewListIterator(page)
-}
-func NewListPage(getNextPage func(context.Context, List) (List, error)) ListPage {
-	return original.NewListPage(getNextPage)
-}
-func NewOperationListIterator(page OperationListPage) OperationListIterator {
-	return original.NewOperationListIterator(page)
-}
-func NewOperationListPage(getNextPage func(context.Context, OperationList) (OperationList, error)) OperationListPage {
-	return original.NewOperationListPage(getNextPage)
-}
-func NewOrderListIterator(page OrderListPage) OrderListIterator {
-	return original.NewOrderListIterator(page)
-}
-func NewOrderListPage(getNextPage func(context.Context, OrderList) (OrderList, error)) OrderListPage {
-	return original.NewOrderListPage(getNextPage)
-}
-func NewOperationClient() OperationClient {
-	return original.NewOperationClient()
-}
-func NewOperationClientWithBaseURI(baseURI string) OperationClient {
-	return original.NewOperationClientWithBaseURI(baseURI)
-}
-func NewOrderClient() OrderClient {
-	return original.NewOrderClient()
-}
-func NewOrderClientWithBaseURI(baseURI string) OrderClient {
-	return original.NewOrderClientWithBaseURI(baseURI)
-}
-func NewClient() Client {
-	return original.NewClient()
-}
-func NewClientWithBaseURI(baseURI string) Client {
-	return original.NewClientWithBaseURI(baseURI)
 }
 func UserAgent() string {
 	return original.UserAgent() + " profiles/preview"

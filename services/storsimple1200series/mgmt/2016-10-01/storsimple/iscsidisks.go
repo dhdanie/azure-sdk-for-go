@@ -41,12 +41,12 @@ func NewIscsiDisksClientWithBaseURI(baseURI string, subscriptionID string) Iscsi
 	return IscsiDisksClient{NewWithBaseURI(baseURI, subscriptionID)}
 }
 
-// CreateOrUpdate creates or updates the iscsi disk.
+// CreateOrUpdate creates or updates the iSCSI disk.
 // Parameters:
 // deviceName - the device name.
-// iscsiServerName - the iscsi server name.
+// iscsiServerName - the iSCSI server name.
 // diskName - the disk name.
-// iscsiDisk - the iscsi disk.
+// iscsiDisk - the iSCSI disk.
 // resourceGroupName - the resource group name
 // managerName - the manager name
 func (client IscsiDisksClient) CreateOrUpdate(ctx context.Context, deviceName string, iscsiServerName string, diskName string, iscsiDisk ISCSIDisk, resourceGroupName string, managerName string) (result IscsiDisksCreateOrUpdateFuture, err error) {
@@ -116,9 +116,9 @@ func (client IscsiDisksClient) CreateOrUpdatePreparer(ctx context.Context, devic
 // CreateOrUpdateSender sends the CreateOrUpdate request. The method will close the
 // http.Response Body if it receives an error.
 func (client IscsiDisksClient) CreateOrUpdateSender(req *http.Request) (future IscsiDisksCreateOrUpdateFuture, err error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
 	var resp *http.Response
-	resp, err = autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	resp, err = autorest.SendWithSender(client, req, sd...)
 	if err != nil {
 		return
 	}
@@ -139,10 +139,10 @@ func (client IscsiDisksClient) CreateOrUpdateResponder(resp *http.Response) (res
 	return
 }
 
-// Delete deletes the iscsi disk.
+// Delete deletes the iSCSI disk.
 // Parameters:
 // deviceName - the device name.
-// iscsiServerName - the iscsi server name.
+// iscsiServerName - the iSCSI server name.
 // diskName - the disk name.
 // resourceGroupName - the resource group name
 // managerName - the manager name
@@ -206,9 +206,9 @@ func (client IscsiDisksClient) DeletePreparer(ctx context.Context, deviceName st
 // DeleteSender sends the Delete request. The method will close the
 // http.Response Body if it receives an error.
 func (client IscsiDisksClient) DeleteSender(req *http.Request) (future IscsiDisksDeleteFuture, err error) {
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
 	var resp *http.Response
-	resp, err = autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	resp, err = autorest.SendWithSender(client, req, sd...)
 	if err != nil {
 		return
 	}
@@ -228,10 +228,10 @@ func (client IscsiDisksClient) DeleteResponder(resp *http.Response) (result auto
 	return
 }
 
-// Get returns the properties of the specified iscsi disk name.
+// Get returns the properties of the specified iSCSI disk name.
 // Parameters:
 // deviceName - the device name.
-// iscsiServerName - the iscsi server name.
+// iscsiServerName - the iSCSI server name.
 // diskName - the disk name.
 // resourceGroupName - the resource group name
 // managerName - the manager name
@@ -301,8 +301,8 @@ func (client IscsiDisksClient) GetPreparer(ctx context.Context, deviceName strin
 // GetSender sends the Get request. The method will close the
 // http.Response Body if it receives an error.
 func (client IscsiDisksClient) GetSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // GetResponder handles the response to the Get request. The method always
@@ -318,7 +318,7 @@ func (client IscsiDisksClient) GetResponder(resp *http.Response) (result ISCSIDi
 	return
 }
 
-// ListByDevice retrieves all the iscsi disks in a device.
+// ListByDevice retrieves all the iSCSI disks in a device.
 // Parameters:
 // deviceName - the device name.
 // resourceGroupName - the resource group name
@@ -387,8 +387,8 @@ func (client IscsiDisksClient) ListByDevicePreparer(ctx context.Context, deviceN
 // ListByDeviceSender sends the ListByDevice request. The method will close the
 // http.Response Body if it receives an error.
 func (client IscsiDisksClient) ListByDeviceSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListByDeviceResponder handles the response to the ListByDevice request. The method always
@@ -404,10 +404,10 @@ func (client IscsiDisksClient) ListByDeviceResponder(resp *http.Response) (resul
 	return
 }
 
-// ListByIscsiServer retrieves all the disks in a iscsi server.
+// ListByIscsiServer retrieves all the disks in a iSCSI server.
 // Parameters:
 // deviceName - the device name.
-// iscsiServerName - the iscsi server name.
+// iscsiServerName - the iSCSI server name.
 // resourceGroupName - the resource group name
 // managerName - the manager name
 func (client IscsiDisksClient) ListByIscsiServer(ctx context.Context, deviceName string, iscsiServerName string, resourceGroupName string, managerName string) (result ISCSIDiskList, err error) {
@@ -475,8 +475,8 @@ func (client IscsiDisksClient) ListByIscsiServerPreparer(ctx context.Context, de
 // ListByIscsiServerSender sends the ListByIscsiServer request. The method will close the
 // http.Response Body if it receives an error.
 func (client IscsiDisksClient) ListByIscsiServerSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListByIscsiServerResponder handles the response to the ListByIscsiServer request. The method always
@@ -492,11 +492,11 @@ func (client IscsiDisksClient) ListByIscsiServerResponder(resp *http.Response) (
 	return
 }
 
-// ListMetricDefinition retrieves metric definitions for all metric aggregated at the iscsi disk.
+// ListMetricDefinition retrieves metric definitions for all metric aggregated at the iSCSI disk.
 // Parameters:
 // deviceName - the device name.
-// iscsiServerName - the iscsi server name.
-// diskName - the iscsi disk name.
+// iscsiServerName - the iSCSI server name.
+// diskName - the iSCSI disk name.
 // resourceGroupName - the resource group name
 // managerName - the manager name
 func (client IscsiDisksClient) ListMetricDefinition(ctx context.Context, deviceName string, iscsiServerName string, diskName string, resourceGroupName string, managerName string) (result MetricDefinitionList, err error) {
@@ -565,8 +565,8 @@ func (client IscsiDisksClient) ListMetricDefinitionPreparer(ctx context.Context,
 // ListMetricDefinitionSender sends the ListMetricDefinition request. The method will close the
 // http.Response Body if it receives an error.
 func (client IscsiDisksClient) ListMetricDefinitionSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListMetricDefinitionResponder handles the response to the ListMetricDefinition request. The method always
@@ -582,11 +582,11 @@ func (client IscsiDisksClient) ListMetricDefinitionResponder(resp *http.Response
 	return
 }
 
-// ListMetrics gets the iscsi disk metrics
+// ListMetrics gets the iSCSI disk metrics
 // Parameters:
 // deviceName - the device name.
-// iscsiServerName - the iscsi server name.
-// diskName - the iscsi disk name.
+// iscsiServerName - the iSCSI server name.
+// diskName - the iSCSI disk name.
 // resourceGroupName - the resource group name
 // managerName - the manager name
 // filter - oData Filter options
@@ -659,8 +659,8 @@ func (client IscsiDisksClient) ListMetricsPreparer(ctx context.Context, deviceNa
 // ListMetricsSender sends the ListMetrics request. The method will close the
 // http.Response Body if it receives an error.
 func (client IscsiDisksClient) ListMetricsSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListMetricsResponder handles the response to the ListMetrics request. The method always

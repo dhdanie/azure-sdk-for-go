@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,13 +19,14 @@
 
 package costmanagementapi
 
-import original "github.com/Azure/azure-sdk-for-go/services/preview/costmanagement/mgmt/2018-08-01-preview/costmanagement/costmanagementapi"
+import original "github.com/Azure/azure-sdk-for-go/services/preview/costmanagement/mgmt/2019-03-01/costmanagement/costmanagementapi"
 
-type BaseClientAPI = original.BaseClientAPI
-type ReportsClientAPI = original.ReportsClientAPI
-type BillingAccountDimensionsClientAPI = original.BillingAccountDimensionsClientAPI
-type SubscriptionDimensionsClientAPI = original.SubscriptionDimensionsClientAPI
-type ResourceGroupDimensionsClientAPI = original.ResourceGroupDimensionsClientAPI
-type ConnectorClientAPI = original.ConnectorClientAPI
-type AlertsClientAPI = original.AlertsClientAPI
+type CloudConnectorClientAPI = original.CloudConnectorClientAPI
+type DimensionsClientAPI = original.DimensionsClientAPI
+type ExternalBillingAccountClientAPI = original.ExternalBillingAccountClientAPI
+type ExternalSubscriptionClientAPI = original.ExternalSubscriptionClientAPI
+type ForecastClientAPI = original.ForecastClientAPI
 type OperationsClientAPI = original.OperationsClientAPI
+type QueryClientAPI = original.QueryClientAPI
+type ShowbackRuleClientAPI = original.ShowbackRuleClientAPI
+type ShowbackRulesClientAPI = original.ShowbackRulesClientAPI

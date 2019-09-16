@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,8 +21,7 @@ package subscriptionapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/subscription/mgmt/2018-03-01-preview/subscription/subscriptionapi"
 
-type OperationsClientAPI = original.OperationsClientAPI
-type OperationsGroupClientAPI = original.OperationsGroupClientAPI
 type FactoryClientAPI = original.FactoryClientAPI
+type OperationsClientAPI = original.OperationsClientAPI
 type SubscriptionsClientAPI = original.SubscriptionsClientAPI
 type TenantsClientAPI = original.TenantsClientAPI

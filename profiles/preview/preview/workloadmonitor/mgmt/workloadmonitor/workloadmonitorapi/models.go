@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,10 +21,10 @@ package workloadmonitorapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/workloadmonitor/mgmt/2018-08-31-preview/workloadmonitor/workloadmonitorapi"
 
-type MonitorsClientAPI = original.MonitorsClientAPI
 type ComponentsClientAPI = original.ComponentsClientAPI
-type MonitorInstancesClientAPI = original.MonitorInstancesClientAPI
-type NotificationSettingsClientAPI = original.NotificationSettingsClientAPI
 type ComponentsSummaryClientAPI = original.ComponentsSummaryClientAPI
+type MonitorInstancesClientAPI = original.MonitorInstancesClientAPI
 type MonitorInstancesSummaryClientAPI = original.MonitorInstancesSummaryClientAPI
+type MonitorsClientAPI = original.MonitorsClientAPI
+type NotificationSettingsClientAPI = original.NotificationSettingsClientAPI
 type OperationsClientAPI = original.OperationsClientAPI

@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,20 +21,20 @@ package networkapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/network/mgmt/2015-05-01-preview/network/networkapi"
 
-type BaseClientAPI = original.BaseClientAPI
 type ApplicationGatewaysClientAPI = original.ApplicationGatewaysClientAPI
+type BaseClientAPI = original.BaseClientAPI
+type ExpressRouteCircuitAuthorizationsClientAPI = original.ExpressRouteCircuitAuthorizationsClientAPI
+type ExpressRouteCircuitPeeringsClientAPI = original.ExpressRouteCircuitPeeringsClientAPI
 type ExpressRouteCircuitsClientAPI = original.ExpressRouteCircuitsClientAPI
 type ExpressRouteServiceProvidersClientAPI = original.ExpressRouteServiceProvidersClientAPI
-type ExpressRouteCircuitPeeringsClientAPI = original.ExpressRouteCircuitPeeringsClientAPI
+type InterfacesClientAPI = original.InterfacesClientAPI
 type LoadBalancersClientAPI = original.LoadBalancersClientAPI
 type LocalNetworkGatewaysClientAPI = original.LocalNetworkGatewaysClientAPI
-type InterfacesClientAPI = original.InterfacesClientAPI
-type RouteTablesClientAPI = original.RouteTablesClientAPI
-type SecurityGroupsClientAPI = original.SecurityGroupsClientAPI
 type PublicIPAddressesClientAPI = original.PublicIPAddressesClientAPI
+type RouteTablesClientAPI = original.RouteTablesClientAPI
 type RoutesClientAPI = original.RoutesClientAPI
+type SecurityGroupsClientAPI = original.SecurityGroupsClientAPI
 type SecurityRulesClientAPI = original.SecurityRulesClientAPI
-type ExpressRouteCircuitAuthorizationsClientAPI = original.ExpressRouteCircuitAuthorizationsClientAPI
 type SubnetsClientAPI = original.SubnetsClientAPI
 type UsagesClientAPI = original.UsagesClientAPI
 type VirtualNetworkGatewayConnectionsClientAPI = original.VirtualNetworkGatewayConnectionsClientAPI

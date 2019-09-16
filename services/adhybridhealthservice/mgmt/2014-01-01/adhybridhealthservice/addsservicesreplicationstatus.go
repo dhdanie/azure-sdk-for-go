@@ -25,7 +25,7 @@ import (
 	"net/http"
 )
 
-// AddsServicesReplicationStatusClient is the REST APIs for Azure Active Drectory Connect Health
+// AddsServicesReplicationStatusClient is the REST APIs for Azure Active Directory Connect Health
 type AddsServicesReplicationStatusClient struct {
 	BaseClient
 }
@@ -99,8 +99,8 @@ func (client AddsServicesReplicationStatusClient) GetPreparer(ctx context.Contex
 // GetSender sends the Get request. The method will close the
 // http.Response Body if it receives an error.
 func (client AddsServicesReplicationStatusClient) GetSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // GetResponder handles the response to the Get request. The method always

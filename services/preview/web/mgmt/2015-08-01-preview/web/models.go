@@ -921,11 +921,11 @@ type APIEntityProperties struct {
 	RuntimeUrls *[]string `json:"runtimeUrls,omitempty"`
 	// Protocols - Protocols supported by the front end - http/https
 	Protocols *[]string `json:"protocols,omitempty"`
-	// Policies - Api polcies
+	// Policies - API policies
 	Policies *APIPolicies `json:"policies,omitempty"`
 	// BackendService - Backend service definition
 	BackendService *BackendServiceDefinition `json:"backendService,omitempty"`
-	// APIDefinitionURL - Api definition Url - url where the swagger can be downloaded from
+	// APIDefinitionURL - API definition Url - url where the swagger can be downloaded from
 	APIDefinitionURL *string `json:"apiDefinitionUrl,omitempty"`
 	// Metadata - Free form object for the data caller wants to store
 	Metadata interface{} `json:"metadata,omitempty"`
@@ -984,7 +984,7 @@ func (ae APIEntityProperties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(objectMap)
 }
 
-// APIOAuthSettings oAuth settings for the conenction provider
+// APIOAuthSettings oAuth settings for the connection provider
 type APIOAuthSettings struct {
 	// IdentityProvider - Identity provider
 	IdentityProvider *string `json:"identityProvider,omitempty"`
@@ -1039,7 +1039,7 @@ type APIOAuthSettingsParameter struct {
 	UIDefinition interface{} `json:"uiDefinition,omitempty"`
 }
 
-// APIPolicies api policies
+// APIPolicies API policies
 type APIPolicies struct {
 	*APIPoliciesProperties `json:"properties,omitempty"`
 	// ID - Resource Id
@@ -2917,7 +2917,7 @@ func (coc *CertificateOrderCertificate) UnmarshalJSON(body []byte) error {
 	return nil
 }
 
-// CertificateOrderCertificateCollection collection of ceritificateorder certificates
+// CertificateOrderCertificateCollection collection of certificate order certificates
 type CertificateOrderCertificateCollection struct {
 	autorest.Response `json:"-"`
 	// Value - Collection of resources
@@ -3074,7 +3074,7 @@ type CertificateOrderCertificateProperties struct {
 	ProvisioningState KeyVaultSecretStatus `json:"provisioningState,omitempty"`
 }
 
-// CertificateOrderCollection collection of ceritificate orders
+// CertificateOrderCollection collection of certificate orders
 type CertificateOrderCollection struct {
 	autorest.Response `json:"-"`
 	// Value - Collection of resources
@@ -3328,7 +3328,7 @@ type CertificateProperties struct {
 	Issuer *string `json:"issuer,omitempty"`
 	// IssueDate - Certificate issue Date
 	IssueDate *date.Time `json:"issueDate,omitempty"`
-	// ExpirationDate - Certificate expriration date
+	// ExpirationDate - Certificate expiration date
 	ExpirationDate *date.Time `json:"expirationDate,omitempty"`
 	// Password - Certificate password
 	Password *string `json:"password,omitempty"`
@@ -3819,7 +3819,7 @@ type ConfirmConsentCodeInputProperties struct {
 	Code *string `json:"code,omitempty"`
 }
 
-// Connection api Connection
+// Connection API Connection
 type Connection struct {
 	autorest.Response     `json:"-"`
 	*ConnectionProperties `json:"properties,omitempty"`
@@ -3942,7 +3942,7 @@ func (c *Connection) UnmarshalJSON(body []byte) error {
 	return nil
 }
 
-// ConnectionCollection collection of conenctions
+// ConnectionCollection collection of connections
 type ConnectionCollection struct {
 	autorest.Response `json:"-"`
 	// Value - Collection of resources
@@ -4532,7 +4532,7 @@ type ConsentLink struct {
 	Status LinkState `json:"status,omitempty"`
 }
 
-// ConsentLinkInput connection Constent Link payload
+// ConsentLinkInput connection Consent Link payload
 type ConsentLinkInput struct {
 	*ConsentLinkInputProperties `json:"properties,omitempty"`
 	// ID - Resource Id
@@ -4683,7 +4683,7 @@ type ConsentLinkPayload struct {
 }
 
 // Contact contact information for domain registration. If 'Domain Privacy' option is not selected then the
-// contact information will be  be made publicly available through the Whois directories as per ICANN
+// contact information will be made publicly available through the Whois directories as per ICANN
 // requirements.
 type Contact struct {
 	// AddressMailing - Mailing address
@@ -4729,7 +4729,7 @@ type CsmPublishingProfileOptions struct {
 	Format *string `json:"format,omitempty"`
 }
 
-// CsmSiteRecoveryEntity class containting details about site recovery operation.
+// CsmSiteRecoveryEntity class containing details about site recovery operation.
 type CsmSiteRecoveryEntity struct {
 	// SnapshotTime - Point in time in which the site recover should be attempted.
 	SnapshotTime *date.Time `json:"snapshotTime,omitempty"`
@@ -4751,7 +4751,7 @@ type CsmSlotEntity struct {
 
 // CsmUsageQuota usage of the quota resource
 type CsmUsageQuota struct {
-	// Unit - Units of measurement for the quota resourse
+	// Unit - Units of measurement for the quota resource
 	Unit *string `json:"unit,omitempty"`
 	// NextResetTime - Next reset time for the resource counter
 	NextResetTime *date.Time `json:"nextResetTime,omitempty"`
@@ -5040,7 +5040,7 @@ type CsrProperties struct {
 	DistinguishedName *string `json:"distinguishedName,omitempty"`
 	// CsrString - Actual CSR string created
 	CsrString *string `json:"csrString,omitempty"`
-	// PfxBlob - PFX certifcate of created certificate
+	// PfxBlob - PFX certificate of created certificate
 	PfxBlob *string `json:"pfxBlob,omitempty"`
 	// Password - PFX password
 	Password *string `json:"password,omitempty"`
@@ -5466,37 +5466,37 @@ type DeletedSiteProperties struct {
 	DeletedTimestamp *date.Time `json:"deletedTimestamp,omitempty"`
 	// Name - Name of web app
 	Name *string `json:"name,omitempty"`
-	// State - State of the web app
+	// State - READ-ONLY; State of the web app
 	State *string `json:"state,omitempty"`
-	// HostNames - Hostnames associated with web app
+	// HostNames - READ-ONLY; Hostnames associated with web app
 	HostNames *[]string `json:"hostNames,omitempty"`
-	// RepositorySiteName - Name of repository site
+	// RepositorySiteName - READ-ONLY; Name of repository site
 	RepositorySiteName *string `json:"repositorySiteName,omitempty"`
-	// UsageState - State indicating whether web app has exceeded its quota usage. Possible values include: 'UsageStateNormal', 'UsageStateExceeded'
+	// UsageState - READ-ONLY; State indicating whether web app has exceeded its quota usage. Possible values include: 'UsageStateNormal', 'UsageStateExceeded'
 	UsageState UsageState `json:"usageState,omitempty"`
 	// Enabled - True if the site is enabled; otherwise, false. Setting this  value to false disables the site (takes the site off line).
 	Enabled *bool `json:"enabled,omitempty"`
-	// EnabledHostNames - Hostnames for the web app that are enabled. Hostnames need to be assigned and enabled. If some hostnames are assigned but not enabled
+	// EnabledHostNames - READ-ONLY; Hostnames for the web app that are enabled. Hostnames need to be assigned and enabled. If some hostnames are assigned but not enabled
 	//             the app is not served on those hostnames
 	EnabledHostNames *[]string `json:"enabledHostNames,omitempty"`
-	// AvailabilityState - Management information availability state for the web app. Possible values are Normal or Limited.
+	// AvailabilityState - READ-ONLY; Management information availability state for the web app. Possible values are Normal or Limited.
 	//             Normal means that the site is running correctly and that management information for the site is available.
 	//             Limited means that only partial management information for the site is available and that detailed site information is unavailable. Possible values include: 'Normal', 'Limited', 'DisasterRecoveryMode'
 	AvailabilityState SiteAvailabilityState `json:"availabilityState,omitempty"`
 	// HostNameSslStates - Hostname SSL states are  used to manage the SSL bindings for site's hostnames.
 	HostNameSslStates *[]HostNameSslState `json:"hostNameSslStates,omitempty"`
 	ServerFarmID      *string             `json:"serverFarmId,omitempty"`
-	// LastModifiedTimeUtc - Last time web app was modified in UTC
+	// LastModifiedTimeUtc - READ-ONLY; Last time web app was modified in UTC
 	LastModifiedTimeUtc *date.Time `json:"lastModifiedTimeUtc,omitempty"`
 	// SiteConfig - Configuration of web app
 	SiteConfig *SiteConfig `json:"siteConfig,omitempty"`
-	// TrafficManagerHostNames - Read-only list of Azure Traffic manager hostnames associated with web app
+	// TrafficManagerHostNames - READ-ONLY; Read-only list of Azure Traffic manager hostnames associated with web app
 	TrafficManagerHostNames *[]string `json:"trafficManagerHostNames,omitempty"`
-	// PremiumAppDeployed - If set indicates whether web app is deployed as a premium app
+	// PremiumAppDeployed - READ-ONLY; If set indicates whether web app is deployed as a premium app
 	PremiumAppDeployed *bool `json:"premiumAppDeployed,omitempty"`
 	// ScmSiteAlsoStopped - If set indicates whether to stop SCM (KUDU) site when the web app is stopped. Default is false.
 	ScmSiteAlsoStopped *bool `json:"scmSiteAlsoStopped,omitempty"`
-	// TargetSwapSlot - Read-only property that specifies which slot this app will swap into
+	// TargetSwapSlot - READ-ONLY; Read-only property that specifies which slot this app will swap into
 	TargetSwapSlot *string `json:"targetSwapSlot,omitempty"`
 	// HostingEnvironmentProfile - Specification for the hosting environment (App Service Environment) to use for the web app
 	HostingEnvironmentProfile *HostingEnvironmentProfile `json:"hostingEnvironmentProfile,omitempty"`
@@ -5510,7 +5510,7 @@ type DeletedSiteProperties struct {
 	// HostNamesDisabled - Specifies if the public hostnames are disabled the web app.
 	//             If set to true the app is only accessible via API Management process
 	HostNamesDisabled *bool `json:"hostNamesDisabled,omitempty"`
-	// OutboundIPAddresses - List of comma separated IP addresses that this web app uses for outbound connections. Those can be used when configuring firewall rules for databases accessed by this web app.
+	// OutboundIPAddresses - READ-ONLY; List of comma separated IP addresses that this web app uses for outbound connections. Those can be used when configuring firewall rules for databases accessed by this web app.
 	OutboundIPAddresses *string `json:"outboundIpAddresses,omitempty"`
 	// ContainerSize - Size of a function container
 	ContainerSize *int32 `json:"containerSize,omitempty"`
@@ -5520,15 +5520,15 @@ type DeletedSiteProperties struct {
 	// CloningInfo - This is only valid for web app creation. If specified, web app is cloned from
 	//             a source web app
 	CloningInfo *CloningInfo `json:"cloningInfo,omitempty"`
-	// ResourceGroup - Resource group web app belongs to
+	// ResourceGroup - READ-ONLY; Resource group web app belongs to
 	ResourceGroup *string `json:"resourceGroup,omitempty"`
-	// IsDefaultContainer - Site is a default container
+	// IsDefaultContainer - READ-ONLY; Site is a default container
 	IsDefaultContainer *bool `json:"isDefaultContainer,omitempty"`
-	// DefaultHostName - Default hostname of the web app
+	// DefaultHostName - READ-ONLY; Default hostname of the web app
 	DefaultHostName *string `json:"defaultHostName,omitempty"`
 }
 
-// Deployment represents user crendentials used for publishing activity
+// Deployment represents user credentials used for publishing activity
 type Deployment struct {
 	autorest.Response     `json:"-"`
 	*DeploymentProperties `json:"properties,omitempty"`
@@ -7286,7 +7286,7 @@ type HostingEnvironmentsCreateOrUpdateHostingEnvironmentFuture struct {
 // If the operation has not completed it will return an error.
 func (future *HostingEnvironmentsCreateOrUpdateHostingEnvironmentFuture) Result(client HostingEnvironmentsClient) (he HostingEnvironment, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.HostingEnvironmentsCreateOrUpdateHostingEnvironmentFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -7315,7 +7315,7 @@ type HostingEnvironmentsCreateOrUpdateMultiRolePoolFuture struct {
 // If the operation has not completed it will return an error.
 func (future *HostingEnvironmentsCreateOrUpdateMultiRolePoolFuture) Result(client HostingEnvironmentsClient) (wp WorkerPool, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.HostingEnvironmentsCreateOrUpdateMultiRolePoolFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -7344,7 +7344,7 @@ type HostingEnvironmentsCreateOrUpdateWorkerPoolFuture struct {
 // If the operation has not completed it will return an error.
 func (future *HostingEnvironmentsCreateOrUpdateWorkerPoolFuture) Result(client HostingEnvironmentsClient) (wp WorkerPool, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.HostingEnvironmentsCreateOrUpdateWorkerPoolFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -7373,7 +7373,7 @@ type HostingEnvironmentsDeleteHostingEnvironmentFuture struct {
 // If the operation has not completed it will return an error.
 func (future *HostingEnvironmentsDeleteHostingEnvironmentFuture) Result(client HostingEnvironmentsClient) (so SetObject, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.HostingEnvironmentsDeleteHostingEnvironmentFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -7401,7 +7401,7 @@ type HostingEnvironmentServiceDescriptions struct {
 	// ServiceURL - service url to use
 	ServiceURL *string `json:"serviceUrl,omitempty"`
 	// UseInternalRouting - When the backend url is in same ASE, for performance reason this flag can be set to true
-	//             If WebApp.DisableHostNames is also set it improves the security by making the back end accesible only
+	//             If WebApp.DisableHostNames is also set it improves the security by making the back end accessible only
 	//             via API calls
 	//             Note: calls will fail if this option is used but back end is not on the same ASE
 	UseInternalRouting *bool `json:"useInternalRouting,omitempty"`
@@ -7417,7 +7417,7 @@ type HostingEnvironmentsResumeHostingEnvironmentAllFuture struct {
 // If the operation has not completed it will return an error.
 func (future *HostingEnvironmentsResumeHostingEnvironmentAllFuture) Result(client HostingEnvironmentsClient) (scp SiteCollectionPage, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.HostingEnvironmentsResumeHostingEnvironmentAllFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -7446,7 +7446,7 @@ type HostingEnvironmentsResumeHostingEnvironmentFuture struct {
 // If the operation has not completed it will return an error.
 func (future *HostingEnvironmentsResumeHostingEnvironmentFuture) Result(client HostingEnvironmentsClient) (scp SiteCollectionPage, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.HostingEnvironmentsResumeHostingEnvironmentFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -7475,7 +7475,7 @@ type HostingEnvironmentsSuspendHostingEnvironmentAllFuture struct {
 // If the operation has not completed it will return an error.
 func (future *HostingEnvironmentsSuspendHostingEnvironmentAllFuture) Result(client HostingEnvironmentsClient) (scp SiteCollectionPage, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.HostingEnvironmentsSuspendHostingEnvironmentAllFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -7504,7 +7504,7 @@ type HostingEnvironmentsSuspendHostingEnvironmentFuture struct {
 // If the operation has not completed it will return an error.
 func (future *HostingEnvironmentsSuspendHostingEnvironmentFuture) Result(client HostingEnvironmentsClient) (scp SiteCollectionPage, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.HostingEnvironmentsSuspendHostingEnvironmentFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -7858,7 +7858,9 @@ type IPSecurityRestriction struct {
 
 // KeyValuePairStringString ...
 type KeyValuePairStringString struct {
-	Key   *string `json:"key,omitempty"`
+	// Key - READ-ONLY
+	Key *string `json:"key,omitempty"`
+	// Value - READ-ONLY
 	Value *string `json:"value,omitempty"`
 }
 
@@ -8349,7 +8351,7 @@ type ManagedHostingEnvironmentsCreateOrUpdateManagedHostingEnvironmentFuture str
 // If the operation has not completed it will return an error.
 func (future *ManagedHostingEnvironmentsCreateOrUpdateManagedHostingEnvironmentFuture) Result(client ManagedHostingEnvironmentsClient) (he HostingEnvironment, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsCreateOrUpdateManagedHostingEnvironmentFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -8378,7 +8380,7 @@ type ManagedHostingEnvironmentsDeleteManagedHostingEnvironmentFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ManagedHostingEnvironmentsDeleteManagedHostingEnvironmentFuture) Result(client ManagedHostingEnvironmentsClient) (so SetObject, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.ManagedHostingEnvironmentsDeleteManagedHostingEnvironmentFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -8397,7 +8399,7 @@ func (future *ManagedHostingEnvironmentsDeleteManagedHostingEnvironmentFuture) R
 	return
 }
 
-// MetricAvailabilily class repesenting metrics availability and retention
+// MetricAvailabilily class representing metrics availability and retention
 type MetricAvailabilily struct {
 	// TimeGrain - Time grain
 	TimeGrain *string `json:"timeGrain,omitempty"`
@@ -8405,7 +8407,7 @@ type MetricAvailabilily struct {
 	Retention *string `json:"retention,omitempty"`
 }
 
-// MetricDefinition class repesenting metadata for the metrics
+// MetricDefinition class representing metadata for the metrics
 type MetricDefinition struct {
 	autorest.Response           `json:"-"`
 	*MetricDefinitionProperties `json:"properties,omitempty"`
@@ -8528,7 +8530,7 @@ func (md *MetricDefinition) UnmarshalJSON(body []byte) error {
 	return nil
 }
 
-// MetricDefinitionCollection collection of metric defintions
+// MetricDefinitionCollection collection of metric definitions
 type MetricDefinitionCollection struct {
 	autorest.Response `json:"-"`
 	// Value - Collection of resources
@@ -9171,11 +9173,11 @@ type RampUpRule struct {
 	ActionHostName *string `json:"actionHostName,omitempty"`
 	// ReroutePercentage - Percentage of the traffic which will be redirected to {Microsoft.Web.Hosting.Administration.RampUpRule.ActionHostName}
 	ReroutePercentage *float64 `json:"reroutePercentage,omitempty"`
-	// ChangeStep - [Optional] In auto ramp up scenario this is the step to to add/remove from {Microsoft.Web.Hosting.Administration.RampUpRule.ReroutePercentage} until it reaches
-	//             {Microsoft.Web.Hosting.Administration.RampUpRule.MinReroutePercentage} or {Microsoft.Web.Hosting.Administration.RampUpRule.MaxReroutePercentage}. Site metrics are checked every N minutes specificed in {Microsoft.Web.Hosting.Administration.RampUpRule.ChangeIntervalInMinutes}.
+	// ChangeStep - [Optional] In auto ramp up scenario this is the step to add/remove from {Microsoft.Web.Hosting.Administration.RampUpRule.ReroutePercentage} until it reaches
+	//             {Microsoft.Web.Hosting.Administration.RampUpRule.MinReroutePercentage} or {Microsoft.Web.Hosting.Administration.RampUpRule.MaxReroutePercentage}. Site metrics are checked every N minutes specified in {Microsoft.Web.Hosting.Administration.RampUpRule.ChangeIntervalInMinutes}.
 	//             Custom decision algorithm can be provided in TiPCallback site extension which Url can be specified in {Microsoft.Web.Hosting.Administration.RampUpRule.ChangeDecisionCallbackUrl}
 	ChangeStep *float64 `json:"changeStep,omitempty"`
-	// ChangeIntervalInMinutes - [Optional] Specifies interval in mimuntes to reevaluate ReroutePercentage
+	// ChangeIntervalInMinutes - [Optional] Specifies interval in minutes to reevaluate ReroutePercentage
 	ChangeIntervalInMinutes *int32 `json:"changeIntervalInMinutes,omitempty"`
 	// MinReroutePercentage - [Optional] Specifies lower boundary above which ReroutePercentage will stay.
 	MinReroutePercentage *float64 `json:"minReroutePercentage,omitempty"`
@@ -9390,7 +9392,7 @@ type ReissueCertificateOrderRequestProperties struct {
 	DelayExistingRevokeInHours *int32 `json:"delayExistingRevokeInHours,omitempty"`
 }
 
-// RelayServiceConnectionEntity class that represents a Biztalk Hybrid Connection
+// RelayServiceConnectionEntity class that represents a BizTalk Hybrid Connection
 type RelayServiceConnectionEntity struct {
 	autorest.Response                       `json:"-"`
 	*RelayServiceConnectionEntityProperties `json:"properties,omitempty"`
@@ -10096,7 +10098,7 @@ type RestoreRequestProperties struct {
 	Overwrite *bool `json:"overwrite,omitempty"`
 	// SiteName - Name of a site (Web App)
 	SiteName *string `json:"siteName,omitempty"`
-	// Databases - Collection of databses which should be restored. This list has to match the list of databases included in the backup.
+	// Databases - Collection of databases which should be restored. This list has to match the list of databases included in the backup.
 	Databases *[]DatabaseBackupSetting `json:"databases,omitempty"`
 	// IgnoreConflictingHostNames - Changes a logic when restoring a site with custom domains. If "true", custom domains are removed automatically. If "false", custom domains are added to
 	//             the site object when it is being restored, but that might fail due to conflicts during the operation.
@@ -10400,7 +10402,7 @@ type ServerFarmsCreateOrUpdateServerFarmFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ServerFarmsCreateOrUpdateServerFarmFuture) Result(client ServerFarmsClient) (sfwrs ServerFarmWithRichSku, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.ServerFarmsCreateOrUpdateServerFarmFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -10561,9 +10563,9 @@ type ServerFarmWithRichSkuProperties struct {
 	Name *string `json:"name,omitempty"`
 	// WorkerTierName - Target worker tier assigned to the App Service Plan
 	WorkerTierName *string `json:"workerTierName,omitempty"`
-	// Status - App Service Plan Status. Possible values include: 'StatusOptionsReady', 'StatusOptionsPending'
+	// Status - READ-ONLY; App Service Plan Status. Possible values include: 'StatusOptionsReady', 'StatusOptionsPending'
 	Status StatusOptions `json:"status,omitempty"`
-	// Subscription - App Service Plan Subscription
+	// Subscription - READ-ONLY; App Service Plan Subscription
 	Subscription *string `json:"subscription,omitempty"`
 	// AdminSiteName - App Service Plan administration site
 	AdminSiteName *string `json:"adminSiteName,omitempty"`
@@ -10571,14 +10573,14 @@ type ServerFarmWithRichSkuProperties struct {
 	HostingEnvironmentProfile *HostingEnvironmentProfile `json:"hostingEnvironmentProfile,omitempty"`
 	// MaximumNumberOfWorkers - Maximum number of instances that can be assigned to this App Service Plan
 	MaximumNumberOfWorkers *int32 `json:"maximumNumberOfWorkers,omitempty"`
-	// GeoRegion - Geographical location for the App Service Plan
+	// GeoRegion - READ-ONLY; Geographical location for the App Service Plan
 	GeoRegion *string `json:"geoRegion,omitempty"`
 	// PerSiteScaling - If True apps assigned to this App Service Plan can be scaled independently
 	//             If False apps assigned to this App Service Plan will scale to all instances of the plan
 	PerSiteScaling *bool `json:"perSiteScaling,omitempty"`
-	// NumberOfSites - Number of web apps assigned to this App Service Plan
+	// NumberOfSites - READ-ONLY; Number of web apps assigned to this App Service Plan
 	NumberOfSites *int32 `json:"numberOfSites,omitempty"`
-	// ResourceGroup - Resource group of the serverfarm
+	// ResourceGroup - READ-ONLY; Resource group of the server farm
 	ResourceGroup *string `json:"resourceGroup,omitempty"`
 	// Reserved - Enables creation of a Linux App Service Plan
 	Reserved *bool `json:"reserved,omitempty"`
@@ -11164,7 +11166,7 @@ type SiteConfigProperties struct {
 	VirtualApplications *[]VirtualApplication `json:"virtualApplications,omitempty"`
 	// LoadBalancing - Site load balancing. Possible values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
 	LoadBalancing SiteLoadBalancing `json:"loadBalancing,omitempty"`
-	// Experiments - This is work around for polymophic types
+	// Experiments - This is work around for polymorphic types
 	Experiments *Experiments `json:"experiments,omitempty"`
 	// Limits - Site limits
 	Limits *SiteLimits `json:"limits,omitempty"`
@@ -11611,37 +11613,37 @@ type SiteLogsConfigProperties struct {
 type SiteProperties struct {
 	// Name - Name of web app
 	Name *string `json:"name,omitempty"`
-	// State - State of the web app
+	// State - READ-ONLY; State of the web app
 	State *string `json:"state,omitempty"`
-	// HostNames - Hostnames associated with web app
+	// HostNames - READ-ONLY; Hostnames associated with web app
 	HostNames *[]string `json:"hostNames,omitempty"`
-	// RepositorySiteName - Name of repository site
+	// RepositorySiteName - READ-ONLY; Name of repository site
 	RepositorySiteName *string `json:"repositorySiteName,omitempty"`
-	// UsageState - State indicating whether web app has exceeded its quota usage. Possible values include: 'UsageStateNormal', 'UsageStateExceeded'
+	// UsageState - READ-ONLY; State indicating whether web app has exceeded its quota usage. Possible values include: 'UsageStateNormal', 'UsageStateExceeded'
 	UsageState UsageState `json:"usageState,omitempty"`
 	// Enabled - True if the site is enabled; otherwise, false. Setting this  value to false disables the site (takes the site off line).
 	Enabled *bool `json:"enabled,omitempty"`
-	// EnabledHostNames - Hostnames for the web app that are enabled. Hostnames need to be assigned and enabled. If some hostnames are assigned but not enabled
+	// EnabledHostNames - READ-ONLY; Hostnames for the web app that are enabled. Hostnames need to be assigned and enabled. If some hostnames are assigned but not enabled
 	//             the app is not served on those hostnames
 	EnabledHostNames *[]string `json:"enabledHostNames,omitempty"`
-	// AvailabilityState - Management information availability state for the web app. Possible values are Normal or Limited.
+	// AvailabilityState - READ-ONLY; Management information availability state for the web app. Possible values are Normal or Limited.
 	//             Normal means that the site is running correctly and that management information for the site is available.
 	//             Limited means that only partial management information for the site is available and that detailed site information is unavailable. Possible values include: 'Normal', 'Limited', 'DisasterRecoveryMode'
 	AvailabilityState SiteAvailabilityState `json:"availabilityState,omitempty"`
 	// HostNameSslStates - Hostname SSL states are  used to manage the SSL bindings for site's hostnames.
 	HostNameSslStates *[]HostNameSslState `json:"hostNameSslStates,omitempty"`
 	ServerFarmID      *string             `json:"serverFarmId,omitempty"`
-	// LastModifiedTimeUtc - Last time web app was modified in UTC
+	// LastModifiedTimeUtc - READ-ONLY; Last time web app was modified in UTC
 	LastModifiedTimeUtc *date.Time `json:"lastModifiedTimeUtc,omitempty"`
 	// SiteConfig - Configuration of web app
 	SiteConfig *SiteConfig `json:"siteConfig,omitempty"`
-	// TrafficManagerHostNames - Read-only list of Azure Traffic manager hostnames associated with web app
+	// TrafficManagerHostNames - READ-ONLY; Read-only list of Azure Traffic manager hostnames associated with web app
 	TrafficManagerHostNames *[]string `json:"trafficManagerHostNames,omitempty"`
-	// PremiumAppDeployed - If set indicates whether web app is deployed as a premium app
+	// PremiumAppDeployed - READ-ONLY; If set indicates whether web app is deployed as a premium app
 	PremiumAppDeployed *bool `json:"premiumAppDeployed,omitempty"`
 	// ScmSiteAlsoStopped - If set indicates whether to stop SCM (KUDU) site when the web app is stopped. Default is false.
 	ScmSiteAlsoStopped *bool `json:"scmSiteAlsoStopped,omitempty"`
-	// TargetSwapSlot - Read-only property that specifies which slot this app will swap into
+	// TargetSwapSlot - READ-ONLY; Read-only property that specifies which slot this app will swap into
 	TargetSwapSlot *string `json:"targetSwapSlot,omitempty"`
 	// HostingEnvironmentProfile - Specification for the hosting environment (App Service Environment) to use for the web app
 	HostingEnvironmentProfile *HostingEnvironmentProfile `json:"hostingEnvironmentProfile,omitempty"`
@@ -11655,7 +11657,7 @@ type SiteProperties struct {
 	// HostNamesDisabled - Specifies if the public hostnames are disabled the web app.
 	//             If set to true the app is only accessible via API Management process
 	HostNamesDisabled *bool `json:"hostNamesDisabled,omitempty"`
-	// OutboundIPAddresses - List of comma separated IP addresses that this web app uses for outbound connections. Those can be used when configuring firewall rules for databases accessed by this web app.
+	// OutboundIPAddresses - READ-ONLY; List of comma separated IP addresses that this web app uses for outbound connections. Those can be used when configuring firewall rules for databases accessed by this web app.
 	OutboundIPAddresses *string `json:"outboundIpAddresses,omitempty"`
 	// ContainerSize - Size of a function container
 	ContainerSize *int32 `json:"containerSize,omitempty"`
@@ -11665,11 +11667,11 @@ type SiteProperties struct {
 	// CloningInfo - This is only valid for web app creation. If specified, web app is cloned from
 	//             a source web app
 	CloningInfo *CloningInfo `json:"cloningInfo,omitempty"`
-	// ResourceGroup - Resource group web app belongs to
+	// ResourceGroup - READ-ONLY; Resource group web app belongs to
 	ResourceGroup *string `json:"resourceGroup,omitempty"`
-	// IsDefaultContainer - Site is a default container
+	// IsDefaultContainer - READ-ONLY; Site is a default container
 	IsDefaultContainer *bool `json:"isDefaultContainer,omitempty"`
-	// DefaultHostName - Default hostname of the web app
+	// DefaultHostName - READ-ONLY; Default hostname of the web app
 	DefaultHostName *string `json:"defaultHostName,omitempty"`
 }
 
@@ -11690,7 +11692,7 @@ type SitesCreateOrUpdateSiteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *SitesCreateOrUpdateSiteFuture) Result(client SitesClient) (s Site, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.SitesCreateOrUpdateSiteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -11719,7 +11721,7 @@ type SitesCreateOrUpdateSiteSlotFuture struct {
 // If the operation has not completed it will return an error.
 func (future *SitesCreateOrUpdateSiteSlotFuture) Result(client SitesClient) (s Site, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.SitesCreateOrUpdateSiteSlotFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -11748,7 +11750,7 @@ type SitesListSitePublishingCredentialsFuture struct {
 // If the operation has not completed it will return an error.
 func (future *SitesListSitePublishingCredentialsFuture) Result(client SitesClient) (u User, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.SitesListSitePublishingCredentialsFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -11777,7 +11779,7 @@ type SitesListSitePublishingCredentialsSlotFuture struct {
 // If the operation has not completed it will return an error.
 func (future *SitesListSitePublishingCredentialsSlotFuture) Result(client SitesClient) (u User, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.SitesListSitePublishingCredentialsSlotFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -11943,7 +11945,7 @@ type SitesRecoverSiteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *SitesRecoverSiteFuture) Result(client SitesClient) (s Site, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.SitesRecoverSiteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -11972,7 +11974,7 @@ type SitesRecoverSiteSlotFuture struct {
 // If the operation has not completed it will return an error.
 func (future *SitesRecoverSiteSlotFuture) Result(client SitesClient) (s Site, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.SitesRecoverSiteSlotFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -12001,7 +12003,7 @@ type SitesRestoreSiteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *SitesRestoreSiteFuture) Result(client SitesClient) (rr RestoreResponse, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.SitesRestoreSiteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -12030,7 +12032,7 @@ type SitesRestoreSiteSlotFuture struct {
 // If the operation has not completed it will return an error.
 func (future *SitesRestoreSiteSlotFuture) Result(client SitesClient) (rr RestoreResponse, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.SitesRestoreSiteSlotFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -12059,7 +12061,7 @@ type SitesSwapSlotsSlotFuture struct {
 // If the operation has not completed it will return an error.
 func (future *SitesSwapSlotsSlotFuture) Result(client SitesClient) (so SetObject, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.SitesSwapSlotsSlotFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -12088,7 +12090,7 @@ type SitesSwapSlotWithProductionFuture struct {
 // If the operation has not completed it will return an error.
 func (future *SitesSwapSlotWithProductionFuture) Result(client SitesClient) (so SetObject, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "web.SitesSwapSlotWithProductionFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -12850,7 +12852,7 @@ func (sc *SourceControl) UnmarshalJSON(body []byte) error {
 	return nil
 }
 
-// SourceControlCollection collection of soure controls
+// SourceControlCollection collection of source controls
 type SourceControlCollection struct {
 	autorest.Response `json:"-"`
 	// Value - Collection of resources
@@ -13527,7 +13529,7 @@ func (tld *TopLevelDomain) UnmarshalJSON(body []byte) error {
 
 // TopLevelDomainAgreementOption options for retrieving the list of top level domain legal agreements
 type TopLevelDomainAgreementOption struct {
-	// IncludePrivacy - If true then the list of agreements will inclue agreements for domain privacy as well.
+	// IncludePrivacy - If true then the list of agreements will include agreements for domain privacy as well.
 	IncludePrivacy *bool `json:"includePrivacy,omitempty"`
 }
 
@@ -13975,7 +13977,7 @@ type UsageProperties struct {
 	SiteMode *string `json:"siteMode,omitempty"`
 }
 
-// User represents user crendentials used for publishing activity
+// User represents user credentials used for publishing activity
 type User struct {
 	autorest.Response `json:"-"`
 	*UserProperties   `json:"properties,omitempty"`

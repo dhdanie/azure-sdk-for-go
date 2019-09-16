@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,5 +21,5 @@ package commerceapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/commerce/mgmt/2015-06-01-preview/commerce/commerceapi"
 
-type UsageAggregatesClientAPI = original.UsageAggregatesClientAPI
 type RateCardClientAPI = original.RateCardClientAPI
+type UsageAggregatesClientAPI = original.UsageAggregatesClientAPI

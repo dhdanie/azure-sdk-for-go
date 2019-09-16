@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ package eventgrid
 
 import original "github.com/Azure/azure-sdk-for-go/services/eventgrid/2018-01-01/eventgrid"
 
-type BaseClient = original.BaseClient
 type MediaJobErrorCategory = original.MediaJobErrorCategory
 
 const (
@@ -72,6 +71,14 @@ const (
 	OdataTypeMicrosoftMediaJobOutputAsset OdataType = original.OdataTypeMicrosoftMediaJobOutputAsset
 )
 
+type AppConfigurationKeyValueDeletedEventData = original.AppConfigurationKeyValueDeletedEventData
+type AppConfigurationKeyValueModifiedEventData = original.AppConfigurationKeyValueModifiedEventData
+type BaseClient = original.BaseClient
+type BasicMediaJobOutput = original.BasicMediaJobOutput
+type ContainerRegistryArtifactEventData = original.ContainerRegistryArtifactEventData
+type ContainerRegistryArtifactEventTarget = original.ContainerRegistryArtifactEventTarget
+type ContainerRegistryChartDeletedEventData = original.ContainerRegistryChartDeletedEventData
+type ContainerRegistryChartPushedEventData = original.ContainerRegistryChartPushedEventData
 type ContainerRegistryEventActor = original.ContainerRegistryEventActor
 type ContainerRegistryEventData = original.ContainerRegistryEventData
 type ContainerRegistryEventRequest = original.ContainerRegistryEventRequest
@@ -82,6 +89,7 @@ type ContainerRegistryImagePushedEventData = original.ContainerRegistryImagePush
 type DeviceConnectionStateEventInfo = original.DeviceConnectionStateEventInfo
 type DeviceConnectionStateEventProperties = original.DeviceConnectionStateEventProperties
 type DeviceLifeCycleEventProperties = original.DeviceLifeCycleEventProperties
+type DeviceTelemetryEventProperties = original.DeviceTelemetryEventProperties
 type DeviceTwinInfo = original.DeviceTwinInfo
 type DeviceTwinInfoProperties = original.DeviceTwinInfoProperties
 type DeviceTwinInfoX509Thumbprint = original.DeviceTwinInfoX509Thumbprint
@@ -93,13 +101,18 @@ type IotHubDeviceConnectedEventData = original.IotHubDeviceConnectedEventData
 type IotHubDeviceCreatedEventData = original.IotHubDeviceCreatedEventData
 type IotHubDeviceDeletedEventData = original.IotHubDeviceDeletedEventData
 type IotHubDeviceDisconnectedEventData = original.IotHubDeviceDisconnectedEventData
+type IotHubDeviceTelemetryEventData = original.IotHubDeviceTelemetryEventData
+type MapsGeofenceEnteredEventData = original.MapsGeofenceEnteredEventData
+type MapsGeofenceEventProperties = original.MapsGeofenceEventProperties
+type MapsGeofenceExitedEventData = original.MapsGeofenceExitedEventData
+type MapsGeofenceGeometry = original.MapsGeofenceGeometry
+type MapsGeofenceResultEventData = original.MapsGeofenceResultEventData
 type MediaJobCanceledEventData = original.MediaJobCanceledEventData
 type MediaJobCancelingEventData = original.MediaJobCancelingEventData
 type MediaJobError = original.MediaJobError
 type MediaJobErrorDetail = original.MediaJobErrorDetail
 type MediaJobErroredEventData = original.MediaJobErroredEventData
 type MediaJobFinishedEventData = original.MediaJobFinishedEventData
-type BasicMediaJobOutput = original.BasicMediaJobOutput
 type MediaJobOutput = original.MediaJobOutput
 type MediaJobOutputAsset = original.MediaJobOutputAsset
 type MediaJobOutputCanceledEventData = original.MediaJobOutputCanceledEventData
@@ -107,6 +120,7 @@ type MediaJobOutputCancelingEventData = original.MediaJobOutputCancelingEventDat
 type MediaJobOutputErroredEventData = original.MediaJobOutputErroredEventData
 type MediaJobOutputFinishedEventData = original.MediaJobOutputFinishedEventData
 type MediaJobOutputProcessingEventData = original.MediaJobOutputProcessingEventData
+type MediaJobOutputProgressEventData = original.MediaJobOutputProgressEventData
 type MediaJobOutputScheduledEventData = original.MediaJobOutputScheduledEventData
 type MediaJobOutputStateChangeEventData = original.MediaJobOutputStateChangeEventData
 type MediaJobProcessingEventData = original.MediaJobProcessingEventData
@@ -132,6 +146,8 @@ type ResourceWriteFailureData = original.ResourceWriteFailureData
 type ResourceWriteSuccessData = original.ResourceWriteSuccessData
 type ServiceBusActiveMessagesAvailableWithNoListenersEventData = original.ServiceBusActiveMessagesAvailableWithNoListenersEventData
 type ServiceBusDeadletterMessagesAvailableWithNoListenersEventData = original.ServiceBusDeadletterMessagesAvailableWithNoListenersEventData
+type SignalRServiceClientConnectionConnectedEventData = original.SignalRServiceClientConnectionConnectedEventData
+type SignalRServiceClientConnectionDisconnectedEventData = original.SignalRServiceClientConnectionDisconnectedEventData
 type StorageBlobCreatedEventData = original.StorageBlobCreatedEventData
 type StorageBlobDeletedEventData = original.StorageBlobDeletedEventData
 type SubscriptionDeletedEventData = original.SubscriptionDeletedEventData

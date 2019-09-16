@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,5 +22,5 @@ package policyapi
 import original "github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2017-06-01-preview/policy/policyapi"
 
 type AssignmentsClientAPI = original.AssignmentsClientAPI
-type SetDefinitionsClientAPI = original.SetDefinitionsClientAPI
 type DefinitionsClientAPI = original.DefinitionsClientAPI
+type SetDefinitionsClientAPI = original.SetDefinitionsClientAPI

@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,10 +21,11 @@ package datamigrationapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/datamigration/mgmt/2018-07-15-preview/datamigration/datamigrationapi"
 
+type FilesClientAPI = original.FilesClientAPI
+type OperationsClientAPI = original.OperationsClientAPI
+type ProjectsClientAPI = original.ProjectsClientAPI
 type ResourceSkusClientAPI = original.ResourceSkusClientAPI
+type ServiceTasksClientAPI = original.ServiceTasksClientAPI
 type ServicesClientAPI = original.ServicesClientAPI
 type TasksClientAPI = original.TasksClientAPI
-type ProjectsClientAPI = original.ProjectsClientAPI
 type UsagesClientAPI = original.UsagesClientAPI
-type OperationsClientAPI = original.OperationsClientAPI
-type FilesClientAPI = original.FilesClientAPI

@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,10 +21,10 @@ package servicemapapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/operationalinsights/mgmt/2015-11-01-preview/servicemap/servicemapapi"
 
-type MachinesClientAPI = original.MachinesClientAPI
-type ProcessesClientAPI = original.ProcessesClientAPI
-type PortsClientAPI = original.PortsClientAPI
 type ClientGroupsClientAPI = original.ClientGroupsClientAPI
-type MapsClientAPI = original.MapsClientAPI
-type SummariesClientAPI = original.SummariesClientAPI
 type MachineGroupsClientAPI = original.MachineGroupsClientAPI
+type MachinesClientAPI = original.MachinesClientAPI
+type MapsClientAPI = original.MapsClientAPI
+type PortsClientAPI = original.PortsClientAPI
+type ProcessesClientAPI = original.ProcessesClientAPI
+type SummariesClientAPI = original.SummariesClientAPI

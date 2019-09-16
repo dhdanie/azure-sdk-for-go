@@ -52,7 +52,7 @@ func NewReportsClientWithBaseURI(baseURI string, subscriptionID string) ReportsC
 // interval - by time interval. This value is only applicable to ByTime aggregation. Interval must be multiple
 // of 15 minutes and may not be zero. The value should be in ISO  8601 format
 // (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimSpan to a valid
-// interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, secconds))
+// interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
 func (client ReportsClient) ListByService(ctx context.Context, resourceGroupName string, serviceName string, aggregation ReportsAggregation, filter string, top *int32, skip *int32, interval *string) (result ReportCollectionPage, err error) {
 	if tracing.IsEnabled() {
 		ctx = tracing.StartSpan(ctx, fqdn+"/ReportsClient.ListByService")
@@ -137,8 +137,8 @@ func (client ReportsClient) ListByServicePreparer(ctx context.Context, resourceG
 // ListByServiceSender sends the ListByService request. The method will close the
 // http.Response Body if it receives an error.
 func (client ReportsClient) ListByServiceSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListByServiceResponder handles the response to the ListByService request. The method always

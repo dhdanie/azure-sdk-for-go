@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,20 +22,13 @@ package batch
 import (
 	"context"
 
-	original "github.com/Azure/azure-sdk-for-go/services/batch/mgmt/2017-09-01/batch"
+	original "github.com/Azure/azure-sdk-for-go/services/batch/mgmt/2019-08-01/batch"
 )
-
-type AccountClient = original.AccountClient
-type ApplicationClient = original.ApplicationClient
-type ApplicationPackageClient = original.ApplicationPackageClient
-type CertificateClient = original.CertificateClient
 
 const (
 	DefaultBaseURI = original.DefaultBaseURI
 )
 
-type BaseClient = original.BaseClient
-type LocationClient = original.LocationClient
 type AccountKeyType = original.AccountKeyType
 
 const (
@@ -112,6 +105,13 @@ const (
 	Spread ComputeNodeFillType = original.Spread
 )
 
+type ContainerWorkingDirectory = original.ContainerWorkingDirectory
+
+const (
+	ContainerImageDefault ContainerWorkingDirectory = original.ContainerImageDefault
+	TaskWorkingDirectory  ContainerWorkingDirectory = original.TaskWorkingDirectory
+)
+
 type ElevationLevel = original.ElevationLevel
 
 const (
@@ -133,6 +133,13 @@ const (
 	Enabled  InterNodeCommunicationState = original.Enabled
 )
 
+type LoginMode = original.LoginMode
+
+const (
+	Batch       LoginMode = original.Batch
+	Interactive LoginMode = original.Interactive
+)
+
 type NameAvailabilityReason = original.NameAvailabilityReason
 
 const (
@@ -150,9 +157,8 @@ const (
 type PackageState = original.PackageState
 
 const (
-	Active   PackageState = original.Active
-	Pending  PackageState = original.Pending
-	Unmapped PackageState = original.Unmapped
+	Active  PackageState = original.Active
+	Pending PackageState = original.Pending
 )
 
 type PoolAllocationMode = original.PoolAllocationMode
@@ -188,6 +194,7 @@ const (
 )
 
 type Account = original.Account
+type AccountClient = original.AccountClient
 type AccountCreateFuture = original.AccountCreateFuture
 type AccountCreateParameters = original.AccountCreateParameters
 type AccountCreateProperties = original.AccountCreateProperties
@@ -202,18 +209,25 @@ type AccountUpdateParameters = original.AccountUpdateParameters
 type AccountUpdateProperties = original.AccountUpdateProperties
 type ActivateApplicationPackageParameters = original.ActivateApplicationPackageParameters
 type Application = original.Application
-type ApplicationCreateParameters = original.ApplicationCreateParameters
+type ApplicationClient = original.ApplicationClient
 type ApplicationPackage = original.ApplicationPackage
+type ApplicationPackageClient = original.ApplicationPackageClient
+type ApplicationPackageProperties = original.ApplicationPackageProperties
 type ApplicationPackageReference = original.ApplicationPackageReference
-type ApplicationUpdateParameters = original.ApplicationUpdateParameters
+type ApplicationProperties = original.ApplicationProperties
 type AutoScaleRun = original.AutoScaleRun
 type AutoScaleRunError = original.AutoScaleRunError
 type AutoScaleSettings = original.AutoScaleSettings
 type AutoStorageBaseProperties = original.AutoStorageBaseProperties
 type AutoStorageProperties = original.AutoStorageProperties
 type AutoUserSpecification = original.AutoUserSpecification
+type AzureBlobFileSystemConfiguration = original.AzureBlobFileSystemConfiguration
+type AzureFileShareConfiguration = original.AzureFileShareConfiguration
+type BaseClient = original.BaseClient
+type CIFSMountConfiguration = original.CIFSMountConfiguration
 type Certificate = original.Certificate
 type CertificateBaseProperties = original.CertificateBaseProperties
+type CertificateClient = original.CertificateClient
 type CertificateCreateFuture = original.CertificateCreateFuture
 type CertificateCreateOrUpdateParameters = original.CertificateCreateOrUpdateParameters
 type CertificateCreateOrUpdateProperties = original.CertificateCreateOrUpdateProperties
@@ -225,6 +239,8 @@ type CheckNameAvailabilityResult = original.CheckNameAvailabilityResult
 type CloudError = original.CloudError
 type CloudErrorBody = original.CloudErrorBody
 type CloudServiceConfiguration = original.CloudServiceConfiguration
+type ContainerConfiguration = original.ContainerConfiguration
+type ContainerRegistry = original.ContainerRegistry
 type DataDisk = original.DataDisk
 type DeleteCertificateError = original.DeleteCertificateError
 type DeploymentConfiguration = original.DeploymentConfiguration
@@ -234,6 +250,9 @@ type ImageReference = original.ImageReference
 type InboundNatPool = original.InboundNatPool
 type KeyVaultReference = original.KeyVaultReference
 type LinuxUserConfiguration = original.LinuxUserConfiguration
+type ListApplicationPackagesResult = original.ListApplicationPackagesResult
+type ListApplicationPackagesResultIterator = original.ListApplicationPackagesResultIterator
+type ListApplicationPackagesResultPage = original.ListApplicationPackagesResultPage
 type ListApplicationsResult = original.ListApplicationsResult
 type ListApplicationsResultIterator = original.ListApplicationsResultIterator
 type ListApplicationsResultPage = original.ListApplicationsResultPage
@@ -243,8 +262,11 @@ type ListCertificatesResultPage = original.ListCertificatesResultPage
 type ListPoolsResult = original.ListPoolsResult
 type ListPoolsResultIterator = original.ListPoolsResultIterator
 type ListPoolsResultPage = original.ListPoolsResultPage
+type LocationClient = original.LocationClient
 type LocationQuota = original.LocationQuota
 type MetadataItem = original.MetadataItem
+type MountConfiguration = original.MountConfiguration
+type NFSMountConfiguration = original.NFSMountConfiguration
 type NetworkConfiguration = original.NetworkConfiguration
 type NetworkSecurityGroupRule = original.NetworkSecurityGroupRule
 type Operation = original.Operation
@@ -252,8 +274,9 @@ type OperationDisplay = original.OperationDisplay
 type OperationListResult = original.OperationListResult
 type OperationListResultIterator = original.OperationListResultIterator
 type OperationListResultPage = original.OperationListResultPage
-type OSDisk = original.OSDisk
+type OperationsClient = original.OperationsClient
 type Pool = original.Pool
+type PoolClient = original.PoolClient
 type PoolCreateFuture = original.PoolCreateFuture
 type PoolDeleteFuture = original.PoolDeleteFuture
 type PoolEndpointConfiguration = original.PoolEndpointConfiguration
@@ -265,19 +288,29 @@ type Resource = original.Resource
 type ResourceFile = original.ResourceFile
 type ScaleSettings = original.ScaleSettings
 type StartTask = original.StartTask
+type TaskContainerSettings = original.TaskContainerSettings
 type TaskSchedulingPolicy = original.TaskSchedulingPolicy
 type UserAccount = original.UserAccount
 type UserIdentity = original.UserIdentity
 type VirtualMachineConfiguration = original.VirtualMachineConfiguration
+type VirtualMachineFamilyCoreQuota = original.VirtualMachineFamilyCoreQuota
 type WindowsConfiguration = original.WindowsConfiguration
-type OperationsClient = original.OperationsClient
-type PoolClient = original.PoolClient
+type WindowsUserConfiguration = original.WindowsUserConfiguration
 
+func New(subscriptionID string) BaseClient {
+	return original.New(subscriptionID)
+}
 func NewAccountClient(subscriptionID string) AccountClient {
 	return original.NewAccountClient(subscriptionID)
 }
 func NewAccountClientWithBaseURI(baseURI string, subscriptionID string) AccountClient {
 	return original.NewAccountClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewAccountListResultIterator(page AccountListResultPage) AccountListResultIterator {
+	return original.NewAccountListResultIterator(page)
+}
+func NewAccountListResultPage(getNextPage func(context.Context, AccountListResult) (AccountListResult, error)) AccountListResultPage {
+	return original.NewAccountListResultPage(getNextPage)
 }
 func NewApplicationClient(subscriptionID string) ApplicationClient {
 	return original.NewApplicationClient(subscriptionID)
@@ -297,17 +330,56 @@ func NewCertificateClient(subscriptionID string) CertificateClient {
 func NewCertificateClientWithBaseURI(baseURI string, subscriptionID string) CertificateClient {
 	return original.NewCertificateClientWithBaseURI(baseURI, subscriptionID)
 }
-func New(subscriptionID string) BaseClient {
-	return original.New(subscriptionID)
+func NewListApplicationPackagesResultIterator(page ListApplicationPackagesResultPage) ListApplicationPackagesResultIterator {
+	return original.NewListApplicationPackagesResultIterator(page)
 }
-func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
-	return original.NewWithBaseURI(baseURI, subscriptionID)
+func NewListApplicationPackagesResultPage(getNextPage func(context.Context, ListApplicationPackagesResult) (ListApplicationPackagesResult, error)) ListApplicationPackagesResultPage {
+	return original.NewListApplicationPackagesResultPage(getNextPage)
+}
+func NewListApplicationsResultIterator(page ListApplicationsResultPage) ListApplicationsResultIterator {
+	return original.NewListApplicationsResultIterator(page)
+}
+func NewListApplicationsResultPage(getNextPage func(context.Context, ListApplicationsResult) (ListApplicationsResult, error)) ListApplicationsResultPage {
+	return original.NewListApplicationsResultPage(getNextPage)
+}
+func NewListCertificatesResultIterator(page ListCertificatesResultPage) ListCertificatesResultIterator {
+	return original.NewListCertificatesResultIterator(page)
+}
+func NewListCertificatesResultPage(getNextPage func(context.Context, ListCertificatesResult) (ListCertificatesResult, error)) ListCertificatesResultPage {
+	return original.NewListCertificatesResultPage(getNextPage)
+}
+func NewListPoolsResultIterator(page ListPoolsResultPage) ListPoolsResultIterator {
+	return original.NewListPoolsResultIterator(page)
+}
+func NewListPoolsResultPage(getNextPage func(context.Context, ListPoolsResult) (ListPoolsResult, error)) ListPoolsResultPage {
+	return original.NewListPoolsResultPage(getNextPage)
 }
 func NewLocationClient(subscriptionID string) LocationClient {
 	return original.NewLocationClient(subscriptionID)
 }
 func NewLocationClientWithBaseURI(baseURI string, subscriptionID string) LocationClient {
 	return original.NewLocationClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewOperationListResultIterator(page OperationListResultPage) OperationListResultIterator {
+	return original.NewOperationListResultIterator(page)
+}
+func NewOperationListResultPage(getNextPage func(context.Context, OperationListResult) (OperationListResult, error)) OperationListResultPage {
+	return original.NewOperationListResultPage(getNextPage)
+}
+func NewOperationsClient(subscriptionID string) OperationsClient {
+	return original.NewOperationsClient(subscriptionID)
+}
+func NewOperationsClientWithBaseURI(baseURI string, subscriptionID string) OperationsClient {
+	return original.NewOperationsClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewPoolClient(subscriptionID string) PoolClient {
+	return original.NewPoolClient(subscriptionID)
+}
+func NewPoolClientWithBaseURI(baseURI string, subscriptionID string) PoolClient {
+	return original.NewPoolClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
+	return original.NewWithBaseURI(baseURI, subscriptionID)
 }
 func PossibleAccountKeyTypeValues() []AccountKeyType {
 	return original.PossibleAccountKeyTypeValues()
@@ -339,6 +411,9 @@ func PossibleComputeNodeDeallocationOptionValues() []ComputeNodeDeallocationOpti
 func PossibleComputeNodeFillTypeValues() []ComputeNodeFillType {
 	return original.PossibleComputeNodeFillTypeValues()
 }
+func PossibleContainerWorkingDirectoryValues() []ContainerWorkingDirectory {
+	return original.PossibleContainerWorkingDirectoryValues()
+}
 func PossibleElevationLevelValues() []ElevationLevel {
 	return original.PossibleElevationLevelValues()
 }
@@ -347,6 +422,9 @@ func PossibleInboundEndpointProtocolValues() []InboundEndpointProtocol {
 }
 func PossibleInterNodeCommunicationStateValues() []InterNodeCommunicationState {
 	return original.PossibleInterNodeCommunicationStateValues()
+}
+func PossibleLoginModeValues() []LoginMode {
+	return original.PossibleLoginModeValues()
 }
 func PossibleNameAvailabilityReasonValues() []NameAvailabilityReason {
 	return original.PossibleNameAvailabilityReasonValues()
@@ -368,48 +446,6 @@ func PossibleProvisioningStateValues() []ProvisioningState {
 }
 func PossibleStorageAccountTypeValues() []StorageAccountType {
 	return original.PossibleStorageAccountTypeValues()
-}
-func NewAccountListResultIterator(page AccountListResultPage) AccountListResultIterator {
-	return original.NewAccountListResultIterator(page)
-}
-func NewAccountListResultPage(getNextPage func(context.Context, AccountListResult) (AccountListResult, error)) AccountListResultPage {
-	return original.NewAccountListResultPage(getNextPage)
-}
-func NewListApplicationsResultIterator(page ListApplicationsResultPage) ListApplicationsResultIterator {
-	return original.NewListApplicationsResultIterator(page)
-}
-func NewListApplicationsResultPage(getNextPage func(context.Context, ListApplicationsResult) (ListApplicationsResult, error)) ListApplicationsResultPage {
-	return original.NewListApplicationsResultPage(getNextPage)
-}
-func NewListCertificatesResultIterator(page ListCertificatesResultPage) ListCertificatesResultIterator {
-	return original.NewListCertificatesResultIterator(page)
-}
-func NewListCertificatesResultPage(getNextPage func(context.Context, ListCertificatesResult) (ListCertificatesResult, error)) ListCertificatesResultPage {
-	return original.NewListCertificatesResultPage(getNextPage)
-}
-func NewListPoolsResultIterator(page ListPoolsResultPage) ListPoolsResultIterator {
-	return original.NewListPoolsResultIterator(page)
-}
-func NewListPoolsResultPage(getNextPage func(context.Context, ListPoolsResult) (ListPoolsResult, error)) ListPoolsResultPage {
-	return original.NewListPoolsResultPage(getNextPage)
-}
-func NewOperationListResultIterator(page OperationListResultPage) OperationListResultIterator {
-	return original.NewOperationListResultIterator(page)
-}
-func NewOperationListResultPage(getNextPage func(context.Context, OperationListResult) (OperationListResult, error)) OperationListResultPage {
-	return original.NewOperationListResultPage(getNextPage)
-}
-func NewOperationsClient(subscriptionID string) OperationsClient {
-	return original.NewOperationsClient(subscriptionID)
-}
-func NewOperationsClientWithBaseURI(baseURI string, subscriptionID string) OperationsClient {
-	return original.NewOperationsClientWithBaseURI(baseURI, subscriptionID)
-}
-func NewPoolClient(subscriptionID string) PoolClient {
-	return original.NewPoolClient(subscriptionID)
-}
-func NewPoolClientWithBaseURI(baseURI string, subscriptionID string) PoolClient {
-	return original.NewPoolClientWithBaseURI(baseURI, subscriptionID)
 }
 func UserAgent() string {
 	return original.UserAgent() + " profiles/latest"

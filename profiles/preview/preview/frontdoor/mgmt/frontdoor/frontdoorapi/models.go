@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,14 +19,15 @@
 
 package frontdoorapi
 
-import original "github.com/Azure/azure-sdk-for-go/services/preview/frontdoor/mgmt/2018-08-01-preview/frontdoor/frontdoorapi"
+import original "github.com/Azure/azure-sdk-for-go/services/preview/frontdoor/mgmt/2019-05-01/frontdoor/frontdoorapi"
 
+type BackendPoolsClientAPI = original.BackendPoolsClientAPI
 type BaseClientAPI = original.BaseClientAPI
+type EndpointsClientAPI = original.EndpointsClientAPI
 type FrontDoorsClientAPI = original.FrontDoorsClientAPI
-type RoutingRulesClientAPI = original.RoutingRulesClientAPI
+type FrontendEndpointsClientAPI = original.FrontendEndpointsClientAPI
 type HealthProbeSettingsClientAPI = original.HealthProbeSettingsClientAPI
 type LoadBalancingSettingsClientAPI = original.LoadBalancingSettingsClientAPI
-type BackendPoolsClientAPI = original.BackendPoolsClientAPI
-type FrontendEndpointsClientAPI = original.FrontendEndpointsClientAPI
-type EndpointsClientAPI = original.EndpointsClientAPI
+type ManagedRuleSetsClientAPI = original.ManagedRuleSetsClientAPI
 type PoliciesClientAPI = original.PoliciesClientAPI
+type RoutingRulesClientAPI = original.RoutingRulesClientAPI

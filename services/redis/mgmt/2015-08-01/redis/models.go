@@ -105,11 +105,11 @@ type AccessKeys struct {
 type CreateOrUpdateParameters struct {
 	// Properties - Redis cache properties.
 	*Properties `json:"properties,omitempty"`
-	// ID - Resource ID.
+	// ID - READ-ONLY; Resource ID.
 	ID *string `json:"id,omitempty"`
-	// Name - Resource name.
+	// Name - READ-ONLY; Resource name.
 	Name *string `json:"name,omitempty"`
-	// Type - Resource type.
+	// Type - READ-ONLY; Resource type.
 	Type *string `json:"type,omitempty"`
 	// Location - Resource location.
 	Location *string `json:"location,omitempty"`
@@ -122,15 +122,6 @@ func (coup CreateOrUpdateParameters) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]interface{})
 	if coup.Properties != nil {
 		objectMap["properties"] = coup.Properties
-	}
-	if coup.ID != nil {
-		objectMap["id"] = coup.ID
-	}
-	if coup.Name != nil {
-		objectMap["name"] = coup.Name
-	}
-	if coup.Type != nil {
-		objectMap["type"] = coup.Type
 	}
 	if coup.Location != nil {
 		objectMap["location"] = coup.Location
@@ -379,7 +370,7 @@ type Properties struct {
 	TenantSettings map[string]*string `json:"tenantSettings"`
 	// ShardCount - The number of shards to be created on a Premium Cluster Cache.
 	ShardCount *int32 `json:"shardCount,omitempty"`
-	// VirtualNetwork - The exact ARM resource ID of the virtual network to deploy the Redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
+	// VirtualNetwork - The exact ARM resource ID of the virtual network to deploy the Redis cache in. Example format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
 	VirtualNetwork *string `json:"virtualNetwork,omitempty"`
 	// Subnet - Required when deploying a Redis cache inside an existing Azure Virtual Network.
 	Subnet *string `json:"subnet,omitempty"`
@@ -442,7 +433,7 @@ type ReadableProperties struct {
 	TenantSettings map[string]*string `json:"tenantSettings"`
 	// ShardCount - The number of shards to be created on a Premium Cluster Cache.
 	ShardCount *int32 `json:"shardCount,omitempty"`
-	// VirtualNetwork - The exact ARM resource ID of the virtual network to deploy the Redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
+	// VirtualNetwork - The exact ARM resource ID of the virtual network to deploy the Redis cache in. Example format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
 	VirtualNetwork *string `json:"virtualNetwork,omitempty"`
 	// Subnet - Required when deploying a Redis cache inside an existing Azure Virtual Network.
 	Subnet *string `json:"subnet,omitempty"`
@@ -519,7 +510,7 @@ type ReadablePropertiesWithAccessKey struct {
 	TenantSettings map[string]*string `json:"tenantSettings"`
 	// ShardCount - The number of shards to be created on a Premium Cluster Cache.
 	ShardCount *int32 `json:"shardCount,omitempty"`
-	// VirtualNetwork - The exact ARM resource ID of the virtual network to deploy the Redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
+	// VirtualNetwork - The exact ARM resource ID of the virtual network to deploy the Redis cache in. Example format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
 	VirtualNetwork *string `json:"virtualNetwork,omitempty"`
 	// Subnet - Required when deploying a Redis cache inside an existing Azure Virtual Network.
 	Subnet *string `json:"subnet,omitempty"`
@@ -591,11 +582,11 @@ type RegenerateKeyParameters struct {
 
 // Resource ...
 type Resource struct {
-	// ID - Resource ID.
+	// ID - READ-ONLY; Resource ID.
 	ID *string `json:"id,omitempty"`
-	// Name - Resource name.
+	// Name - READ-ONLY; Resource name.
 	Name *string `json:"name,omitempty"`
-	// Type - Resource type.
+	// Type - READ-ONLY; Resource type.
 	Type *string `json:"type,omitempty"`
 	// Location - Resource location.
 	Location *string `json:"location,omitempty"`
@@ -606,15 +597,6 @@ type Resource struct {
 // MarshalJSON is the custom marshaler for Resource.
 func (r Resource) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]interface{})
-	if r.ID != nil {
-		objectMap["id"] = r.ID
-	}
-	if r.Name != nil {
-		objectMap["name"] = r.Name
-	}
-	if r.Type != nil {
-		objectMap["type"] = r.Type
-	}
 	if r.Location != nil {
 		objectMap["location"] = r.Location
 	}
@@ -629,11 +611,11 @@ type ResourceType struct {
 	autorest.Response `json:"-"`
 	// ReadableProperties - Redis cache properties.
 	*ReadableProperties `json:"properties,omitempty"`
-	// ID - Resource ID.
+	// ID - READ-ONLY; Resource ID.
 	ID *string `json:"id,omitempty"`
-	// Name - Resource name.
+	// Name - READ-ONLY; Resource name.
 	Name *string `json:"name,omitempty"`
-	// Type - Resource type.
+	// Type - READ-ONLY; Resource type.
 	Type *string `json:"type,omitempty"`
 	// Location - Resource location.
 	Location *string `json:"location,omitempty"`
@@ -646,15 +628,6 @@ func (rt ResourceType) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]interface{})
 	if rt.ReadableProperties != nil {
 		objectMap["properties"] = rt.ReadableProperties
-	}
-	if rt.ID != nil {
-		objectMap["id"] = rt.ID
-	}
-	if rt.Name != nil {
-		objectMap["name"] = rt.Name
-	}
-	if rt.Type != nil {
-		objectMap["type"] = rt.Type
 	}
 	if rt.Location != nil {
 		objectMap["location"] = rt.Location
@@ -739,11 +712,11 @@ type ResourceWithAccessKey struct {
 	autorest.Response `json:"-"`
 	// ReadablePropertiesWithAccessKey - Redis cache properties.
 	*ReadablePropertiesWithAccessKey `json:"properties,omitempty"`
-	// ID - Resource ID.
+	// ID - READ-ONLY; Resource ID.
 	ID *string `json:"id,omitempty"`
-	// Name - Resource name.
+	// Name - READ-ONLY; Resource name.
 	Name *string `json:"name,omitempty"`
-	// Type - Resource type.
+	// Type - READ-ONLY; Resource type.
 	Type *string `json:"type,omitempty"`
 	// Location - Resource location.
 	Location *string `json:"location,omitempty"`
@@ -756,15 +729,6 @@ func (rwak ResourceWithAccessKey) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]interface{})
 	if rwak.ReadablePropertiesWithAccessKey != nil {
 		objectMap["properties"] = rwak.ReadablePropertiesWithAccessKey
-	}
-	if rwak.ID != nil {
-		objectMap["id"] = rwak.ID
-	}
-	if rwak.Name != nil {
-		objectMap["name"] = rwak.Name
-	}
-	if rwak.Type != nil {
-		objectMap["type"] = rwak.Type
 	}
 	if rwak.Location != nil {
 		objectMap["location"] = rwak.Location

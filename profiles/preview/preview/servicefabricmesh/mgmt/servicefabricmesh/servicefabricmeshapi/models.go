@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,13 +21,13 @@ package servicefabricmeshapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/servicefabricmesh/mgmt/2018-09-01-preview/servicefabricmesh/servicefabricmeshapi"
 
+type ApplicationClientAPI = original.ApplicationClientAPI
+type CodePackageClientAPI = original.CodePackageClientAPI
+type GatewayClientAPI = original.GatewayClientAPI
+type NetworkClientAPI = original.NetworkClientAPI
 type OperationsClientAPI = original.OperationsClientAPI
 type SecretClientAPI = original.SecretClientAPI
 type SecretValueClientAPI = original.SecretValueClientAPI
-type VolumeClientAPI = original.VolumeClientAPI
-type NetworkClientAPI = original.NetworkClientAPI
-type GatewayClientAPI = original.GatewayClientAPI
-type ApplicationClientAPI = original.ApplicationClientAPI
 type ServiceClientAPI = original.ServiceClientAPI
 type ServiceReplicaClientAPI = original.ServiceReplicaClientAPI
-type CodePackageClientAPI = original.CodePackageClientAPI
+type VolumeClientAPI = original.VolumeClientAPI

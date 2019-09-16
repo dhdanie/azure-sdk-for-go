@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,22 +22,34 @@ package alertsmanagement
 import (
 	"context"
 
-	original "github.com/Azure/azure-sdk-for-go/services/alertsmanagement/mgmt/2018-05-05/alertsmanagement"
+	original "github.com/Azure/azure-sdk-for-go/services/alertsmanagement/mgmt/2019-03-01/alertsmanagement"
 )
-
-type AlertsClient = original.AlertsClient
 
 const (
 	DefaultBaseURI = original.DefaultBaseURI
 )
 
-type BaseClient = original.BaseClient
 type AlertModificationEvent = original.AlertModificationEvent
 
 const (
 	AlertCreated           AlertModificationEvent = original.AlertCreated
 	MonitorConditionChange AlertModificationEvent = original.MonitorConditionChange
 	StateChange            AlertModificationEvent = original.StateChange
+)
+
+type AlertRuleState = original.AlertRuleState
+
+const (
+	Disabled AlertRuleState = original.Disabled
+	Enabled  AlertRuleState = original.Enabled
+)
+
+type AlertState = original.AlertState
+
+const (
+	AlertStateAcknowledged AlertState = original.AlertStateAcknowledged
+	AlertStateClosed       AlertState = original.AlertStateClosed
+	AlertStateNew          AlertState = original.AlertStateNew
 )
 
 type AlertsSortByFields = original.AlertsSortByFields
@@ -66,14 +78,6 @@ const (
 	AlertsSummaryGroupByFieldsSignalType       AlertsSummaryGroupByFields = original.AlertsSummaryGroupByFieldsSignalType
 )
 
-type AlertState = original.AlertState
-
-const (
-	AlertStateAcknowledged AlertState = original.AlertStateAcknowledged
-	AlertStateClosed       AlertState = original.AlertStateClosed
-	AlertStateNew          AlertState = original.AlertStateNew
-)
-
 type MonitorCondition = original.MonitorCondition
 
 const (
@@ -93,6 +97,7 @@ const (
 	LogAnalytics              MonitorService = original.LogAnalytics
 	Nagios                    MonitorService = original.Nagios
 	Platform                  MonitorService = original.Platform
+	ResourceHealth            MonitorService = original.ResourceHealth
 	SCOM                      MonitorService = original.SCOM
 	ServiceHealth             MonitorService = original.ServiceHealth
 	SmartDetector             MonitorService = original.SmartDetector
@@ -154,59 +159,111 @@ const (
 	ThreeZerod TimeRange = original.ThreeZerod
 )
 
+type ActionGroupsInformation = original.ActionGroupsInformation
 type Alert = original.Alert
 type AlertModification = original.AlertModification
 type AlertModificationItem = original.AlertModificationItem
 type AlertModificationProperties = original.AlertModificationProperties
 type AlertProperties = original.AlertProperties
+type AlertRule = original.AlertRule
+type AlertRuleProperties = original.AlertRuleProperties
+type AlertRulesList = original.AlertRulesList
+type AlertRulesListIterator = original.AlertRulesListIterator
+type AlertRulesListPage = original.AlertRulesListPage
+type AlertsClient = original.AlertsClient
 type AlertsList = original.AlertsList
 type AlertsListIterator = original.AlertsListIterator
 type AlertsListPage = original.AlertsListPage
 type AlertsSummary = original.AlertsSummary
 type AlertsSummaryGroup = original.AlertsSummaryGroup
 type AlertsSummaryGroupItem = original.AlertsSummaryGroupItem
+type AzureResource = original.AzureResource
+type BaseClient = original.BaseClient
+type Detector = original.Detector
 type ErrorResponse = original.ErrorResponse
+type ErrorResponse1 = original.ErrorResponse1
 type ErrorResponseBody = original.ErrorResponseBody
 type Essentials = original.Essentials
 type Operation = original.Operation
 type OperationDisplay = original.OperationDisplay
+type OperationsClient = original.OperationsClient
 type OperationsList = original.OperationsList
 type OperationsListIterator = original.OperationsListIterator
 type OperationsListPage = original.OperationsListPage
-type Resource = original.Resource
+type ProxyResource = original.ProxyResource
+type SmartDetectorAlertRulesClient = original.SmartDetectorAlertRulesClient
 type SmartGroup = original.SmartGroup
 type SmartGroupAggregatedProperty = original.SmartGroupAggregatedProperty
 type SmartGroupModification = original.SmartGroupModification
 type SmartGroupModificationItem = original.SmartGroupModificationItem
 type SmartGroupModificationProperties = original.SmartGroupModificationProperties
 type SmartGroupProperties = original.SmartGroupProperties
-type SmartGroupsList = original.SmartGroupsList
-type OperationsClient = original.OperationsClient
 type SmartGroupsClient = original.SmartGroupsClient
+type SmartGroupsList = original.SmartGroupsList
+type ThrottlingInformation = original.ThrottlingInformation
 
-func NewAlertsClient(subscriptionID string) AlertsClient {
-	return original.NewAlertsClient(subscriptionID)
+func New(scope string, subscriptionID string, subscriptionID1 string) BaseClient {
+	return original.New(scope, subscriptionID, subscriptionID1)
 }
-func NewAlertsClientWithBaseURI(baseURI string, subscriptionID string) AlertsClient {
-	return original.NewAlertsClientWithBaseURI(baseURI, subscriptionID)
+func NewAlertRulesListIterator(page AlertRulesListPage) AlertRulesListIterator {
+	return original.NewAlertRulesListIterator(page)
 }
-func New(subscriptionID string) BaseClient {
-	return original.New(subscriptionID)
+func NewAlertRulesListPage(getNextPage func(context.Context, AlertRulesList) (AlertRulesList, error)) AlertRulesListPage {
+	return original.NewAlertRulesListPage(getNextPage)
 }
-func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
-	return original.NewWithBaseURI(baseURI, subscriptionID)
+func NewAlertsClient(scope string, subscriptionID string, subscriptionID1 string) AlertsClient {
+	return original.NewAlertsClient(scope, subscriptionID, subscriptionID1)
+}
+func NewAlertsClientWithBaseURI(baseURI string, scope string, subscriptionID string, subscriptionID1 string) AlertsClient {
+	return original.NewAlertsClientWithBaseURI(baseURI, scope, subscriptionID, subscriptionID1)
+}
+func NewAlertsListIterator(page AlertsListPage) AlertsListIterator {
+	return original.NewAlertsListIterator(page)
+}
+func NewAlertsListPage(getNextPage func(context.Context, AlertsList) (AlertsList, error)) AlertsListPage {
+	return original.NewAlertsListPage(getNextPage)
+}
+func NewOperationsClient(scope string, subscriptionID string, subscriptionID1 string) OperationsClient {
+	return original.NewOperationsClient(scope, subscriptionID, subscriptionID1)
+}
+func NewOperationsClientWithBaseURI(baseURI string, scope string, subscriptionID string, subscriptionID1 string) OperationsClient {
+	return original.NewOperationsClientWithBaseURI(baseURI, scope, subscriptionID, subscriptionID1)
+}
+func NewOperationsListIterator(page OperationsListPage) OperationsListIterator {
+	return original.NewOperationsListIterator(page)
+}
+func NewOperationsListPage(getNextPage func(context.Context, OperationsList) (OperationsList, error)) OperationsListPage {
+	return original.NewOperationsListPage(getNextPage)
+}
+func NewSmartDetectorAlertRulesClient(scope string, subscriptionID string, subscriptionID1 string) SmartDetectorAlertRulesClient {
+	return original.NewSmartDetectorAlertRulesClient(scope, subscriptionID, subscriptionID1)
+}
+func NewSmartDetectorAlertRulesClientWithBaseURI(baseURI string, scope string, subscriptionID string, subscriptionID1 string) SmartDetectorAlertRulesClient {
+	return original.NewSmartDetectorAlertRulesClientWithBaseURI(baseURI, scope, subscriptionID, subscriptionID1)
+}
+func NewSmartGroupsClient(scope string, subscriptionID string, subscriptionID1 string) SmartGroupsClient {
+	return original.NewSmartGroupsClient(scope, subscriptionID, subscriptionID1)
+}
+func NewSmartGroupsClientWithBaseURI(baseURI string, scope string, subscriptionID string, subscriptionID1 string) SmartGroupsClient {
+	return original.NewSmartGroupsClientWithBaseURI(baseURI, scope, subscriptionID, subscriptionID1)
+}
+func NewWithBaseURI(baseURI string, scope string, subscriptionID string, subscriptionID1 string) BaseClient {
+	return original.NewWithBaseURI(baseURI, scope, subscriptionID, subscriptionID1)
 }
 func PossibleAlertModificationEventValues() []AlertModificationEvent {
 	return original.PossibleAlertModificationEventValues()
+}
+func PossibleAlertRuleStateValues() []AlertRuleState {
+	return original.PossibleAlertRuleStateValues()
+}
+func PossibleAlertStateValues() []AlertState {
+	return original.PossibleAlertStateValues()
 }
 func PossibleAlertsSortByFieldsValues() []AlertsSortByFields {
 	return original.PossibleAlertsSortByFieldsValues()
 }
 func PossibleAlertsSummaryGroupByFieldsValues() []AlertsSummaryGroupByFields {
 	return original.PossibleAlertsSummaryGroupByFieldsValues()
-}
-func PossibleAlertStateValues() []AlertState {
-	return original.PossibleAlertStateValues()
 }
 func PossibleMonitorConditionValues() []MonitorCondition {
 	return original.PossibleMonitorConditionValues()
@@ -231,30 +288,6 @@ func PossibleStateValues() []State {
 }
 func PossibleTimeRangeValues() []TimeRange {
 	return original.PossibleTimeRangeValues()
-}
-func NewAlertsListIterator(page AlertsListPage) AlertsListIterator {
-	return original.NewAlertsListIterator(page)
-}
-func NewAlertsListPage(getNextPage func(context.Context, AlertsList) (AlertsList, error)) AlertsListPage {
-	return original.NewAlertsListPage(getNextPage)
-}
-func NewOperationsListIterator(page OperationsListPage) OperationsListIterator {
-	return original.NewOperationsListIterator(page)
-}
-func NewOperationsListPage(getNextPage func(context.Context, OperationsList) (OperationsList, error)) OperationsListPage {
-	return original.NewOperationsListPage(getNextPage)
-}
-func NewOperationsClient(subscriptionID string) OperationsClient {
-	return original.NewOperationsClient(subscriptionID)
-}
-func NewOperationsClientWithBaseURI(baseURI string, subscriptionID string) OperationsClient {
-	return original.NewOperationsClientWithBaseURI(baseURI, subscriptionID)
-}
-func NewSmartGroupsClient(subscriptionID string) SmartGroupsClient {
-	return original.NewSmartGroupsClient(subscriptionID)
-}
-func NewSmartGroupsClientWithBaseURI(baseURI string, subscriptionID string) SmartGroupsClient {
-	return original.NewSmartGroupsClientWithBaseURI(baseURI, subscriptionID)
 }
 func UserAgent() string {
 	return original.UserAgent() + " profiles/preview"

@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ package iothubapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/provisioningservices/mgmt/2017-08-21-preview/iothub/iothubapi"
 
-type OperationsClientAPI = original.OperationsClientAPI
 type DpsCertificateClientAPI = original.DpsCertificateClientAPI
-type IotDpsResourceClientAPI = original.IotDpsResourceClientAPI
 type DpsCertificatesClientAPI = original.DpsCertificatesClientAPI
+type IotDpsResourceClientAPI = original.IotDpsResourceClientAPI
+type OperationsClientAPI = original.OperationsClientAPI

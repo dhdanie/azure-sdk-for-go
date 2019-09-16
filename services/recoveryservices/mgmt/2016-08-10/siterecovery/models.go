@@ -1893,11 +1893,11 @@ type Alert struct {
 	autorest.Response `json:"-"`
 	// Properties - Alert related data.
 	Properties *AlertProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -2049,7 +2049,7 @@ func NewAlertCollectionPage(getNextPage func(context.Context, AlertCollection) (
 	return AlertCollectionPage{fn: getNextPage}
 }
 
-// AlertProperties the proprties of an alert.
+// AlertProperties the properties of an alert.
 type AlertProperties struct {
 	// SendToOwners - A value indicating whether to send email to subscription administrator.
 	SendToOwners *string `json:"sendToOwners,omitempty"`
@@ -2683,7 +2683,7 @@ func (afsd AzureFabricSpecificDetails) AsBasicFabricSpecificDetails() (BasicFabr
 	return &afsd, true
 }
 
-// AzureToAzureCreateNetworkMappingInput create network mappings input properties/behaviour specific to
+// AzureToAzureCreateNetworkMappingInput create network mappings input properties/behavior specific to
 // Azure to Azure Network mapping.
 type AzureToAzureCreateNetworkMappingInput struct {
 	// PrimaryNetworkID - The primary azure vnet Id.
@@ -2981,7 +2981,7 @@ type ConfigureAlertRequestProperties struct {
 }
 
 // ConsistencyCheckTaskDetails this class contains monitoring details of all the inconsistent Protected
-// Entites in Vmm.
+// Entities in Vmm.
 type ConsistencyCheckTaskDetails struct {
 	// VMDetails - The list of inconsistent Vm details.
 	VMDetails *[]InconsistentVMDetails `json:"vmDetails,omitempty"`
@@ -3223,7 +3223,7 @@ type CurrentScenarioDetails struct {
 	StartTime *date.Time `json:"startTime,omitempty"`
 }
 
-// DataStore the datastore details of the MT.
+// DataStore the data store details of the MT.
 type DataStore struct {
 	// SymbolicName - The symbolic name of data store.
 	SymbolicName *string `json:"symbolicName,omitempty"`
@@ -3373,7 +3373,7 @@ type DiscoverProtectableItemRequestProperties struct {
 	OsType *string `json:"osType,omitempty"`
 }
 
-// DiskDetails onprem disk details data.
+// DiskDetails on-prem disk details data.
 type DiskDetails struct {
 	// MaxSizeMB - The hard disk max size in MB.
 	MaxSizeMB *int64 `json:"maxSizeMB,omitempty"`
@@ -3593,11 +3593,11 @@ type Event struct {
 	autorest.Response `json:"-"`
 	// Properties - Event related data.
 	Properties *EventProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -3761,7 +3761,7 @@ type EventProperties struct {
 	AffectedObjectFriendlyName *string `json:"affectedObjectFriendlyName,omitempty"`
 	// Severity - The severity of the event.
 	Severity *string `json:"severity,omitempty"`
-	// TimeOfOccurrence - The time of occurence of the event.
+	// TimeOfOccurrence - The time of occurrence of the event.
 	TimeOfOccurrence *date.Time `json:"timeOfOccurrence,omitempty"`
 	// FabricID - The ARM ID of the fabric.
 	FabricID *string `json:"fabricId,omitempty"`
@@ -4163,11 +4163,11 @@ type Fabric struct {
 	autorest.Response `json:"-"`
 	// Properties - Fabric related data.
 	Properties *FabricProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -7942,11 +7942,11 @@ type InMageAzureV2ProtectedDiskDetails struct {
 
 // InMageAzureV2RecoveryPointDetails inMage Azure V2 provider specific recovery point details.
 type InMageAzureV2RecoveryPointDetails struct {
-	// InstanceType - Gets the instance type.
+	// InstanceType - READ-ONLY; Gets the instance type.
 	InstanceType *string `json:"instanceType,omitempty"`
 	// IsMultiVMSyncPoint - A value indicating whether the recovery point is multi VM consistent.
 	IsMultiVMSyncPoint *string `json:"isMultiVmSyncPoint,omitempty"`
-	// Type - Gets the provider type.
+	// Type - READ-ONLY; Gets the provider type.
 	Type *string `json:"Type,omitempty"`
 }
 
@@ -8024,7 +8024,7 @@ type InMageAzureV2ReplicationDetails struct {
 	DiscoveryType *string `json:"discoveryType,omitempty"`
 	// EnableRDPOnTargetOption - The selected option to enable RDP\SSH on target vm after failover. String value of {SrsDataContract.EnableRDPOnTargetOption} enum.
 	EnableRDPOnTargetOption *string `json:"enableRDPOnTargetOption,omitempty"`
-	// Datastores - The datastores of the on-premise machine. Value can be list of strings that contain datastore names.
+	// Datastores - The data stores of the on-premise machine. Value can be list of strings that contain data store names.
 	Datastores *[]string `json:"datastores,omitempty"`
 	// TargetVMID - The ARM Id of the target Azure VM. This value will be null until the VM is failed over. Only after failure it will be populated with the ARM Id of the Azure VM.
 	TargetVMID *string `json:"targetVmId,omitempty"`
@@ -8564,7 +8564,7 @@ type InMageEnableProtectionInput struct {
 	MultiVMGroupID *string `json:"multiVmGroupId,omitempty"`
 	// MultiVMGroupName - The multi vm group name.
 	MultiVMGroupName *string `json:"multiVmGroupName,omitempty"`
-	// DatastoreName - The target datastore name.
+	// DatastoreName - The target data store name.
 	DatastoreName *string `json:"datastoreName,omitempty"`
 	// DiskExclusionInput - The enable disk exclusion input.
 	DiskExclusionInput *InMageDiskExclusionInput `json:"diskExclusionInput,omitempty"`
@@ -8985,7 +8985,7 @@ type InMageReplicationDetails struct {
 	DiscoveryType *string `json:"discoveryType,omitempty"`
 	// AzureStorageAccountID - A value indicating the underlying Azure storage account. If the VM is not running in Azure, this value shall be set to null.
 	AzureStorageAccountID *string `json:"azureStorageAccountId,omitempty"`
-	// Datastores - The datastores of the on-premise machine Value can be list of strings that contain datastore names
+	// Datastores - The data stores of the on-premise machine Value can be list of strings that contain data store names
 	Datastores *[]string `json:"datastores,omitempty"`
 	// ValidationErrors - The validation errors of the on-premise machine Value can be list of validation errors
 	ValidationErrors *[]HealthError `json:"validationErrors,omitempty"`
@@ -9177,7 +9177,7 @@ type InMageReprotectInput struct {
 	RetentionDrive *string `json:"retentionDrive,omitempty"`
 	// RunAsAccountID - The CS account Id.
 	RunAsAccountID *string `json:"runAsAccountId,omitempty"`
-	// DatastoreName - The target datastore name.
+	// DatastoreName - The target data store name.
 	DatastoreName *string `json:"datastoreName,omitempty"`
 	// DiskExclusionInput - The enable disk exclusion input.
 	DiskExclusionInput *InMageDiskExclusionInput `json:"diskExclusionInput,omitempty"`
@@ -9287,11 +9287,11 @@ type Job struct {
 	StartTime *string `json:"startTime,omitempty"`
 	// EndTime - The start time.
 	EndTime *string `json:"endTime,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -9768,7 +9768,7 @@ func (jp *JobProperties) UnmarshalJSON(body []byte) error {
 type JobQueryParameter struct {
 	// StartTime - Date time to get jobs from.
 	StartTime *string `json:"startTime,omitempty"`
-	// EndTime - Date time to get jobs upto.
+	// EndTime - Date time to get jobs up to.
 	EndTime *string `json:"endTime,omitempty"`
 	// FabricID - The Id of the fabric to search jobs under.
 	FabricID *string `json:"fabricId,omitempty"`
@@ -9906,11 +9906,11 @@ type LogicalNetwork struct {
 	autorest.Response `json:"-"`
 	// Properties - The Logical Network Properties.
 	Properties *LogicalNetworkProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -10208,11 +10208,11 @@ type Network struct {
 	autorest.Response `json:"-"`
 	// Properties - The Network Properties.
 	Properties *NetworkProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -10368,16 +10368,16 @@ func NewNetworkCollectionPage(getNextPage func(context.Context, NetworkCollectio
 // prev version in InheritedModels as long as there is no difference in structure or method signature.
 // Since there were no base Models for certain fields and methods viz NetworkMappingProperties and Load
 // with required return type, the class has been introduced in its entirety with references to base models
-// to facilitate exensions in subsequent versions.
+// to facilitate extensions in subsequent versions.
 type NetworkMapping struct {
 	autorest.Response `json:"-"`
 	// Properties - The Network Mapping Properties.
 	Properties *NetworkMappingProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -10991,11 +10991,11 @@ type Policy struct {
 	autorest.Response `json:"-"`
 	// Properties - The custom data.
 	Properties *PolicyProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -11544,11 +11544,11 @@ type ProtectableItem struct {
 	autorest.Response `json:"-"`
 	// Properties - The custom data.
 	Properties *ProtectableItemProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -11810,11 +11810,11 @@ type ProtectionContainer struct {
 	autorest.Response `json:"-"`
 	// Properties - The custom data.
 	Properties *ProtectionContainerProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -11969,7 +11969,7 @@ func NewProtectionContainerCollectionPage(getNextPage func(context.Context, Prot
 
 // ProtectionContainerFabricSpecificDetails base class for fabric specific details of container.
 type ProtectionContainerFabricSpecificDetails struct {
-	// InstanceType - Gets the class type. Overriden in derived classes.
+	// InstanceType - READ-ONLY; Gets the class type. Overridden in derived classes.
 	InstanceType *string `json:"instanceType,omitempty"`
 }
 
@@ -11978,11 +11978,11 @@ type ProtectionContainerMapping struct {
 	autorest.Response `json:"-"`
 	// Properties - The custom data.
 	Properties *ProtectionContainerMappingProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -12163,7 +12163,7 @@ type ProtectionContainerMappingProperties struct {
 
 // ProtectionContainerMappingProviderSpecificDetails container mapping provider specific details.
 type ProtectionContainerMappingProviderSpecificDetails struct {
-	// InstanceType - Gets the class type. Overriden in derived classes.
+	// InstanceType - READ-ONLY; Gets the class type. Overridden in derived classes.
 	InstanceType *string `json:"instanceType,omitempty"`
 }
 
@@ -12315,7 +12315,7 @@ func (psfi ProviderSpecificFailoverInput) AsBasicProviderSpecificFailoverInput()
 
 // ProviderSpecificRecoveryPointDetails replication provider specific recovery point details.
 type ProviderSpecificRecoveryPointDetails struct {
-	// Type - Gets the provider type.
+	// Type - READ-ONLY; Gets the provider type.
 	Type *string `json:"Type,omitempty"`
 }
 
@@ -12425,11 +12425,11 @@ type RecoveryPlan struct {
 	autorest.Response `json:"-"`
 	// Properties - The custom details.
 	Properties *RecoveryPlanProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -13700,11 +13700,11 @@ type RecoveryPoint struct {
 	autorest.Response `json:"-"`
 	// Properties - Recovery point related data.
 	Properties *RecoveryPointProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -13871,11 +13871,11 @@ type RecoveryServicesProvider struct {
 	autorest.Response `json:"-"`
 	// Properties - Provider properties.
 	Properties *RecoveryServicesProviderProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -14094,7 +14094,7 @@ type ReplicationFabricsCheckConsistencyFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationFabricsCheckConsistencyFuture) Result(client ReplicationFabricsClient) (f Fabric, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationFabricsCheckConsistencyFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14123,7 +14123,7 @@ type ReplicationFabricsCreateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationFabricsCreateFuture) Result(client ReplicationFabricsClient) (f Fabric, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationFabricsCreateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14152,7 +14152,7 @@ type ReplicationFabricsDeleteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationFabricsDeleteFuture) Result(client ReplicationFabricsClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationFabricsDeleteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14175,7 +14175,7 @@ type ReplicationFabricsMigrateToAadFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationFabricsMigrateToAadFuture) Result(client ReplicationFabricsClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationFabricsMigrateToAadFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14198,7 +14198,7 @@ type ReplicationFabricsPurgeFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationFabricsPurgeFuture) Result(client ReplicationFabricsClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationFabricsPurgeFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14221,7 +14221,7 @@ type ReplicationFabricsReassociateGatewayFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationFabricsReassociateGatewayFuture) Result(client ReplicationFabricsClient) (f Fabric, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationFabricsReassociateGatewayFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14250,7 +14250,7 @@ type ReplicationFabricsRenewCertificateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationFabricsRenewCertificateFuture) Result(client ReplicationFabricsClient) (f Fabric, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationFabricsRenewCertificateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14320,7 +14320,7 @@ type ReplicationJobsCancelFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationJobsCancelFuture) Result(client ReplicationJobsClient) (j Job, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationJobsCancelFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14349,7 +14349,7 @@ type ReplicationJobsExportFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationJobsExportFuture) Result(client ReplicationJobsClient) (j Job, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationJobsExportFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14378,7 +14378,7 @@ type ReplicationJobsRestartFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationJobsRestartFuture) Result(client ReplicationJobsClient) (j Job, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationJobsRestartFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14407,7 +14407,7 @@ type ReplicationJobsResumeFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationJobsResumeFuture) Result(client ReplicationJobsClient) (j Job, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationJobsResumeFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14436,7 +14436,7 @@ type ReplicationNetworkMappingsCreateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationNetworkMappingsCreateFuture) Result(client ReplicationNetworkMappingsClient) (nm NetworkMapping, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationNetworkMappingsCreateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14465,7 +14465,7 @@ type ReplicationNetworkMappingsDeleteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationNetworkMappingsDeleteFuture) Result(client ReplicationNetworkMappingsClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationNetworkMappingsDeleteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14488,7 +14488,7 @@ type ReplicationNetworkMappingsUpdateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationNetworkMappingsUpdateFuture) Result(client ReplicationNetworkMappingsClient) (nm NetworkMapping, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationNetworkMappingsUpdateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14517,7 +14517,7 @@ type ReplicationPoliciesCreateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationPoliciesCreateFuture) Result(client ReplicationPoliciesClient) (p Policy, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationPoliciesCreateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14546,7 +14546,7 @@ type ReplicationPoliciesDeleteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationPoliciesDeleteFuture) Result(client ReplicationPoliciesClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationPoliciesDeleteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14569,7 +14569,7 @@ type ReplicationPoliciesUpdateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationPoliciesUpdateFuture) Result(client ReplicationPoliciesClient) (p Policy, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationPoliciesUpdateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -14593,11 +14593,11 @@ type ReplicationProtectedItem struct {
 	autorest.Response `json:"-"`
 	// Properties - The custom data.
 	Properties *ReplicationProtectedItemProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -15075,7 +15075,7 @@ type ReplicationProtectedItemsApplyRecoveryPointFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsApplyRecoveryPointFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsApplyRecoveryPointFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15104,7 +15104,7 @@ type ReplicationProtectedItemsCreateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsCreateFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsCreateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15133,7 +15133,7 @@ type ReplicationProtectedItemsDeleteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsDeleteFuture) Result(client ReplicationProtectedItemsClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsDeleteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15156,7 +15156,7 @@ type ReplicationProtectedItemsFailoverCommitFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsFailoverCommitFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsFailoverCommitFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15185,7 +15185,7 @@ type ReplicationProtectedItemsPlannedFailoverFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsPlannedFailoverFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsPlannedFailoverFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15214,7 +15214,7 @@ type ReplicationProtectedItemsPurgeFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsPurgeFuture) Result(client ReplicationProtectedItemsClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsPurgeFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15237,7 +15237,7 @@ type ReplicationProtectedItemsRepairReplicationFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsRepairReplicationFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsRepairReplicationFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15266,7 +15266,7 @@ type ReplicationProtectedItemsReprotectFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsReprotectFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsReprotectFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15295,7 +15295,7 @@ type ReplicationProtectedItemsTestFailoverCleanupFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsTestFailoverCleanupFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsTestFailoverCleanupFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15324,7 +15324,7 @@ type ReplicationProtectedItemsTestFailoverFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsTestFailoverFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsTestFailoverFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15353,7 +15353,7 @@ type ReplicationProtectedItemsUnplannedFailoverFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsUnplannedFailoverFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsUnplannedFailoverFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15382,7 +15382,7 @@ type ReplicationProtectedItemsUpdateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsUpdateFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsUpdateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15411,7 +15411,7 @@ type ReplicationProtectedItemsUpdateMobilityServiceFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectedItemsUpdateMobilityServiceFuture) Result(client ReplicationProtectedItemsClient) (rpi ReplicationProtectedItem, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectedItemsUpdateMobilityServiceFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15440,7 +15440,7 @@ type ReplicationProtectionContainerMappingsCreateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectionContainerMappingsCreateFuture) Result(client ReplicationProtectionContainerMappingsClient) (pcm ProtectionContainerMapping, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectionContainerMappingsCreateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15469,7 +15469,7 @@ type ReplicationProtectionContainerMappingsDeleteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectionContainerMappingsDeleteFuture) Result(client ReplicationProtectionContainerMappingsClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectionContainerMappingsDeleteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15492,7 +15492,7 @@ type ReplicationProtectionContainerMappingsPurgeFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectionContainerMappingsPurgeFuture) Result(client ReplicationProtectionContainerMappingsClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectionContainerMappingsPurgeFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15515,7 +15515,7 @@ type ReplicationProtectionContainersCreateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectionContainersCreateFuture) Result(client ReplicationProtectionContainersClient) (pc ProtectionContainer, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectionContainersCreateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15544,7 +15544,7 @@ type ReplicationProtectionContainersDeleteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectionContainersDeleteFuture) Result(client ReplicationProtectionContainersClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectionContainersDeleteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15567,7 +15567,7 @@ type ReplicationProtectionContainersDiscoverProtectableItemFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectionContainersDiscoverProtectableItemFuture) Result(client ReplicationProtectionContainersClient) (pc ProtectionContainer, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectionContainersDiscoverProtectableItemFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15596,7 +15596,7 @@ type ReplicationProtectionContainersSwitchProtectionFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationProtectionContainersSwitchProtectionFuture) Result(client ReplicationProtectionContainersClient) (pc ProtectionContainer, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationProtectionContainersSwitchProtectionFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15845,7 +15845,7 @@ type ReplicationRecoveryPlansCreateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryPlansCreateFuture) Result(client ReplicationRecoveryPlansClient) (rp RecoveryPlan, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryPlansCreateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15874,7 +15874,7 @@ type ReplicationRecoveryPlansDeleteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryPlansDeleteFuture) Result(client ReplicationRecoveryPlansClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryPlansDeleteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15897,7 +15897,7 @@ type ReplicationRecoveryPlansFailoverCommitFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryPlansFailoverCommitFuture) Result(client ReplicationRecoveryPlansClient) (rp RecoveryPlan, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryPlansFailoverCommitFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15926,7 +15926,7 @@ type ReplicationRecoveryPlansPlannedFailoverFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryPlansPlannedFailoverFuture) Result(client ReplicationRecoveryPlansClient) (rp RecoveryPlan, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryPlansPlannedFailoverFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15955,7 +15955,7 @@ type ReplicationRecoveryPlansReprotectFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryPlansReprotectFuture) Result(client ReplicationRecoveryPlansClient) (rp RecoveryPlan, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryPlansReprotectFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -15984,7 +15984,7 @@ type ReplicationRecoveryPlansTestFailoverCleanupFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryPlansTestFailoverCleanupFuture) Result(client ReplicationRecoveryPlansClient) (rp RecoveryPlan, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryPlansTestFailoverCleanupFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16013,7 +16013,7 @@ type ReplicationRecoveryPlansTestFailoverFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryPlansTestFailoverFuture) Result(client ReplicationRecoveryPlansClient) (rp RecoveryPlan, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryPlansTestFailoverFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16042,7 +16042,7 @@ type ReplicationRecoveryPlansUnplannedFailoverFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryPlansUnplannedFailoverFuture) Result(client ReplicationRecoveryPlansClient) (rp RecoveryPlan, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryPlansUnplannedFailoverFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16071,7 +16071,7 @@ type ReplicationRecoveryPlansUpdateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryPlansUpdateFuture) Result(client ReplicationRecoveryPlansClient) (rp RecoveryPlan, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryPlansUpdateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16100,7 +16100,7 @@ type ReplicationRecoveryServicesProvidersDeleteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryServicesProvidersDeleteFuture) Result(client ReplicationRecoveryServicesProvidersClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryServicesProvidersDeleteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16123,7 +16123,7 @@ type ReplicationRecoveryServicesProvidersPurgeFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryServicesProvidersPurgeFuture) Result(client ReplicationRecoveryServicesProvidersClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryServicesProvidersPurgeFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16146,7 +16146,7 @@ type ReplicationRecoveryServicesProvidersRefreshProviderFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationRecoveryServicesProvidersRefreshProviderFuture) Result(client ReplicationRecoveryServicesProvidersClient) (rsp RecoveryServicesProvider, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationRecoveryServicesProvidersRefreshProviderFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16175,7 +16175,7 @@ type ReplicationStorageClassificationMappingsCreateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationStorageClassificationMappingsCreateFuture) Result(client ReplicationStorageClassificationMappingsClient) (scm StorageClassificationMapping, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationStorageClassificationMappingsCreateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16204,7 +16204,7 @@ type ReplicationStorageClassificationMappingsDeleteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationStorageClassificationMappingsDeleteFuture) Result(client ReplicationStorageClassificationMappingsClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationStorageClassificationMappingsDeleteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16227,7 +16227,7 @@ type ReplicationvCentersCreateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationvCentersCreateFuture) Result(client ReplicationvCentersClient) (vc VCenter, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationvCentersCreateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16256,7 +16256,7 @@ type ReplicationvCentersDeleteFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationvCentersDeleteFuture) Result(client ReplicationvCentersClient) (ar autorest.Response, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationvCentersDeleteFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16279,7 +16279,7 @@ type ReplicationvCentersUpdateFuture struct {
 // If the operation has not completed it will return an error.
 func (future *ReplicationvCentersUpdateFuture) Result(client ReplicationvCentersClient) (vc VCenter, err error) {
 	var done bool
-	done, err = future.Done(client)
+	done, err = future.DoneWithContext(context.Background(), client)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "siterecovery.ReplicationvCentersUpdateFuture", "Result", future.Response(), "Polling failure")
 		return
@@ -16300,11 +16300,11 @@ func (future *ReplicationvCentersUpdateFuture) Result(client ReplicationvCenters
 
 // Resource azure resource.
 type Resource struct {
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -16313,7 +16313,7 @@ type Resource struct {
 // ResourceHealthSummary base class to define the health summary of the resources contained under an Arm
 // resource.
 type ResourceHealthSummary struct {
-	// ResourceCount - The count of total resources umder the container.
+	// ResourceCount - The count of total resources under the container.
 	ResourceCount *int32 `json:"resourceCount,omitempty"`
 	// Issues - The list of summary of health errors across the resources under the container.
 	Issues *[]HealthErrorSummary `json:"issues,omitempty"`
@@ -16669,13 +16669,13 @@ type ServiceError struct {
 // StorageClassification storage object definition.
 type StorageClassification struct {
 	autorest.Response `json:"-"`
-	// Properties - Proprties of the storage object.
+	// Properties - Properties of the storage object.
 	Properties *StorageClassificationProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -16831,13 +16831,13 @@ func NewStorageClassificationCollectionPage(getNextPage func(context.Context, St
 // StorageClassificationMapping storage mapping object.
 type StorageClassificationMapping struct {
 	autorest.Response `json:"-"`
-	// Properties - Proprties of the storage mappping object.
+	// Properties - Properties of the storage mapping object.
 	Properties *StorageClassificationMappingProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -17693,7 +17693,7 @@ type UpdateRecoveryPlanInput struct {
 	Properties *UpdateRecoveryPlanInputProperties `json:"properties,omitempty"`
 }
 
-// UpdateRecoveryPlanInputProperties recovery plan updation properties.
+// UpdateRecoveryPlanInputProperties recovery plan update properties.
 type UpdateRecoveryPlanInputProperties struct {
 	// Groups - The recovery plan groups.
 	Groups *[]RecoveryPlanGroup `json:"groups,omitempty"`
@@ -17921,7 +17921,7 @@ type UpdateVCenterRequestProperties struct {
 	ProcessServerID *string `json:"processServerId,omitempty"`
 	// Port - The port number for discovery.
 	Port *string `json:"port,omitempty"`
-	// RunAsAccountID - The CS account Id which has priviliges to update the vCenter.
+	// RunAsAccountID - The CS account Id which has privileges to update the vCenter.
 	RunAsAccountID *string `json:"runAsAccountId,omitempty"`
 }
 
@@ -17930,11 +17930,11 @@ type VaultHealthDetails struct {
 	autorest.Response `json:"-"`
 	// Properties - The vault health related data.
 	Properties *VaultHealthProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -17955,11 +17955,11 @@ type VCenter struct {
 	autorest.Response `json:"-"`
 	// Properties - VCenter related data.
 	Properties *VCenterProperties `json:"properties,omitempty"`
-	// ID - Resource Id
+	// ID - READ-ONLY; Resource Id
 	ID *string `json:"id,omitempty"`
-	// Name - Resource Name
+	// Name - READ-ONLY; Resource Name
 	Name *string `json:"name,omitempty"`
-	// Type - Resource Type
+	// Type - READ-ONLY; Resource Type
 	Type *string `json:"type,omitempty"`
 	// Location - Resource Location
 	Location *string `json:"location,omitempty"`
@@ -18117,7 +18117,7 @@ type VCenterProperties struct {
 	FriendlyName *string `json:"friendlyName,omitempty"`
 	// InternalID - VCenter internal ID.
 	InternalID *string `json:"internalId,omitempty"`
-	// LastHeartbeat - The time when the last heartbeat was reveived by vCenter.
+	// LastHeartbeat - The time when the last heartbeat was received by vCenter.
 	LastHeartbeat *date.Time `json:"lastHeartbeat,omitempty"`
 	// DiscoveryStatus - The VCenter discovery status.
 	DiscoveryStatus *string `json:"discoveryStatus,omitempty"`
@@ -18267,8 +18267,8 @@ func (vd VmmDetails) AsBasicFabricSpecificDetails() (BasicFabricSpecificDetails,
 	return &vd, true
 }
 
-// VmmToAzureCreateNetworkMappingInput create network mappings input properties/behaviour specific to Vmm
-// to Azure Network mapping.
+// VmmToAzureCreateNetworkMappingInput create network mappings input properties/behavior specific to Vmm to
+// Azure Network mapping.
 type VmmToAzureCreateNetworkMappingInput struct {
 	// InstanceType - Possible values include: 'InstanceTypeFabricSpecificCreateNetworkMappingInput', 'InstanceTypeAzureToAzure', 'InstanceTypeVmmToAzure', 'InstanceTypeVmmToVmm'
 	InstanceType InstanceTypeBasicFabricSpecificCreateNetworkMappingInput `json:"instanceType,omitempty"`
@@ -18350,8 +18350,8 @@ func (vtanms VmmToAzureNetworkMappingSettings) AsBasicNetworkMappingFabricSpecif
 	return &vtanms, true
 }
 
-// VmmToAzureUpdateNetworkMappingInput update network mappings input properties/behaviour specific to vmm
-// to azure.
+// VmmToAzureUpdateNetworkMappingInput update network mappings input properties/behavior specific to vmm to
+// azure.
 type VmmToAzureUpdateNetworkMappingInput struct {
 	// InstanceType - Possible values include: 'InstanceTypeBasicFabricSpecificUpdateNetworkMappingInputInstanceTypeFabricSpecificUpdateNetworkMappingInput', 'InstanceTypeBasicFabricSpecificUpdateNetworkMappingInputInstanceTypeAzureToAzure', 'InstanceTypeBasicFabricSpecificUpdateNetworkMappingInputInstanceTypeVmmToAzure', 'InstanceTypeBasicFabricSpecificUpdateNetworkMappingInputInstanceTypeVmmToVmm'
 	InstanceType InstanceTypeBasicFabricSpecificUpdateNetworkMappingInput `json:"instanceType,omitempty"`
@@ -18392,7 +18392,7 @@ func (vtaunmi VmmToAzureUpdateNetworkMappingInput) AsBasicFabricSpecificUpdateNe
 	return &vtaunmi, true
 }
 
-// VmmToVmmCreateNetworkMappingInput create network mappings input properties/behaviour specific to vmm to
+// VmmToVmmCreateNetworkMappingInput create network mappings input properties/behavior specific to vmm to
 // vmm Network mapping.
 type VmmToVmmCreateNetworkMappingInput struct {
 	// InstanceType - Possible values include: 'InstanceTypeFabricSpecificCreateNetworkMappingInput', 'InstanceTypeAzureToAzure', 'InstanceTypeVmmToAzure', 'InstanceTypeVmmToVmm'
@@ -18475,7 +18475,7 @@ func (vtvnms VmmToVmmNetworkMappingSettings) AsBasicNetworkMappingFabricSpecific
 	return &vtvnms, true
 }
 
-// VmmToVmmUpdateNetworkMappingInput update network mappings input properties/behaviour specific to vmm to
+// VmmToVmmUpdateNetworkMappingInput update network mappings input properties/behavior specific to vmm to
 // vmm.
 type VmmToVmmUpdateNetworkMappingInput struct {
 	// InstanceType - Possible values include: 'InstanceTypeBasicFabricSpecificUpdateNetworkMappingInputInstanceTypeFabricSpecificUpdateNetworkMappingInput', 'InstanceTypeBasicFabricSpecificUpdateNetworkMappingInputInstanceTypeAzureToAzure', 'InstanceTypeBasicFabricSpecificUpdateNetworkMappingInputInstanceTypeVmmToAzure', 'InstanceTypeBasicFabricSpecificUpdateNetworkMappingInputInstanceTypeVmmToVmm'
@@ -19124,7 +19124,7 @@ type VMwareVirtualMachineDetails struct {
 	PoweredOn *string `json:"poweredOn,omitempty"`
 	// VCenterInfrastructureID - The VCenter infrastructure Id.
 	VCenterInfrastructureID *string `json:"vCenterInfrastructureId,omitempty"`
-	// DiscoveryType - A value inidicating the discovery type of the machine. Value can be vCenter or physical.
+	// DiscoveryType - A value indicating the discovery type of the machine. Value can be vCenter or physical.
 	DiscoveryType *string `json:"discoveryType,omitempty"`
 	// DiskDetails - The disk details.
 	DiskDetails *[]InMageDiskDetails `json:"diskDetails,omitempty"`

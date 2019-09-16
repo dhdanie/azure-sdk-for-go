@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -29,25 +29,23 @@ const (
 	DefaultBaseURI = original.DefaultBaseURI
 )
 
-type BaseClient = original.BaseClient
-type MarketplaceAgreementsClient = original.MarketplaceAgreementsClient
 type AgreementProperties = original.AgreementProperties
 type AgreementTerms = original.AgreementTerms
+type BaseClient = original.BaseClient
 type ErrorResponse = original.ErrorResponse
 type ErrorResponseError = original.ErrorResponseError
+type ListAgreementTerms = original.ListAgreementTerms
+type MarketplaceAgreementsClient = original.MarketplaceAgreementsClient
 type Operation = original.Operation
 type OperationDisplay = original.OperationDisplay
 type OperationListResult = original.OperationListResult
 type OperationListResultIterator = original.OperationListResultIterator
 type OperationListResultPage = original.OperationListResultPage
-type Resource = original.Resource
 type OperationsClient = original.OperationsClient
+type Resource = original.Resource
 
 func New(subscriptionID string) BaseClient {
 	return original.New(subscriptionID)
-}
-func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
-	return original.NewWithBaseURI(baseURI, subscriptionID)
 }
 func NewMarketplaceAgreementsClient(subscriptionID string) MarketplaceAgreementsClient {
 	return original.NewMarketplaceAgreementsClient(subscriptionID)
@@ -66,6 +64,9 @@ func NewOperationsClient(subscriptionID string) OperationsClient {
 }
 func NewOperationsClientWithBaseURI(baseURI string, subscriptionID string) OperationsClient {
 	return original.NewOperationsClientWithBaseURI(baseURI, subscriptionID)
+}
+func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
+	return original.NewWithBaseURI(baseURI, subscriptionID)
 }
 func UserAgent() string {
 	return original.UserAgent() + " profiles/preview"

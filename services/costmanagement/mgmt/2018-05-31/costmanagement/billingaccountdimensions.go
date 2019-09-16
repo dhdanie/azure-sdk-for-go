@@ -46,7 +46,7 @@ func NewBillingAccountDimensionsClientWithBaseURI(baseURI string, subscriptionID
 // billingAccountID - billingAccount ID
 // filter - may be used to filter dimensions by properties/category, properties/usageStart,
 // properties/usageEnd. Supported operators are 'eq','lt', 'gt', 'le', 'ge'.
-// expand - may be used to expand the properties/data within a dimension dategory. By default, data is not
+// expand - may be used to expand the properties/data within a dimension category. By default, data is not
 // included when listing dimensions.
 // skiptoken - skiptoken is only used if a previous operation returned a partial result. If a previous response
 // contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that
@@ -127,8 +127,8 @@ func (client BillingAccountDimensionsClient) ListPreparer(ctx context.Context, b
 // ListSender sends the List request. The method will close the
 // http.Response Body if it receives an error.
 func (client BillingAccountDimensionsClient) ListSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListResponder handles the response to the List request. The method always

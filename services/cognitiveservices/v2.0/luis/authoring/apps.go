@@ -39,9 +39,9 @@ func NewAppsClient(endpoint string) AppsClient {
 
 // Add creates a new LUIS app.
 // Parameters:
-// applicationCreateObject - a model containing Name, Description (optional), Culture, Usage Scenario
+// applicationCreateObject - an application containing Name, Description (optional), Culture, Usage Scenario
 // (optional), Domain (optional) and initial version ID (optional) of the application. Default value for the
-// version ID is 0.1. Note: the culture cannot be changed after the app is created.
+// version ID is "0.1". Note: the culture cannot be changed after the app is created.
 func (client AppsClient) Add(ctx context.Context, applicationCreateObject ApplicationCreateObject) (result UUID, err error) {
 	if tracing.IsEnabled() {
 		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.Add")
@@ -99,8 +99,8 @@ func (client AppsClient) AddPreparer(ctx context.Context, applicationCreateObjec
 // AddSender sends the Add request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) AddSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // AddResponder handles the response to the Add request. The method always
@@ -116,7 +116,7 @@ func (client AppsClient) AddResponder(resp *http.Response) (result UUID, err err
 	return
 }
 
-// AddCustomPrebuiltDomain adds a prebuilt domain along with its models as a new application.
+// AddCustomPrebuiltDomain adds a prebuilt domain along with its intent and entity models as a new application.
 // Parameters:
 // prebuiltDomainCreateObject - a prebuilt domain create object containing the name and culture of the domain.
 func (client AppsClient) AddCustomPrebuiltDomain(ctx context.Context, prebuiltDomainCreateObject PrebuiltDomainCreateObject) (result UUID, err error) {
@@ -169,8 +169,8 @@ func (client AppsClient) AddCustomPrebuiltDomainPreparer(ctx context.Context, pr
 // AddCustomPrebuiltDomainSender sends the AddCustomPrebuiltDomain request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) AddCustomPrebuiltDomainSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // AddCustomPrebuiltDomainResponder handles the response to the AddCustomPrebuiltDomain request. The method always
@@ -189,7 +189,8 @@ func (client AppsClient) AddCustomPrebuiltDomainResponder(resp *http.Response) (
 // Delete deletes an application.
 // Parameters:
 // appID - the application ID.
-func (client AppsClient) Delete(ctx context.Context, appID uuid.UUID) (result OperationStatus, err error) {
+// force - a flag to indicate whether to force an operation.
+func (client AppsClient) Delete(ctx context.Context, appID uuid.UUID, force *bool) (result OperationStatus, err error) {
 	if tracing.IsEnabled() {
 		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.Delete")
 		defer func() {
@@ -200,7 +201,7 @@ func (client AppsClient) Delete(ctx context.Context, appID uuid.UUID) (result Op
 			tracing.EndSpan(ctx, sc, err)
 		}()
 	}
-	req, err := client.DeletePreparer(ctx, appID)
+	req, err := client.DeletePreparer(ctx, appID, force)
 	if err != nil {
 		err = autorest.NewErrorWithError(err, "authoring.AppsClient", "Delete", nil, "Failure preparing request")
 		return
@@ -222,7 +223,7 @@ func (client AppsClient) Delete(ctx context.Context, appID uuid.UUID) (result Op
 }
 
 // DeletePreparer prepares the Delete request.
-func (client AppsClient) DeletePreparer(ctx context.Context, appID uuid.UUID) (*http.Request, error) {
+func (client AppsClient) DeletePreparer(ctx context.Context, appID uuid.UUID, force *bool) (*http.Request, error) {
 	urlParameters := map[string]interface{}{
 		"Endpoint": client.Endpoint,
 	}
@@ -231,18 +232,26 @@ func (client AppsClient) DeletePreparer(ctx context.Context, appID uuid.UUID) (*
 		"appId": autorest.Encode("path", appID),
 	}
 
+	queryParameters := map[string]interface{}{}
+	if force != nil {
+		queryParameters["force"] = autorest.Encode("query", *force)
+	} else {
+		queryParameters["force"] = autorest.Encode("query", false)
+	}
+
 	preparer := autorest.CreatePreparer(
 		autorest.AsDelete(),
 		autorest.WithCustomBaseURL("{Endpoint}/luis/api/v2.0", urlParameters),
-		autorest.WithPathParameters("/apps/{appId}", pathParameters))
+		autorest.WithPathParameters("/apps/{appId}", pathParameters),
+		autorest.WithQueryParameters(queryParameters))
 	return preparer.Prepare((&http.Request{}).WithContext(ctx))
 }
 
 // DeleteSender sends the Delete request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) DeleteSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // DeleteResponder handles the response to the Delete request. The method always
@@ -258,7 +267,7 @@ func (client AppsClient) DeleteResponder(resp *http.Response) (result OperationS
 	return
 }
 
-// DownloadQueryLogs gets the query logs of the past month for the application.
+// DownloadQueryLogs gets the logs of the past month's endpoint queries for the application.
 // Parameters:
 // appID - the application ID.
 func (client AppsClient) DownloadQueryLogs(ctx context.Context, appID uuid.UUID) (result ReadCloser, err error) {
@@ -313,8 +322,8 @@ func (client AppsClient) DownloadQueryLogsPreparer(ctx context.Context, appID uu
 // DownloadQueryLogsSender sends the DownloadQueryLogs request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) DownloadQueryLogsSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // DownloadQueryLogsResponder handles the response to the DownloadQueryLogs request. The method always
@@ -384,8 +393,8 @@ func (client AppsClient) GetPreparer(ctx context.Context, appID uuid.UUID) (*htt
 // GetSender sends the Get request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) GetSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // GetResponder handles the response to the Get request. The method always
@@ -401,7 +410,7 @@ func (client AppsClient) GetResponder(resp *http.Response) (result ApplicationIn
 	return
 }
 
-// GetPublishSettings get the application publish settings.
+// GetPublishSettings get the application publish settings including 'UseAllTrainingData'.
 // Parameters:
 // appID - the application ID.
 func (client AppsClient) GetPublishSettings(ctx context.Context, appID uuid.UUID) (result PublishSettings, err error) {
@@ -456,8 +465,8 @@ func (client AppsClient) GetPublishSettingsPreparer(ctx context.Context, appID u
 // GetPublishSettingsSender sends the GetPublishSettings request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) GetPublishSettingsSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // GetPublishSettingsResponder handles the response to the GetPublishSettings request. The method always
@@ -473,7 +482,7 @@ func (client AppsClient) GetPublishSettingsResponder(resp *http.Response) (resul
 	return
 }
 
-// GetSettings get the application settings.
+// GetSettings get the application settings including 'UseAllTrainingData'.
 // Parameters:
 // appID - the application ID.
 func (client AppsClient) GetSettings(ctx context.Context, appID uuid.UUID) (result ApplicationSettings, err error) {
@@ -528,8 +537,8 @@ func (client AppsClient) GetSettingsPreparer(ctx context.Context, appID uuid.UUI
 // GetSettingsSender sends the GetSettings request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) GetSettingsSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // GetSettingsResponder handles the response to the GetSettings request. The method always
@@ -545,11 +554,11 @@ func (client AppsClient) GetSettingsResponder(resp *http.Response) (result Appli
 	return
 }
 
-// Import imports an application to LUIS, the application's structure should be included in in the request body.
+// Import imports an application to LUIS, the application's structure is included in the request body.
 // Parameters:
 // luisApp - a LUIS application structure.
 // appName - the application name to create. If not specified, the application name will be read from the
-// imported object.
+// imported object. If the application name already exists, an error is returned.
 func (client AppsClient) Import(ctx context.Context, luisApp LuisApp, appName string) (result UUID, err error) {
 	if tracing.IsEnabled() {
 		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.Import")
@@ -606,8 +615,8 @@ func (client AppsClient) ImportPreparer(ctx context.Context, luisApp LuisApp, ap
 // ImportSender sends the Import request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) ImportSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ImportResponder handles the response to the Import request. The method always
@@ -623,7 +632,7 @@ func (client AppsClient) ImportResponder(resp *http.Response) (result UUID, err 
 	return
 }
 
-// List lists all of the user applications.
+// List lists all of the user's applications.
 // Parameters:
 // skip - the number of entries to skip. Default value is 0.
 // take - the number of entries to return. Maximum page size is 500. Default is 100.
@@ -700,8 +709,8 @@ func (client AppsClient) ListPreparer(ctx context.Context, skip *int32, take *in
 // ListSender sends the List request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) ListSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListResponder handles the response to the List request. The method always
@@ -766,8 +775,8 @@ func (client AppsClient) ListAvailableCustomPrebuiltDomainsPreparer(ctx context.
 // ListAvailableCustomPrebuiltDomainsSender sends the ListAvailableCustomPrebuiltDomains request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) ListAvailableCustomPrebuiltDomainsSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListAvailableCustomPrebuiltDomainsResponder handles the response to the ListAvailableCustomPrebuiltDomains request. The method always
@@ -783,7 +792,7 @@ func (client AppsClient) ListAvailableCustomPrebuiltDomainsResponder(resp *http.
 	return
 }
 
-// ListAvailableCustomPrebuiltDomainsForCulture gets all the available custom prebuilt domains for a specific culture.
+// ListAvailableCustomPrebuiltDomainsForCulture gets all the available prebuilt domains for a specific culture.
 // Parameters:
 // culture - culture.
 func (client AppsClient) ListAvailableCustomPrebuiltDomainsForCulture(ctx context.Context, culture string) (result ListPrebuiltDomain, err error) {
@@ -838,8 +847,8 @@ func (client AppsClient) ListAvailableCustomPrebuiltDomainsForCulturePreparer(ct
 // ListAvailableCustomPrebuiltDomainsForCultureSender sends the ListAvailableCustomPrebuiltDomainsForCulture request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) ListAvailableCustomPrebuiltDomainsForCultureSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListAvailableCustomPrebuiltDomainsForCultureResponder handles the response to the ListAvailableCustomPrebuiltDomainsForCulture request. The method always
@@ -904,8 +913,8 @@ func (client AppsClient) ListCortanaEndpointsPreparer(ctx context.Context) (*htt
 // ListCortanaEndpointsSender sends the ListCortanaEndpoints request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) ListCortanaEndpointsSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListCortanaEndpointsResponder handles the response to the ListCortanaEndpoints request. The method always
@@ -970,8 +979,8 @@ func (client AppsClient) ListDomainsPreparer(ctx context.Context) (*http.Request
 // ListDomainsSender sends the ListDomains request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) ListDomainsSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListDomainsResponder handles the response to the ListDomains request. The method always
@@ -1042,8 +1051,8 @@ func (client AppsClient) ListEndpointsPreparer(ctx context.Context, appID uuid.U
 // ListEndpointsSender sends the ListEndpoints request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) ListEndpointsSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListEndpointsResponder handles the response to the ListEndpoints request. The method always
@@ -1059,7 +1068,8 @@ func (client AppsClient) ListEndpointsResponder(resp *http.Response) (result Set
 	return
 }
 
-// ListSupportedCultures gets the supported application cultures.
+// ListSupportedCultures gets a list of supported cultures. Cultures are equivalent to the written language and locale.
+// For example,"en-us" represents the U.S. variation of English.
 func (client AppsClient) ListSupportedCultures(ctx context.Context) (result ListAvailableCulture, err error) {
 	if tracing.IsEnabled() {
 		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.ListSupportedCultures")
@@ -1108,8 +1118,8 @@ func (client AppsClient) ListSupportedCulturesPreparer(ctx context.Context) (*ht
 // ListSupportedCulturesSender sends the ListSupportedCultures request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) ListSupportedCulturesSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListSupportedCulturesResponder handles the response to the ListSupportedCultures request. The method always
@@ -1174,8 +1184,8 @@ func (client AppsClient) ListUsageScenariosPreparer(ctx context.Context) (*http.
 // ListUsageScenariosSender sends the ListUsageScenarios request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) ListUsageScenariosSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListUsageScenariosResponder handles the response to the ListUsageScenarios request. The method always
@@ -1187,6 +1197,153 @@ func (client AppsClient) ListUsageScenariosResponder(resp *http.Response) (resul
 		azure.WithErrorUnlessStatusCode(http.StatusOK),
 		autorest.ByUnmarshallingJSON(&result.Value),
 		autorest.ByClosing())
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// PackagePublishedApplicationAsGzip packages a published LUIS application as a GZip file to be used in the LUIS
+// container.
+// Parameters:
+// appID - the application ID.
+// slotName - the publishing slot name.
+func (client AppsClient) PackagePublishedApplicationAsGzip(ctx context.Context, appID uuid.UUID, slotName string) (result ReadCloser, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.PackagePublishedApplicationAsGzip")
+		defer func() {
+			sc := -1
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	req, err := client.PackagePublishedApplicationAsGzipPreparer(ctx, appID, slotName)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "authoring.AppsClient", "PackagePublishedApplicationAsGzip", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.PackagePublishedApplicationAsGzipSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "authoring.AppsClient", "PackagePublishedApplicationAsGzip", resp, "Failure sending request")
+		return
+	}
+
+	result, err = client.PackagePublishedApplicationAsGzipResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "authoring.AppsClient", "PackagePublishedApplicationAsGzip", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// PackagePublishedApplicationAsGzipPreparer prepares the PackagePublishedApplicationAsGzip request.
+func (client AppsClient) PackagePublishedApplicationAsGzipPreparer(ctx context.Context, appID uuid.UUID, slotName string) (*http.Request, error) {
+	urlParameters := map[string]interface{}{
+		"Endpoint": client.Endpoint,
+	}
+
+	pathParameters := map[string]interface{}{
+		"appId":    autorest.Encode("path", appID),
+		"slotName": autorest.Encode("path", slotName),
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithCustomBaseURL("{Endpoint}/luis/api/v2.0", urlParameters),
+		autorest.WithPathParameters("/package/{appId}/slot/{slotName}/gzip", pathParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// PackagePublishedApplicationAsGzipSender sends the PackagePublishedApplicationAsGzip request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) PackagePublishedApplicationAsGzipSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// PackagePublishedApplicationAsGzipResponder handles the response to the PackagePublishedApplicationAsGzip request. The method always
+// closes the http.Response Body.
+func (client AppsClient) PackagePublishedApplicationAsGzipResponder(resp *http.Response) (result ReadCloser, err error) {
+	result.Value = &resp.Body
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK))
+	result.Response = autorest.Response{Response: resp}
+	return
+}
+
+// PackageTrainedApplicationAsGzip packages trained LUIS application as GZip file to be used in the LUIS container.
+// Parameters:
+// appID - the application ID.
+// versionID - the version ID.
+func (client AppsClient) PackageTrainedApplicationAsGzip(ctx context.Context, appID uuid.UUID, versionID string) (result ReadCloser, err error) {
+	if tracing.IsEnabled() {
+		ctx = tracing.StartSpan(ctx, fqdn+"/AppsClient.PackageTrainedApplicationAsGzip")
+		defer func() {
+			sc := -1
+			if result.Response.Response != nil {
+				sc = result.Response.Response.StatusCode
+			}
+			tracing.EndSpan(ctx, sc, err)
+		}()
+	}
+	req, err := client.PackageTrainedApplicationAsGzipPreparer(ctx, appID, versionID)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "authoring.AppsClient", "PackageTrainedApplicationAsGzip", nil, "Failure preparing request")
+		return
+	}
+
+	resp, err := client.PackageTrainedApplicationAsGzipSender(req)
+	if err != nil {
+		result.Response = autorest.Response{Response: resp}
+		err = autorest.NewErrorWithError(err, "authoring.AppsClient", "PackageTrainedApplicationAsGzip", resp, "Failure sending request")
+		return
+	}
+
+	result, err = client.PackageTrainedApplicationAsGzipResponder(resp)
+	if err != nil {
+		err = autorest.NewErrorWithError(err, "authoring.AppsClient", "PackageTrainedApplicationAsGzip", resp, "Failure responding to request")
+	}
+
+	return
+}
+
+// PackageTrainedApplicationAsGzipPreparer prepares the PackageTrainedApplicationAsGzip request.
+func (client AppsClient) PackageTrainedApplicationAsGzipPreparer(ctx context.Context, appID uuid.UUID, versionID string) (*http.Request, error) {
+	urlParameters := map[string]interface{}{
+		"Endpoint": client.Endpoint,
+	}
+
+	pathParameters := map[string]interface{}{
+		"appId":     autorest.Encode("path", appID),
+		"versionId": autorest.Encode("path", versionID),
+	}
+
+	preparer := autorest.CreatePreparer(
+		autorest.AsGet(),
+		autorest.WithCustomBaseURL("{Endpoint}/luis/api/v2.0", urlParameters),
+		autorest.WithPathParameters("/package/{appId}/versions/{versionId}/gzip", pathParameters))
+	return preparer.Prepare((&http.Request{}).WithContext(ctx))
+}
+
+// PackageTrainedApplicationAsGzipSender sends the PackageTrainedApplicationAsGzip request. The method will close the
+// http.Response Body if it receives an error.
+func (client AppsClient) PackageTrainedApplicationAsGzipSender(req *http.Request) (*http.Response, error) {
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
+}
+
+// PackageTrainedApplicationAsGzipResponder handles the response to the PackageTrainedApplicationAsGzip request. The method always
+// closes the http.Response Body.
+func (client AppsClient) PackageTrainedApplicationAsGzipResponder(resp *http.Response) (result ReadCloser, err error) {
+	result.Value = &resp.Body
+	err = autorest.Respond(
+		resp,
+		client.ByInspecting(),
+		azure.WithErrorUnlessStatusCode(http.StatusOK))
 	result.Response = autorest.Response{Response: resp}
 	return
 }
@@ -1250,8 +1407,8 @@ func (client AppsClient) PublishPreparer(ctx context.Context, appID uuid.UUID, a
 // PublishSender sends the Publish request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) PublishSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // PublishResponder handles the response to the Publish request. The method always
@@ -1260,7 +1417,7 @@ func (client AppsClient) PublishResponder(resp *http.Response) (result Productio
 	err = autorest.Respond(
 		resp,
 		client.ByInspecting(),
-		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusCreated),
+		azure.WithErrorUnlessStatusCode(http.StatusOK, http.StatusCreated, http.StatusMultiStatus),
 		autorest.ByUnmarshallingJSON(&result),
 		autorest.ByClosing())
 	result.Response = autorest.Response{Response: resp}
@@ -1325,8 +1482,8 @@ func (client AppsClient) UpdatePreparer(ctx context.Context, appID uuid.UUID, ap
 // UpdateSender sends the Update request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) UpdateSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // UpdateResponder handles the response to the Update request. The method always
@@ -1342,7 +1499,7 @@ func (client AppsClient) UpdateResponder(resp *http.Response) (result OperationS
 	return
 }
 
-// UpdatePublishSettings updates the application publish settings.
+// UpdatePublishSettings updates the application publish settings including 'UseAllTrainingData'.
 // Parameters:
 // appID - the application ID.
 // publishSettingUpdateObject - an object containing the new publish application settings.
@@ -1400,8 +1557,8 @@ func (client AppsClient) UpdatePublishSettingsPreparer(ctx context.Context, appI
 // UpdatePublishSettingsSender sends the UpdatePublishSettings request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) UpdatePublishSettingsSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // UpdatePublishSettingsResponder handles the response to the UpdatePublishSettings request. The method always
@@ -1417,7 +1574,7 @@ func (client AppsClient) UpdatePublishSettingsResponder(resp *http.Response) (re
 	return
 }
 
-// UpdateSettings updates the application settings.
+// UpdateSettings updates the application settings including 'UseAllTrainingData'.
 // Parameters:
 // appID - the application ID.
 // applicationSettingUpdateObject - an object containing the new application settings.
@@ -1475,8 +1632,8 @@ func (client AppsClient) UpdateSettingsPreparer(ctx context.Context, appID uuid.
 // UpdateSettingsSender sends the UpdateSettings request. The method will close the
 // http.Response Body if it receives an error.
 func (client AppsClient) UpdateSettingsSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // UpdateSettingsResponder handles the response to the UpdateSettings request. The method always

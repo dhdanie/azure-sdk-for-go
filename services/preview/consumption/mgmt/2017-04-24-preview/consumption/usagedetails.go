@@ -49,7 +49,7 @@ func NewUsageDetailsClientWithBaseURI(baseURI string, subscriptionID string) Usa
 // scope - the scope of the usage details. The scope can be '/subscriptions/{subscriptionId}' for a
 // subscription, or '/subscriptions/{subscriptionId}/providers/Microsoft.Billing/invoices/{invoiceName}' for an
 // invoice or '/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
-// for a billing perdiod.
+// for a billing period.
 // expand - may be used to expand the additionalProperties or meterDetails property within a list of usage
 // details. By default, these fields are not included when listing usage details.
 // filter - may be used to filter usageDetails by usageEnd (Utc time). The filter supports 'eq', 'lt', 'gt',
@@ -134,8 +134,8 @@ func (client UsageDetailsClient) ListPreparer(ctx context.Context, scope string,
 // ListSender sends the List request. The method will close the
 // http.Response Body if it receives an error.
 func (client UsageDetailsClient) ListSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListResponder handles the response to the List request. The method always

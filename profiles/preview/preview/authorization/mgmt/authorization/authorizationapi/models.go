@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,8 +22,9 @@ package authorizationapi
 import original "github.com/Azure/azure-sdk-for-go/services/preview/authorization/mgmt/2018-09-01-preview/authorization/authorizationapi"
 
 type ClassicAdministratorsClientAPI = original.ClassicAdministratorsClientAPI
+type DenyAssignmentsClientAPI = original.DenyAssignmentsClientAPI
+type GlobalAdministratorClientAPI = original.GlobalAdministratorClientAPI
+type PermissionsClientAPI = original.PermissionsClientAPI
 type ProviderOperationsMetadataClientAPI = original.ProviderOperationsMetadataClientAPI
 type RoleAssignmentsClientAPI = original.RoleAssignmentsClientAPI
-type PermissionsClientAPI = original.PermissionsClientAPI
 type RoleDefinitionsClientAPI = original.RoleDefinitionsClientAPI
-type DenyAssignmentsClientAPI = original.DenyAssignmentsClientAPI

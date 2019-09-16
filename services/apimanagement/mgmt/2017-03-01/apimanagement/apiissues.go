@@ -41,7 +41,7 @@ func NewAPIIssuesClientWithBaseURI(baseURI string, subscriptionID string) APIIss
 	return APIIssuesClient{NewWithBaseURI(baseURI, subscriptionID)}
 }
 
-// ListByService lists all issues assosiated with the specified API.
+// ListByService lists all issues associated with the specified API.
 // Parameters:
 // resourceGroupName - the name of the resource group.
 // serviceName - the name of the API Management service.
@@ -138,8 +138,8 @@ func (client APIIssuesClient) ListByServicePreparer(ctx context.Context, resourc
 // ListByServiceSender sends the ListByService request. The method will close the
 // http.Response Body if it receives an error.
 func (client APIIssuesClient) ListByServiceSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListByServiceResponder handles the response to the ListByService request. The method always

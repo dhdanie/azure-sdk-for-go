@@ -44,7 +44,7 @@ func NewCheckSkuAvailabilityClientWithBaseURI(baseURI string, subscriptionID str
 // List check available SKUs.
 // Parameters:
 // location - resource location.
-// parameters - check SKU Availablity POST body.
+// parameters - check SKU Availability POST body.
 func (client CheckSkuAvailabilityClient) List(ctx context.Context, location string, parameters CheckSkuAvailabilityParameter) (result CheckSkuAvailabilityResultList, err error) {
 	if tracing.IsEnabled() {
 		ctx = tracing.StartSpan(ctx, fqdn+"/CheckSkuAvailabilityClient.List")
@@ -59,6 +59,7 @@ func (client CheckSkuAvailabilityClient) List(ctx context.Context, location stri
 	if err := validation.Validate([]validation.Validation{
 		{TargetValue: parameters,
 			Constraints: []validation.Constraint{{Target: "parameters.Skus", Name: validation.Null, Rule: true, Chain: nil},
+				{Target: "parameters.Kind", Name: validation.Null, Rule: true, Chain: nil},
 				{Target: "parameters.Type", Name: validation.Null, Rule: true, Chain: nil}}}}); err != nil {
 		return result, validation.NewError("cognitiveservices.CheckSkuAvailabilityClient", "List", err.Error())
 	}
@@ -109,8 +110,8 @@ func (client CheckSkuAvailabilityClient) ListPreparer(ctx context.Context, locat
 // ListSender sends the List request. The method will close the
 // http.Response Body if it receives an error.
 func (client CheckSkuAvailabilityClient) ListSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		azure.DoRetryWithRegistration(client.Client))
+	sd := autorest.GetSendDecorators(req.Context(), azure.DoRetryWithRegistration(client.Client))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListResponder handles the response to the List request. The method always

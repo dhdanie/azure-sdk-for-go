@@ -610,11 +610,11 @@ type ResourceType struct {
 // RoleAssignment role Assignments
 type RoleAssignment struct {
 	autorest.Response `json:"-"`
-	// ID - The role assignment ID.
+	// ID - READ-ONLY; The role assignment ID.
 	ID *string `json:"id,omitempty"`
-	// Name - The role assignment name.
+	// Name - READ-ONLY; The role assignment name.
 	Name *string `json:"name,omitempty"`
-	// Type - The role assignment type.
+	// Type - READ-ONLY; The role assignment type.
 	Type *string `json:"type,omitempty"`
 	// RoleAssignmentPropertiesWithScope - Role assignment properties.
 	*RoleAssignmentPropertiesWithScope `json:"properties,omitempty"`
@@ -623,15 +623,6 @@ type RoleAssignment struct {
 // MarshalJSON is the custom marshaler for RoleAssignment.
 func (ra RoleAssignment) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]interface{})
-	if ra.ID != nil {
-		objectMap["id"] = ra.ID
-	}
-	if ra.Name != nil {
-		objectMap["name"] = ra.Name
-	}
-	if ra.Type != nil {
-		objectMap["type"] = ra.Type
-	}
 	if ra.RoleAssignmentPropertiesWithScope != nil {
 		objectMap["properties"] = ra.RoleAssignmentPropertiesWithScope
 	}
@@ -732,7 +723,7 @@ func (racp *RoleAssignmentCreateParameters) UnmarshalJSON(body []byte) error {
 type RoleAssignmentFilter struct {
 	// PrincipalID - Returns role assignment of the specific principal.
 	PrincipalID *string `json:"principalId,omitempty"`
-	// CanDelegate - The Delegation flag for the roleassignment
+	// CanDelegate - The Delegation flag for the role assignment
 	CanDelegate *bool `json:"canDelegate,omitempty"`
 }
 
@@ -888,7 +879,7 @@ type RoleAssignmentProperties struct {
 	RoleDefinitionID *string `json:"roleDefinitionId,omitempty"`
 	// PrincipalID - The principal ID assigned to the role. This maps to the ID inside the Active Directory. It can point to a user, service principal, or security group.
 	PrincipalID *string `json:"principalId,omitempty"`
-	// CanDelegate - The delgation flag used for creating a role assignment
+	// CanDelegate - The delegation flag used for creating a role assignment
 	CanDelegate *bool `json:"canDelegate,omitempty"`
 }
 
@@ -900,18 +891,18 @@ type RoleAssignmentPropertiesWithScope struct {
 	RoleDefinitionID *string `json:"roleDefinitionId,omitempty"`
 	// PrincipalID - The principal ID.
 	PrincipalID *string `json:"principalId,omitempty"`
-	// CanDelegate - The Delegation flag for the roleassignment
+	// CanDelegate - The Delegation flag for the role assignment
 	CanDelegate *bool `json:"canDelegate,omitempty"`
 }
 
 // RoleDefinition role definition.
 type RoleDefinition struct {
 	autorest.Response `json:"-"`
-	// ID - The role definition ID.
+	// ID - READ-ONLY; The role definition ID.
 	ID *string `json:"id,omitempty"`
-	// Name - The role definition name.
+	// Name - READ-ONLY; The role definition name.
 	Name *string `json:"name,omitempty"`
-	// Type - The role definition type.
+	// Type - READ-ONLY; The role definition type.
 	Type *string `json:"type,omitempty"`
 	// RoleDefinitionProperties - Role definition properties.
 	*RoleDefinitionProperties `json:"properties,omitempty"`
@@ -920,15 +911,6 @@ type RoleDefinition struct {
 // MarshalJSON is the custom marshaler for RoleDefinition.
 func (rd RoleDefinition) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]interface{})
-	if rd.ID != nil {
-		objectMap["id"] = rd.ID
-	}
-	if rd.Name != nil {
-		objectMap["name"] = rd.Name
-	}
-	if rd.Type != nil {
-		objectMap["type"] = rd.Type
-	}
 	if rd.RoleDefinitionProperties != nil {
 		objectMap["properties"] = rd.RoleDefinitionProperties
 	}

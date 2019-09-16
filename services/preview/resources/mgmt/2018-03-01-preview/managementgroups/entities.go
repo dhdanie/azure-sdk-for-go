@@ -60,7 +60,7 @@ func NewEntitiesClientWithBaseURI(baseURI string) EntitiesClient {
 // added as children of the requested entity. With $search=ParentAndFirstLevelChildren the API will return the
 // parent and  first level of children that the user has either direct access to or indirect access via one of
 // their descendants.
-// filter - the filter parameter allows you to filter on the the name or display name fields. You can check for
+// filter - the filter parameter allows you to filter on the name or display name fields. You can check for
 // equality on the name field (e.g. name eq '{entityName}')  and you can check for substrings on either the
 // name or display name fields(e.g. contains(name, '{substringToSearch}'), contains(displayName,
 // '{substringToSearch')). Note that the '{entityName}' and '{substringToSearch}' fields are checked case
@@ -152,8 +152,8 @@ func (client EntitiesClient) ListPreparer(ctx context.Context, skiptoken string,
 // ListSender sends the List request. The method will close the
 // http.Response Body if it receives an error.
 func (client EntitiesClient) ListSender(req *http.Request) (*http.Response, error) {
-	return autorest.SendWithSender(client, req,
-		autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	sd := autorest.GetSendDecorators(req.Context(), autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+	return autorest.SendWithSender(client, req, sd...)
 }
 
 // ListResponder handles the response to the List request. The method always

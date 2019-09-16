@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2018 Microsoft Corporation
+// Copyright 2019 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ package eventhubapi
 
 import original "github.com/Azure/azure-sdk-for-go/services/preview/eventhub/mgmt/2018-01-01-preview/eventhub/eventhubapi"
 
-type OperationsClientAPI = original.OperationsClientAPI
 type ClustersClientAPI = original.ClustersClientAPI
 type ConfigurationClientAPI = original.ConfigurationClientAPI
 type NamespacesClientAPI = original.NamespacesClientAPI
+type OperationsClientAPI = original.OperationsClientAPI
